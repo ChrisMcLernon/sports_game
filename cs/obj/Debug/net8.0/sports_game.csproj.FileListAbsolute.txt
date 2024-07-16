@@ -26,3 +26,4 @@ C:\CodingDir\sports_game\cs\bin\Debug\net8.0\sports_game.dll
 C:\CodingDir\sports_game\cs\bin\Debug\net8.0\sports_game.pdb
 C:\CodingDir\sports_game\cs\obj\Debug\net8.0\sports_game.genruntimeconfig.cache
 C:\CodingDir\sports_game\cs\obj\Debug\net8.0\ref\sports_game.dll
+C:\CodingDir\sports_game\cs\obj\Debug\net8.0\sports_game.sourcelink.json

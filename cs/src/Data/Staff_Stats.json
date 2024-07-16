@@ -4,7 +4,7 @@
         "Age": 30,
         "Value": 100,
         "CurrentPosition": {
-            "Name": "Defensive Coach",
+            "Name": "DEFENSIVE_COORDINATOR",
             "Modifier": 2.5,
             "Size": 1
         },
@@ -28,7 +28,7 @@
         "Age": 25,
         "Value": 50,
         "CurrentPosition": {
-            "Name": "Head Coach",
+            "Name": "HEAD_COACH",
             "Modifier": 1.5,
             "Size": 1
         },

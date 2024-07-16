@@ -3,10 +3,10 @@
     public struct Position
     {
         public string Name { get; set; }
-        public float Modifier { get; set; }
+        public double Modifier { get; set; }
         public int Size { get; set; }
     }
-    public struct Person()
+    public struct Person
     {
         public string Name { get; set; }
         public int Age { get; set; }

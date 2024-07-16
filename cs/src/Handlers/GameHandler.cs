@@ -1,16 +1,50 @@
+using System.Text;
 using sports_game.src.Entities;
 using sports_game.src.Models;
 
 namespace sports_game.src.Handlers
 {
-    public class GameHandler(List<Person> availablePlayers, List<Person> availableStaff, MarketHandler marketHandler, Team? playerTeam = null, Team? opponentTeam = null)
+    public class GameHandler(List<Person> availablePlayers, List<Person> availableStaff, MarketHandler marketHandler)
     {
-        public Team? PlayerTeam { get; set; } = playerTeam;
-        public Team? OpponentTeam { get; set; } = opponentTeam;
+        public Team? PlayerTeam { get; set; }
+        public Team? OpponentTeam { get; set; }
         public List<Person> AvailablePlayers { get; set; } = availablePlayers;
         public List<Person> AvailableStaff { get; set; } = availableStaff;
         public MarketHandler MarketHandler { get; set; } = marketHandler;
-        public Random? Random { get; set; }
+        static public Random? SetRandom { get; set; }
+
+        public void GenerateStarterTeam(){
+            AvailablePlayers = [.. AvailablePlayers.OrderBy(x => SetRandom.Next())];
+            string teamName = ReadText();
+            PlayerTeam = new Team(teamName);
+            OpponentTeam = new Team(GenerateRandomString(5));
+            PlayerTeam.GeneratePossiblePositions();
+            OpponentTeam.GeneratePossiblePositions();
+
+            foreach (var player in AvailablePlayers)
+            {
+                if (PlayerTeam.Players.Count == 0)
+                {
+                    PlayerTeam.AddPerson(player);
+                }
+                else
+                {
+                    OpponentTeam.AddPerson(player);
+                }
+            }
+        }
+
+        public static string GenerateRandomString(int length)
+        {
+            const string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+            StringBuilder result = new(length);
+            for (int i = 0; i < length; i++)
+            {
+                result.Append(letters[SetRandom.Next(letters.Length)]);
+            }
+            return result.ToString();
+        }
 
         public static string ReadText()
         {
@@ -18,9 +52,9 @@ namespace sports_game.src.Handlers
             {
                 string? input = Console.ReadLine();
                 
-                if (input == null)
+                if (input == "")
                 {
-                    Console.WriteLine("No input is invalid");   
+                    Console.WriteLine("No input is invalid");
                 }
                 else
                 {
@@ -59,24 +93,24 @@ namespace sports_game.src.Handlers
             Environment.Exit(0);
         }
 
-        public void ConfigSeed(string seed)
+        public static void ConfigSeed(string seed)
         {
             int calculatedSeed = 0;
             foreach (char c in seed)
             {
                 calculatedSeed += Convert.ToInt32(c);
             }
-            Random = new Random(calculatedSeed);
+            SetRandom = new Random(calculatedSeed);
         }
 
-        public void SetSeed()
+        public static void SetSeed()
         {
             Console.Write("Enter Seed: ");
             string seed = ReadText();
             ConfigSeed(seed);
         }
 
-        public void StartGame()
+        public static void StartGame()
         {
             Console.WriteLine("Welcome to '_' (0 to exit | 1 to start game)");
             string input = ReadText();
@@ -92,7 +126,7 @@ namespace sports_game.src.Handlers
 
         public void PlayGame()
         {
-            // Implementation for playing the game
+            GenerateStarterTeam();
         }
 
         public void GameLoop()

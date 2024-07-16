@@ -1,0 +1,11 @@
+[
+    "QUARTERBACK", 
+    "RUNNING_BACK", 
+    "WIDE_RECEIVER", 
+    "OFFENSIVE_LINE", 
+    "DEFENSIVE_LINE", 
+    "LINEBACKER", 
+    "DEFENSIVE_BACK", 
+    "KICKER", 
+    "ALL_AROUNDER"
+]

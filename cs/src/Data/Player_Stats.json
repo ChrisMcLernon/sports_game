@@ -4,7 +4,7 @@
         "Age": 30,
         "Value": 100,
         "CurrentPosition": {
-            "Name": "Quarter Back",
+            "Name": "QUARTERBACK",
             "Modifier": 2.5,
             "Size": 1
         },
@@ -28,7 +28,7 @@
         "Age": 25,
         "Value": 50,
         "CurrentPosition": {
-            "Name": "Running Back",
+            "Name": "RUNNING_BACK",
             "Modifier": 1.5,
             "Size": 1
         },

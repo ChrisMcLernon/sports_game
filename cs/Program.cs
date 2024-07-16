@@ -14,9 +14,12 @@ namespace sports_game
 
             GameHandler gameHandler = new(totalAvailablePlayers, totalAvailableStaff, marketHandler);
 
-            gameHandler.StartGame();
+            gameHandler.GameLoop();
 
-            foreach (var p in gameHandler.AvailablePlayers)
+            Console.WriteLine($"Player Team: {gameHandler.PlayerTeam.Name}");
+            Console.WriteLine($"Opponent Team: {gameHandler.OpponentTeam.Name}");
+
+            foreach (var p in gameHandler.PlayerTeam.Players)
             {
                 Console.WriteLine($"Player: {p.Name}, Age: {p.Age}, Value: {p.Value}, " +
                               $"Position: {p.CurrentPosition.Name}, Modifier: {p.CurrentPosition.Modifier}, " +
@@ -29,14 +32,14 @@ namespace sports_game
                 }
             }
 
-            foreach (var s in gameHandler.AvailableStaff)
+            foreach (var p in gameHandler.OpponentTeam.Players)
             {
-                Console.WriteLine($"Staff: {s.Name}, Age: {s.Age}, Value: {s.Value}, " +
-                              $"Position: {s.CurrentPosition.Name}, Modifier: {s.CurrentPosition.Modifier}, " +
-                              $"Size: {s.CurrentPosition.Size}, Cost: {s.Cost}, Status: {s.Status}");
+                Console.WriteLine($"Staff: {p.Name}, Age: {p.Age}, Value: {p.Value}, " +
+                              $"Position: {p.CurrentPosition.Name}, Modifier: {p.CurrentPosition.Modifier}, " +
+                              $"Size: {p.CurrentPosition.Size}, Cost: {p.Cost}, Status: {p.Status}");
                 
                 Console.WriteLine("Effects:");
-                foreach (var effect in s.Effects)
+                foreach (var effect in p.Effects)
                 {
                     Console.WriteLine($"- {effect.Name}: {effect.Description} (+{effect.Value})");
                 }
