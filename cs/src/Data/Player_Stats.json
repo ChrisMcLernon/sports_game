@@ -1,0 +1,50 @@
+[
+    {
+        "Name": "John",
+        "Age": 30,
+        "Value": 100,
+        "CurrentPosition": {
+            "Name": "Quarter Back",
+            "Modifier": 2.5,
+            "Size": 1
+        },
+        "Cost": 100,
+        "Effects": [
+            {
+                "Name": "Player Value + 10",
+                "Description": "Increase Value",
+                "Value": 10
+            },
+            {
+                "Name": "Player Value + 20",
+                "Description": "Increase Cost",
+                "Value": 20
+            }
+        ],
+        "Status": "active"
+    },
+    {
+        "Name": "Jane",
+        "Age": 25,
+        "Value": 50,
+        "CurrentPosition": {
+            "Name": "Running Back",
+            "Modifier": 1.5,
+            "Size": 1
+        },
+        "Cost": 50,
+        "Effects": [
+            {
+                "Name": "Player Value + 5",
+                "Description": "Increase Value",
+                "Value": 5
+            },
+            {
+                "Name": "Player Value + 10",
+                "Description": "Increase Cost",
+                "Value": 10
+            }
+        ],
+        "Status": "active"
+    }
+]
