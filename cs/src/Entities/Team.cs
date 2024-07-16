@@ -23,7 +23,7 @@ namespace sports_game.src.Entities
         {
             if (Sport == "FOOTBALL"){
                 PossiblePlayerPositions = JsonReader.Read<List<string>>("Football_Player_Positions.json");
-                PossibleStaffPositions = PossiblePlayerPositions = JsonReader.Read<List<string>>("Football_Staff_Positions.json");
+                PossibleStaffPositions = JsonReader.Read<List<string>>("Football_Staff_Positions.json");
             }
         }
 
