@@ -16,7 +16,7 @@ namespace sports_game.src.Handlers
 
         public void GenerateStarterTeam(){
             AvailablePlayers = [.. AvailablePlayers.OrderBy(x => SetRandom.Next())];
-            string teamName = ReadText();
+            string teamName = ReadText("Enter Team Name: ");
             PlayerTeam = new Team(teamName);
             OpponentTeam = new Team(GenerateRandomString());
             PlayerTeam.GeneratePossiblePositions();
@@ -41,10 +41,11 @@ namespace sports_game.src.Handlers
             return Names[SetRandom.Next(Names.Count)];
         }
 
-        public static string ReadText()
+        public static string ReadText(string prompt = "")
         {
             while (true)
             {
+                Console.Write(prompt);
                 string? input = Console.ReadLine();
                 
                 if (input == "")

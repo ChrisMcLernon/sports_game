@@ -31,7 +31,6 @@ namespace sports_game.src.Entities
         {
             if (PossiblePlayerPositions.Contains(p.CurrentPosition.Name) && !PositionFilled(p.CurrentPosition))
             {
-                Console.WriteLine(p.CurrentPosition.Name);
                 Players.Add(p);
                 foreach (var effect in p.Effects)
                 {
@@ -40,7 +39,6 @@ namespace sports_game.src.Entities
             }
             else if (PossibleStaffPositions.Contains(p.CurrentPosition.Name) && !PositionFilled(p.CurrentPosition))
             {
-                Console.WriteLine(p.CurrentPosition.Name);
                 Staff.Add(p);
                 foreach (var effect in p.Effects)
                 {
