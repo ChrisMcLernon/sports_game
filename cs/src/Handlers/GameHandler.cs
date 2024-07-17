@@ -1,6 +1,7 @@
 using System.Text;
 using sports_game.src.Entities;
 using sports_game.src.Models;
+using sports_game.src.Services;
 
 namespace sports_game.src.Handlers
 {
@@ -17,33 +18,27 @@ namespace sports_game.src.Handlers
             AvailablePlayers = [.. AvailablePlayers.OrderBy(x => SetRandom.Next())];
             string teamName = ReadText();
             PlayerTeam = new Team(teamName);
-            OpponentTeam = new Team(GenerateRandomString(5));
+            OpponentTeam = new Team(GenerateRandomString());
             PlayerTeam.GeneratePossiblePositions();
             OpponentTeam.GeneratePossiblePositions();
 
-            foreach (var player in AvailablePlayers)
+            for (int i = 0; i < AvailablePlayers.Count; i++)
             {
                 if (PlayerTeam.Players.Count == 0)
                 {
-                    PlayerTeam.AddPerson(player);
+                    PlayerTeam.AddPerson(AvailablePlayers[SetRandom.Next(AvailablePlayers.Count)]);
                 }
                 else
                 {
-                    OpponentTeam.AddPerson(player);
+                    OpponentTeam.AddPerson(AvailablePlayers[SetRandom.Next(AvailablePlayers.Count)]);
                 }
             }
         }
 
-        public static string GenerateRandomString(int length)
+        public static string GenerateRandomString()
         {
-            const string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-
-            StringBuilder result = new(length);
-            for (int i = 0; i < length; i++)
-            {
-                result.Append(letters[SetRandom.Next(letters.Length)]);
-            }
-            return result.ToString();
+            List<string> Names = JsonReader.Read<List<string>>("Team_Names.json");
+            return Names[SetRandom.Next(Names.Count)];
         }
 
         public static string ReadText()
