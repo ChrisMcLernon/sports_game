@@ -24,60 +24,108 @@
     "Football_Player_Stats":
     [
         {
-            "Name": "John",
-            "Age": 30,
-            "Value": 100,
+            "Name": "Tom",
+            "Age": 22,
+            "Value": 110,
             "CurrentPosition": {
-                "Name": "QUARTERBACK",
-                "Modifier": 2.5,
+                "Name": "KICKER",
+                "Modifier": 2.0,
                 "Size": 1
             },
-            "Cost": 100,
+            "Cost": 110,
             "Effects": [
                 {
-                    "Name": "Player Value + 10",
+                    "Name": "Player Value + 11",
                     "Description": "Increase Value",
-                    "Value": 10
+                    "Value": 11
                 },
                 {
-                    "Name": "Player Value + 20",
+                    "Name": "Player Value + 22",
                     "Description": "Increase Cost",
-                    "Value": 20
+                    "Value": 22
                 }
             ],
             "Status": "active"
         },
         {
-            "Name": "Jane",
-            "Age": 25,
-            "Value": 50,
+            "Name": "Sara",
+            "Age": 26,
+            "Value": 95,
             "CurrentPosition": {
-                "Name": "RUNNING_BACK",
-                "Modifier": 1.5,
+                "Name": "ALL_AROUNDER",
+                "Modifier": 2.3,
                 "Size": 1
             },
-            "Cost": 50,
+            "Cost": 95,
             "Effects": [
                 {
-                    "Name": "Player Value + 5",
+                    "Name": "Player Value + 9",
                     "Description": "Increase Value",
-                    "Value": 5
+                    "Value": 9
                 },
                 {
-                    "Name": "Player Value + 10",
+                    "Name": "Player Value + 19",
                     "Description": "Increase Cost",
-                    "Value": 10
+                    "Value": 19
                 }
             ],
             "Status": "active"
         },
         {
-            "Name": "Jack",
-            "Age": 35,
+            "Name": "Harry",
+            "Age": 31,
+            "Value": 85,
+            "CurrentPosition": {
+                "Name": "DEFENSIVE_BACK",
+                "Modifier": 1.8,
+                "Size": 1
+            },
+            "Cost": 85,
+            "Effects": [
+                {
+                    "Name": "Player Value + 8",
+                    "Description": "Increase Value",
+                    "Value": 8
+                },
+                {
+                    "Name": "Player Value + 17",
+                    "Description": "Increase Cost",
+                    "Value": 17
+                }
+            ],
+            "Status": "active"
+        },
+        {
+            "Name": "Emily",
+            "Age": 29,
+            "Value": 65,
+            "CurrentPosition": {
+                "Name": "LINEBACKER",
+                "Modifier": 1.4,
+                "Size": 1
+            },
+            "Cost": 65,
+            "Effects": [
+                {
+                    "Name": "Player Value + 6",
+                    "Description": "Increase Value",
+                    "Value": 6
+                },
+                {
+                    "Name": "Player Value + 13",
+                    "Description": "Increase Cost",
+                    "Value": 13
+                }
+            ],
+            "Status": "active"
+        },
+        {
+            "Name": "Mike",
+            "Age": 24,
             "Value": 75,
             "CurrentPosition": {
-                "Name": "WIDE_RECEIVER",
-                "Modifier": 1.75,
+                "Name": "OFFENSIVE_LINE",
+                "Modifier": 1.6,
                 "Size": 1
             },
             "Cost": 75,
@@ -96,35 +144,11 @@
             "Status": "active"
         },
         {
-            "Name": "Jill",
-            "Age": 28,
-            "Value": 60,
-            "CurrentPosition": {
-                "Name": "DEFENSIVE_LINE",
-                "Modifier": 1.25,
-                "Size": 1
-            },
-            "Cost": 60,
-            "Effects": [
-                {
-                    "Name": "Player Value + 6",
-                    "Description": "Increase Value",
-                    "Value": 6
-                },
-                {
-                    "Name": "Player Value + 12",
-                    "Description": "Increase Cost",
-                    "Value": 12
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "Jim",
-            "Age": 32,
+            "Name": "Anna",
+            "Age": 27,
             "Value": 90,
             "CurrentPosition": {
-                "Name": "OFFENSIVE_LINE",
+                "Name": "RUNNING_BACK",
                 "Modifier": 2.0,
                 "Size": 1
             },
@@ -144,36 +168,12 @@
             "Status": "active"
         },
         {
-            "Name": "Jenny",
-            "Age": 27,
-            "Value": 70,
-            "CurrentPosition": {
-                "Name": "DEFENSIVE_BACK",
-                "Modifier": 1.5,
-                "Size": 1
-            },
-            "Cost": 70,
-            "Effects": [
-                {
-                    "Name": "Player Value + 7",
-                    "Description": "Increase Value",
-                    "Value": 7
-                },
-                {
-                    "Name": "Player Value + 14",
-                    "Description": "Increase Cost",
-                    "Value": 14
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "Joe",
-            "Age": 29,
+            "Name": "Paul",
+            "Age": 30,
             "Value": 80,
             "CurrentPosition": {
-                "Name": "LINEBACKER",
-                "Modifier": 1.75,
+                "Name": "WIDE_RECEIVER",
+                "Modifier": 1.7,
                 "Size": 1
             },
             "Cost": 80,
@@ -195,39 +195,135 @@
     "Football_Staff_Stats":
     [
         {
-            "Name": "John",
-            "Age": 30,
-            "Value": 100,
+            "Name": "Lisa",
+            "Age": 40,
+            "Value": 120,
             "CurrentPosition": {
-                "Name": "DEFENSIVE_COORDINATOR",
-                "Modifier": 2.5,
+                "Name": "HEAD_COACH",
+                "Modifier": 3.0,
                 "Size": 1
             },
-            "Cost": 100,
+            "Cost": 120,
             "Effects": [
                 {
-                    "Name": "Player Value + 10",
+                    "Name": "Player Value + 12",
                     "Description": "Increase Value",
-                    "Value": 10
+                    "Value": 12
                 },
                 {
-                    "Name": "Player Value + 20",
+                    "Name": "Player Value + 24",
                     "Description": "Increase Cost",
-                    "Value": 20
+                    "Value": 24
                 }
             ],
             "Status": "active"
         },
         {
-            "Name": "Jane",
-            "Age": 25,
-            "Value": 50,
+            "Name": "Mark",
+            "Age": 38,
+            "Value": 95,
             "CurrentPosition": {
-                "Name": "HEAD_COACH",
+                "Name": "DEFENSIVE_COORDINATOR",
+                "Modifier": 2.5,
+                "Size": 1
+            },
+            "Cost": 95,
+            "Effects": [
+                {
+                    "Name": "Player Value + 9",
+                    "Description": "Increase Value",
+                    "Value": 9
+                },
+                {
+                    "Name": "Player Value + 19",
+                    "Description": "Increase Cost",
+                    "Value": 19
+                }
+            ],
+            "Status": "active"
+        },
+        {
+            "Name": "Rachel",
+            "Age": 34,
+            "Value": 85,
+            "CurrentPosition": {
+                "Name": "OFFENSIVE_COORDINATOR",
+                "Modifier": 2.0,
+                "Size": 1
+            },
+            "Cost": 85,
+            "Effects": [
+                {
+                    "Name": "Player Value + 8",
+                    "Description": "Increase Value",
+                    "Value": 8
+                },
+                {
+                    "Name": "Player Value + 17",
+                    "Description": "Increase Cost",
+                    "Value": 17
+                }
+            ],
+            "Status": "active"
+        },
+        {
+            "Name": "Tim",
+            "Age": 36,
+            "Value": 75,
+            "CurrentPosition": {
+                "Name": "SPECIAL_TEAMS_COACH",
+                "Modifier": 1.75,
+                "Size": 1
+            },
+            "Cost": 75,
+            "Effects": [
+                {
+                    "Name": "Player Value + 7",
+                    "Description": "Increase Value",
+                    "Value": 7
+                },
+                {
+                    "Name": "Player Value + 15",
+                    "Description": "Increase Cost",
+                    "Value": 15
+                }
+            ],
+            "Status": "active"
+        },
+        {
+            "Name": "Nina",
+            "Age": 29,
+            "Value": 65,
+            "CurrentPosition": {
+                "Name": "TRAINER",
                 "Modifier": 1.5,
                 "Size": 1
             },
-            "Cost": 50,
+            "Cost": 65,
+            "Effects": [
+                {
+                    "Name": "Player Value + 6",
+                    "Description": "Increase Value",
+                    "Value": 6
+                },
+                {
+                    "Name": "Player Value + 13",
+                    "Description": "Increase Cost",
+                    "Value": 13
+                }
+            ],
+            "Status": "active"
+        },
+        {
+            "Name": "George",
+            "Age": 45,
+            "Value": 55,
+            "CurrentPosition": {
+                "Name": "EQUIPMENT_MANAGER",
+                "Modifier": 1.25,
+                "Size": 1
+            },
+            "Cost": 55,
             "Effects": [
                 {
                     "Name": "Player Value + 5",
@@ -238,6 +334,30 @@
                     "Name": "Player Value + 10",
                     "Description": "Increase Cost",
                     "Value": 10
+                }
+            ],
+            "Status": "active"
+        },
+        {
+            "Name": "Sam",
+            "Age": 37,
+            "Value": 70,
+            "CurrentPosition": {
+                "Name": "MASTERMIND",
+                "Modifier": 2.2,
+                "Size": 1
+            },
+            "Cost": 70,
+            "Effects": [
+                {
+                    "Name": "Player Value + 7",
+                    "Description": "Increase Value",
+                    "Value": 7
+                },
+                {
+                    "Name": "Player Value + 14",
+                    "Description": "Increase Cost",
+                    "Value": 14
                 }
             ],
             "Status": "active"

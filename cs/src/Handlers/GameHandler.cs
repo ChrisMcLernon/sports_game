@@ -5,17 +5,20 @@ using sports_game.src.Services;
 
 namespace sports_game.src.Handlers
 {
-    public class GameHandler(List<Person> availablePlayers, List<Person> availableStaff, MarketHandler marketHandler)
+    public class GameHandler()
     {
         public Team? PlayerTeam { get; set; }
         public Team? OpponentTeam { get; set; }
-        public List<Person> AvailablePlayers { get; set; } = availablePlayers;
-        public List<Person> AvailableStaff { get; set; } = availableStaff;
-        public MarketHandler MarketHandler { get; set; } = marketHandler;
+        public List<Person> AvailablePlayers { get; set; } = [];
+        public List<Person> AvailableStaff { get; set; } = [];
+        public static List<string> TeamNames { get; set; }
+        public MarketHandler MarketHandler { get; set; }
         static public Random? SetRandom { get; set; }
         public int TeamSize { get; set; } = 5;
+        public int StaffSize { get; set; } = 3;
 
-        public void GenerateStarterTeam(){
+        public void GenerateStarterTeam()
+        {
             AvailablePlayers = [.. AvailablePlayers.OrderBy(x => SetRandom.Next())];
             string teamName = ReadText("Enter Team Name: ");
             PlayerTeam = new Team(teamName);
@@ -27,25 +30,30 @@ namespace sports_game.src.Handlers
             {
                 while (PlayerTeam.Players.Count < TeamSize)
                 {
-                    if (i == 0){
-                        Console.WriteLine(PlayerTeam.Name);
-                    }
                     PlayerTeam.AddPerson(AvailablePlayers[SetRandom.Next(AvailablePlayers.Count)]);
                 }
                 while (OpponentTeam.Players.Count < TeamSize)
                 {
-                    if (i == 0){
-                        Console.WriteLine(OpponentTeam.Name);
-                    }
                     OpponentTeam.AddPerson(AvailablePlayers[SetRandom.Next(AvailablePlayers.Count)]);
+                }
+            }
+
+            for (int i = 0; i < AvailableStaff.Count; i++)
+            {
+                while (PlayerTeam.Staff.Count < StaffSize)
+                {
+                    PlayerTeam.AddPerson(AvailableStaff[SetRandom.Next(AvailableStaff.Count)]);
+                }
+                while (OpponentTeam.Staff.Count < StaffSize)
+                {
+                    OpponentTeam.AddPerson(AvailableStaff[SetRandom.Next(AvailableStaff.Count)]);
                 }
             }
         }
 
         public static string GenerateRandomString()
         {
-            List<string> Names = JsonReader.Read<List<string>>("Team_Names");
-            return Names[SetRandom.Next(Names.Count)];
+            return TeamNames[SetRandom.Next(TeamNames.Count)];
         }
 
         public static string ReadText(string prompt = "")
@@ -113,7 +121,7 @@ namespace sports_game.src.Handlers
             ConfigSeed(seed);
         }
 
-        public static void StartGame()
+        public  void StartGame()
         {
             Console.WriteLine("Welcome to '_' (0 to exit | 1 to start game)");
             string input = ReadText();
@@ -123,13 +131,21 @@ namespace sports_game.src.Handlers
             }
             else if (input == "1")
             {
+                InitializeData(this);
                 SetSeed();
+                GenerateStarterTeam();
             }
+        }
+
+        private static void InitializeData(GameHandler gameHandler)
+        {
+            gameHandler.AvailablePlayers = JsonReader.Read<List<Person>>("Football_Player_Stats");
+            gameHandler.AvailableStaff = JsonReader.Read<List<Person>>("Football_Staff_Stats");
+            TeamNames = JsonReader.Read<List<string>>("Team_Names");
         }
 
         public void PlayGame()
         {
-            GenerateStarterTeam();
         }
 
         public void GameLoop()
