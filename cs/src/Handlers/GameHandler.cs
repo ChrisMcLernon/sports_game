@@ -27,10 +27,16 @@ namespace sports_game.src.Handlers
             {
                 while (PlayerTeam.Players.Count < TeamSize)
                 {
+                    if (i == 0){
+                        Console.WriteLine(PlayerTeam.Name);
+                    }
                     PlayerTeam.AddPerson(AvailablePlayers[SetRandom.Next(AvailablePlayers.Count)]);
                 }
                 while (OpponentTeam.Players.Count < TeamSize)
                 {
+                    if (i == 0){
+                        Console.WriteLine(OpponentTeam.Name);
+                    }
                     OpponentTeam.AddPerson(AvailablePlayers[SetRandom.Next(AvailablePlayers.Count)]);
                 }
             }
@@ -38,7 +44,7 @@ namespace sports_game.src.Handlers
 
         public static string GenerateRandomString()
         {
-            List<string> Names = JsonReader.Read<List<string>>("Team_Names.json");
+            List<string> Names = JsonReader.Read<List<string>>("Team_Names");
             return Names[SetRandom.Next(Names.Count)];
         }
 

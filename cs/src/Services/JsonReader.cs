@@ -5,26 +5,31 @@ namespace sports_game.src.Services
 {
     public class JsonReader
     {
-        private static readonly string BASE_PATH = Path.GetFullPath("C:/CodingDir/sports_game/cs/src/Data");
+        private static readonly string BASE_PATH = Path.GetFullPath("C:/CodingDir/sports_game/cs/src/Data/Data.json");
 
-        private static void ValidateBasePath(string relativePath)
+        public static T Read<T>(string key)
         {
-            string fullPath = Path.GetFullPath(Path.Combine(BASE_PATH, relativePath));
-
-            if (!fullPath.StartsWith(BASE_PATH, StringComparison.OrdinalIgnoreCase))
+        
+            string jsonString = File.ReadAllText(BASE_PATH);
+            
+            JsonDocument document = JsonDocument.Parse(jsonString);
+            JsonElement root = document.RootElement;
+        
+            if (root.ValueKind == JsonValueKind.Object)
             {
-                throw new SecurityException($"Base path must be within {BASE_PATH}.");
+                JsonElement.ObjectEnumerator enumerator = root.EnumerateObject();
+        
+                while (enumerator.MoveNext())
+                {
+                    JsonProperty property = enumerator.Current;
+                    if (property.Name == key)
+                    {
+                        return JsonSerializer.Deserialize<T>(property.Value, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }) ?? throw new InvalidOperationException("Deserialization returned null.");
+                    }
+                }
             }
-        }
-
-        public static T Read<T>(string relativePath)
-        {
-            ValidateBasePath(relativePath);
-
-            string fullPath = Path.GetFullPath(Path.Combine(BASE_PATH, relativePath));
-
-            string jsonString = File.ReadAllText(fullPath);
-            return JsonSerializer.Deserialize<T>(jsonString, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }) ?? throw new InvalidOperationException("Deserialization returned null.");
+        
+            throw new KeyNotFoundException($"Key '{key}' not found.");
         }
     }
 }

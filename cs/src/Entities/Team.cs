@@ -22,8 +22,8 @@ namespace sports_game.src.Entities
         public void GeneratePossiblePositions()
         {
             if (Sport == "FOOTBALL"){
-                PossiblePlayerPositions = JsonReader.Read<List<string>>("Football_Player_Positions.json");
-                PossibleStaffPositions = JsonReader.Read<List<string>>("Football_Staff_Positions.json");
+                PossiblePlayerPositions = JsonReader.Read<List<string>>("Football_Player_Positions");
+                PossibleStaffPositions = JsonReader.Read<List<string>>("Football_Staff_Positions");
             }
         }
 
@@ -33,6 +33,17 @@ namespace sports_game.src.Entities
             {
                 Players.Add(p);
                 EffectHandlerTeam.AddEffects(p);
+
+                Console.WriteLine($"Player: {p.Name}, Age: {p.Age}, Value: {p.Value}, " +
+                              $"Position: {p.CurrentPosition.Name}, Modifier: {p.CurrentPosition.Modifier}, " +
+                              $"Size: {p.CurrentPosition.Size}, Cost: {p.Cost}, Status: {p.Status}");
+
+                Console.WriteLine("Effects:");
+                foreach (var effect in EffectHandlerTeam.Effects[p.CurrentPosition.Name])
+                {
+                    Console.WriteLine($"- {effect.Name}: {effect.Description} (+{effect.Value})");
+                }
+
             }
             else if (PossibleStaffPositions.Contains(p.CurrentPosition.Name) && !PositionFilled(p.CurrentPosition))
             {
@@ -63,6 +74,7 @@ namespace sports_game.src.Entities
                     numPlayersInPosition++;
                     if (numPlayersInPosition == pos.Size)
                     {
+                        Console.WriteLine(pos.Name);
                         Console.WriteLine("Position is already filled");
                         return true;
                     }
