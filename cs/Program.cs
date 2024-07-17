@@ -51,29 +51,7 @@ namespace sports_game
 
             foreach (var p in gameHandler.PlayerTeam.Players)
             {
-                Console.WriteLine($"Player: {p.Name}, Age: {p.Age}, Value: {p.Value}, " +
-                              $"Position: {p.CurrentPosition.Name}, Modifier: {p.CurrentPosition.Modifier}, " +
-                              $"Size: {p.CurrentPosition.Size}, Cost: {p.Cost}, Status: {p.Status}");
-
-                Console.WriteLine("Effects:");
-                foreach (var effect in gameHandler.PlayerTeam.EffectHandlerTeam.Effects[p.CurrentPosition.Name])
-                {
-                    Console.WriteLine($"- {effect.Name}: {effect.Description} (+{effect.Value})");
-                }
-            }
-
-            Console.WriteLine($"Opponent Team: {gameHandler.OpponentTeam.Name}");
-            foreach (var p in gameHandler.OpponentTeam.Players)
-            {
-                Console.WriteLine($"Player: {p.Name}, Age: {p.Age}, Value: {p.Value}, " +
-                              $"Position: {p.CurrentPosition.Name}, Modifier: {p.CurrentPosition.Modifier}, " +
-                              $"Size: {p.CurrentPosition.Size}, Cost: {p.Cost}, Status: {p.Status}");
-                
-                Console.WriteLine("Effects:");
-                foreach (var effect in gameHandler.OpponentTeam.EffectHandlerTeam.Effects[p.CurrentPosition.Name])
-                {
-                    Console.WriteLine($"- {effect.Name}: {effect.Description} (+{effect.Value})");
-                }
+                Console.WriteLine($"Player: {p.Name}");
             }
         }
     }
