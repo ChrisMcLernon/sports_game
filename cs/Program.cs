@@ -17,7 +17,6 @@ namespace sports_game
             gameHandler.GameLoop();
 
             Console.WriteLine($"Player Team: {gameHandler.PlayerTeam.Name}");
-            Console.WriteLine($"Opponent Team: {gameHandler.OpponentTeam.Name}");
 
             foreach (var p in gameHandler.PlayerTeam.Players)
             {
@@ -32,6 +31,7 @@ namespace sports_game
                 }
             }
 
+            Console.WriteLine($"Opponent Team: {gameHandler.OpponentTeam.Name}");
             foreach (var p in gameHandler.OpponentTeam.Players)
             {
                 Console.WriteLine($"Staff: {p.Name}, Age: {p.Age}, Value: {p.Value}, " +

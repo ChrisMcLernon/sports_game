@@ -24,11 +24,11 @@ namespace sports_game.src.Handlers
 
             for (int i = 0; i < AvailablePlayers.Count; i++)
             {
-                if (PlayerTeam.Players.Count == 0)
+                while (PlayerTeam.Players.Count < 3)
                 {
                     PlayerTeam.AddPerson(AvailablePlayers[SetRandom.Next(AvailablePlayers.Count)]);
                 }
-                else
+                while (OpponentTeam.Players.Count < 3)
                 {
                     OpponentTeam.AddPerson(AvailablePlayers[SetRandom.Next(AvailablePlayers.Count)]);
                 }

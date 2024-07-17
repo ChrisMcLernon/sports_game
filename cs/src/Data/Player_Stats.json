@@ -76,7 +76,7 @@
         "Age": 28,
         "Value": 60,
         "CurrentPosition": {
-            "Name": "TIGHT_END",
+            "Name": "DEFENSIVE_LINE",
             "Modifier": 1.25,
             "Size": 1
         },
@@ -91,6 +91,78 @@
                 "Name": "Player Value + 12",
                 "Description": "Increase Cost",
                 "Value": 12
+            }
+        ],
+        "Status": "active"
+    },
+    {
+        "Name": "Jim",
+        "Age": 32,
+        "Value": 90,
+        "CurrentPosition": {
+            "Name": "OFFENSIVE_LINE",
+            "Modifier": 2.0,
+            "Size": 1
+        },
+        "Cost": 90,
+        "Effects": [
+            {
+                "Name": "Player Value + 9",
+                "Description": "Increase Value",
+                "Value": 9
+            },
+            {
+                "Name": "Player Value + 18",
+                "Description": "Increase Cost",
+                "Value": 18
+            }
+        ],
+        "Status": "active"
+    },
+    {
+        "Name": "Jenny",
+        "Age": 27,
+        "Value": 70,
+        "CurrentPosition": {
+            "Name": "DEFENSIVE_BACK",
+            "Modifier": 1.5,
+            "Size": 1
+        },
+        "Cost": 70,
+        "Effects": [
+            {
+                "Name": "Player Value + 7",
+                "Description": "Increase Value",
+                "Value": 7
+            },
+            {
+                "Name": "Player Value + 14",
+                "Description": "Increase Cost",
+                "Value": 14
+            }
+        ],
+        "Status": "active"
+    },
+    {
+        "Name": "Joe",
+        "Age": 29,
+        "Value": 80,
+        "CurrentPosition": {
+            "Name": "LINEBACKER",
+            "Modifier": 1.75,
+            "Size": 1
+        },
+        "Cost": 80,
+        "Effects": [
+            {
+                "Name": "Player Value + 8",
+                "Description": "Increase Value",
+                "Value": 8
+            },
+            {
+                "Name": "Player Value + 16",
+                "Description": "Increase Cost",
+                "Value": 16
             }
         ],
         "Status": "active"
