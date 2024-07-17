@@ -12,7 +12,8 @@ namespace sports_game.src.Handlers
         static private List<Person> AvailablePlayers { get; set; } = [];
         static private List<Person> AvailableStaff { get; set; } = [];
         static private List<string>? TeamNames { get; set; }
-        static private MarketHandler? MarketHandler { get; set; }
+        static private MarketHandler? MarketHandlerLocal { get; set; }
+        static private EditorHandler? EditorHandlerLocal { get; set; }
         static private Random? SetRandom { get; set; }
         static private int TeamSize { get; set; } = 5;
         static private int StaffSize { get; set; } = 3;
@@ -126,7 +127,8 @@ namespace sports_game.src.Handlers
             AvailablePlayers = JsonReader.Read<List<Person>>("Football_Player_Stats");
             AvailableStaff = JsonReader.Read<List<Person>>("Football_Staff_Stats");
             TeamNames = JsonReader.Read<List<string>>("Team_Names");
-            MarketHandler = new(AvailablePlayers, AvailableStaff);
+            MarketHandlerLocal = new(AvailablePlayers, AvailableStaff);
+            EditorHandlerLocal = new();
         }
 
         static private void StartGame()
