@@ -7,22 +7,87 @@ namespace sports_game.src.Handlers
 {
     public class GameHandler()
     {
-        public Team? PlayerTeam { get; set; }
-        public Team? OpponentTeam { get; set; }
-        public List<Person> AvailablePlayers { get; set; } = [];
-        public List<Person> AvailableStaff { get; set; } = [];
-        public static List<string> TeamNames { get; set; }
-        public MarketHandler MarketHandler { get; set; }
-        static public Random? SetRandom { get; set; }
-        public int TeamSize { get; set; } = 5;
-        public int StaffSize { get; set; } = 3;
+        static private Team? PlayerTeam { get; set; }
+        static private Team? OpponentTeam { get; set; }
+        static private List<Person> AvailablePlayers { get; set; } = [];
+        static private List<Person> AvailableStaff { get; set; } = [];
+        static private List<string>? TeamNames { get; set; }
+        static private MarketHandler? MarketHandler { get; set; }
+        static private Random? SetRandom { get; set; }
+        static private int TeamSize { get; set; } = 5;
+        static private int StaffSize { get; set; } = 3;
 
-        public void GenerateStarterTeam()
+        static private string ReadText(string prompt = "")
+        {
+            while (true)
+            {
+                Console.Write(prompt);
+                string? input = Console.ReadLine();
+                
+                if (input == "" || input == null)
+                {
+                    Console.WriteLine("No input is invalid");
+                }
+                else
+                {
+                    return input;
+                }
+            }
+        }
+
+        static private void Close()
+        {
+            Console.WriteLine("Goodbye!");
+            Environment.Exit(0);
+        }
+
+        static private void ConfigSeed(string seed)
+        {
+            int calculatedSeed = 0;
+            foreach (char c in seed)
+            {
+                calculatedSeed += Convert.ToInt32(c);
+            }
+            SetRandom = new Random(calculatedSeed);
+        }
+
+        static private void SetSeed()
+        {
+            Console.Write("Enter Seed: ");
+            string seed = ReadText();
+            ConfigSeed(seed);
+        }
+
+        private void CalculatePositionScore()
+        {
+            if (PlayerTeam != null && OpponentTeam != null && PlayerTeam.Players != null && OpponentTeam.Players != null) 
+            {
+                foreach (var player in PlayerTeam.Players)
+                {
+                    foreach (var enemy in OpponentTeam.Players)
+                    {
+                        if (player.CurrentPosition.Name == enemy.CurrentPosition.Name)
+                        {
+                            double unroundedPlayerValue = player.Value * player.CurrentPosition.Modifier;
+                            
+
+                            double unroundedEnemyValue = enemy.Value * enemy.CurrentPosition.Modifier;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                throw new Exception("PlayerTeam or OpponentTeam is null");
+            }
+        }
+
+        private void GenerateStarterTeam()
         {
             AvailablePlayers = [.. AvailablePlayers.OrderBy(x => SetRandom.Next())];
             string teamName = ReadText("Enter Team Name: ");
             PlayerTeam = new Team(teamName);
-            OpponentTeam = new Team(GenerateRandomString());
+            OpponentTeam = new Team(TeamNames[SetRandom.Next(TeamNames.Count)]);
             PlayerTeam.GeneratePossiblePositions();
             OpponentTeam.GeneratePossiblePositions();
 
@@ -51,77 +116,7 @@ namespace sports_game.src.Handlers
             }
         }
 
-        public static string GenerateRandomString()
-        {
-            return TeamNames[SetRandom.Next(TeamNames.Count)];
-        }
-
-        public static string ReadText(string prompt = "")
-        {
-            while (true)
-            {
-                Console.Write(prompt);
-                string? input = Console.ReadLine();
-                
-                if (input == "")
-                {
-                    Console.WriteLine("No input is invalid");
-                }
-                else
-                {
-                    return input;
-                }
-            }
-        }
-
-        public void CalculatePositionScore()
-        {
-            if (PlayerTeam != null && OpponentTeam != null && PlayerTeam.Players != null && OpponentTeam.Players != null) 
-            {
-                foreach (var player in PlayerTeam.Players)
-                {
-                    foreach (var enemy in OpponentTeam.Players)
-                    {
-                        if (player.CurrentPosition.Name == enemy.CurrentPosition.Name)
-                        {
-                            double unroundedPlayerValue = player.Value * player.CurrentPosition.Modifier;
-                            
-
-                            double unroundedEnemyValue = enemy.Value * enemy.CurrentPosition.Modifier;
-                        }
-                    }
-                }
-            }
-            else
-            {
-                throw new Exception("PlayerTeam or OpponentTeam is null");
-            }
-        }
-
-        public static void Close()
-        {
-            Console.WriteLine("Goodbye!");
-            Environment.Exit(0);
-        }
-
-        public static void ConfigSeed(string seed)
-        {
-            int calculatedSeed = 0;
-            foreach (char c in seed)
-            {
-                calculatedSeed += Convert.ToInt32(c);
-            }
-            SetRandom = new Random(calculatedSeed);
-        }
-
-        public static void SetSeed()
-        {
-            Console.Write("Enter Seed: ");
-            string seed = ReadText();
-            ConfigSeed(seed);
-        }
-
-        public  void StartGame()
+        private void StartGame()
         {
             Console.WriteLine("Welcome to '_' (0 to exit | 1 to start game)");
             string input = ReadText();
@@ -131,20 +126,21 @@ namespace sports_game.src.Handlers
             }
             else if (input == "1")
             {
-                InitializeData(this);
+                InitializeData();
                 SetSeed();
                 GenerateStarterTeam();
             }
         }
 
-        private static void InitializeData(GameHandler gameHandler)
+        private void InitializeData()
         {
-            gameHandler.AvailablePlayers = JsonReader.Read<List<Person>>("Football_Player_Stats");
-            gameHandler.AvailableStaff = JsonReader.Read<List<Person>>("Football_Staff_Stats");
+            AvailablePlayers = JsonReader.Read<List<Person>>("Football_Player_Stats");
+            AvailableStaff = JsonReader.Read<List<Person>>("Football_Staff_Stats");
             TeamNames = JsonReader.Read<List<string>>("Team_Names");
+            MarketHandler = new MarketHandler();
         }
 
-        public void PlayGame()
+        private void PlayGame()
         {
         }
 
