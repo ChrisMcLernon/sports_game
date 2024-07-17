@@ -13,6 +13,7 @@ namespace sports_game.src.Handlers
         public List<Person> AvailableStaff { get; set; } = availableStaff;
         public MarketHandler MarketHandler { get; set; } = marketHandler;
         static public Random? SetRandom { get; set; }
+        public int TeamSize { get; set; } = 5;
 
         public void GenerateStarterTeam(){
             AvailablePlayers = [.. AvailablePlayers.OrderBy(x => SetRandom.Next())];
@@ -24,11 +25,11 @@ namespace sports_game.src.Handlers
 
             for (int i = 0; i < AvailablePlayers.Count; i++)
             {
-                while (PlayerTeam.Players.Count < 3)
+                while (PlayerTeam.Players.Count < TeamSize)
                 {
                     PlayerTeam.AddPerson(AvailablePlayers[SetRandom.Next(AvailablePlayers.Count)]);
                 }
-                while (OpponentTeam.Players.Count < 3)
+                while (OpponentTeam.Players.Count < TeamSize)
                 {
                     OpponentTeam.AddPerson(AvailablePlayers[SetRandom.Next(AvailablePlayers.Count)]);
                 }
@@ -69,10 +70,10 @@ namespace sports_game.src.Handlers
                     {
                         if (player.CurrentPosition.Name == enemy.CurrentPosition.Name)
                         {
-                            double unroundedValue = player.Value * player.CurrentPosition.Modifier;
+                            double unroundedPlayerValue = player.Value * player.CurrentPosition.Modifier;
+                            
 
-
-                            int roundedValue = (int)Math.Floor(unroundedValue);
+                            double unroundedEnemyValue = enemy.Value * enemy.CurrentPosition.Modifier;
                         }
                     }
                 }

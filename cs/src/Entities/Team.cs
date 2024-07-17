@@ -32,18 +32,12 @@ namespace sports_game.src.Entities
             if (PossiblePlayerPositions.Contains(p.CurrentPosition.Name) && !PositionFilled(p.CurrentPosition))
             {
                 Players.Add(p);
-                foreach (var effect in p.Effects)
-                {
-                    EffectHandlerTeam.AddEffect(effect);
-                }
+                EffectHandlerTeam.AddEffects(p);
             }
             else if (PossibleStaffPositions.Contains(p.CurrentPosition.Name) && !PositionFilled(p.CurrentPosition))
             {
                 Staff.Add(p);
-                foreach (var effect in p.Effects)
-                {
-                    EffectHandlerTeam.AddEffect(effect);
-                }
+                EffectHandlerTeam.AddEffects(p);
             }
         }
 
@@ -54,14 +48,8 @@ namespace sports_game.src.Entities
 
         public void ReplacePlayer(Person p, Person replacement)
         {
-            if (PossiblePlayerPositions.Contains(p.CurrentPosition.Name) && Players.Contains(p))
-            {
-                Players.Remove(p);
-            }
-            else if (PossibleStaffPositions.Contains(p.CurrentPosition.Name) && Staff.Contains(p))
-            {
+            if (!Players.Remove(p))
                 Staff.Remove(p);
-            }
             AddPerson(replacement);
         }
 

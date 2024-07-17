@@ -1,19 +1,20 @@
+using System.Security;
 using sports_game.src.Models;
 
 namespace sports_game.src.Handlers
 {
     public class EffectHandler
     {
-        List<Effect> Effects { get; set; } = [];
+        public Dictionary<string, List<Effect>> Effects { get; set; } = [];
 
-        public void RemoveEffect(Effect effect)
+        public void RemoveEffects(Person person)
         {
-            // TODO
+            Effects.Remove(person.CurrentPosition.Name);
         }
 
-        public void AddEffect(Effect effect)
+        public void AddEffects(Person person)
         {
-            // TODO
+            Effects.Add(person.CurrentPosition.Name, person.Effects);
         }
     }
 }
