@@ -84,6 +84,11 @@ namespace sports_game.src.Handlers
 
         private void GenerateStarterTeam()
         {
+            if (SetRandom == null || TeamNames == null)
+            {
+                throw new Exception("Some Data not Initialized");
+            }
+
             AvailablePlayers = [.. AvailablePlayers.OrderBy(x => SetRandom.Next())];
             string teamName = ReadText("Enter Team Name: ");
             PlayerTeam = new Team(teamName);
