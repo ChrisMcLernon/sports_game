@@ -90,14 +90,8 @@ namespace sports_game.src.Handlers
 
                 }
 
-                if (unroundedPlayerValue > unroundedEnemyValue)
-                {
-                    totalPoints[0]++;
-                }
-                else if (unroundedPlayerValue < unroundedEnemyValue)
-                {
-                    totalPoints[1]++;
-                }
+                totalPoints[0] = Convert.ToInt32(Math.Round(unroundedPlayerValue));
+                totalPoints[1] = Convert.ToInt32(Math.Round(unroundedEnemyValue));
 
                 return totalPoints;
             }
@@ -123,13 +117,11 @@ namespace sports_game.src.Handlers
                 while (PlayerTeam.Players.Count < TeamSize)
                 {
                     PlayerTeam.AddPerson(AvailablePlayers[SetRandom.Next(AvailablePlayers.Count)]);
-                    Console.WriteLine(PlayerTeam.Players[i].Name);
                     
                 }
                 while (OpponentTeam.Players.Count < TeamSize)
                 {
                     OpponentTeam.AddPerson(AvailablePlayers[SetRandom.Next(AvailablePlayers.Count)]);
-                    Console.WriteLine(PlayerTeam.Players[i].Name);
                 }
             }
 
@@ -171,7 +163,7 @@ namespace sports_game.src.Handlers
             }
         }
 
-        static private bool PlayMatch()
+        static private void PlayMatch()
         {
             if (PlayerTeam == null || OpponentTeam == null)
             {
@@ -185,22 +177,20 @@ namespace sports_game.src.Handlers
             if (playerScore > opponentScore)
             {
                 Console.WriteLine("You Win!");
-                Console.WriteLine($"{PlayerTeam.Name}{playerScore} : {OpponentTeam.Name}{opponentScore}");
-                PlayGame();
-                return true;
+                Console.WriteLine($"{PlayerTeam.Name}: {playerScore} - {OpponentTeam.Name}: {opponentScore}");
+                Close();
             }
             else if (playerScore < opponentScore)
             {
                 Console.WriteLine("You Lose!");
-                Console.WriteLine($"{PlayerTeam.Name}{playerScore} : {OpponentTeam.Name}{opponentScore}");
+                Console.WriteLine($"{PlayerTeam.Name}: {playerScore} - {OpponentTeam.Name}: {opponentScore}");
                 Close();
-                return false;
             }
             else
             {
                 Console.WriteLine("Draw!");
-                Console.WriteLine($"{PlayerTeam.Name}{playerScore} : {OpponentTeam.Name}{opponentScore}");
-                return false;
+                Console.WriteLine($"{PlayerTeam.Name}: {playerScore} - {OpponentTeam.Name}: {opponentScore}");
+                Close();
             }
         }
 

@@ -72,30 +72,6 @@
             "Status": "active"
         },
         {
-            "Name": "Sara",
-            "Age": 26,
-            "Value": 95,
-            "CurrentPosition": {
-                "Name": "ALL_AROUNDER",
-                "Modifier": 2.3,
-                "Size": 1
-            },
-            "Cost": 95,
-            "Effects": [
-                {
-                    "Name": "Player Value + 9",
-                    "Description": "Increase Value",
-                    "Value": 9
-                },
-                {
-                    "Name": "Player Value + 19",
-                    "Description": "Increase Cost",
-                    "Value": 19
-                }
-            ],
-            "Status": "active"
-        },
-        {
             "Name": "Harry",
             "Age": 31,
             "Value": 85,
@@ -120,6 +96,30 @@
             "Status": "active"
         },
         {
+            "Name": "Gary",
+            "Age": 31,
+            "Value": 85,
+            "CurrentPosition": {
+                "Name": "DEFENSIVE_BACK",
+                "Modifier": 1.8,
+                "Size": 1
+            },
+            "Cost": 85,
+            "Effects": [
+                {
+                    "Name": "Player Value + 15",
+                    "Description": "Increase Value",
+                    "Value": 15
+                },
+                {
+                    "Name": "Player Value + 20",
+                    "Description": "Increase Cost",
+                    "Value": 20
+                }
+            ],
+            "Status": "active"
+        },
+        {
             "Name": "Emily",
             "Age": 29,
             "Value": 65,
@@ -139,6 +139,30 @@
                     "Name": "Player Value + 13",
                     "Description": "Increase Cost",
                     "Value": 13
+                }
+            ],
+            "Status": "active"
+        },
+        {
+            "Name": "Randall",
+            "Age": 29,
+            "Value": 65,
+            "CurrentPosition": {
+                "Name": "LINEBACKER",
+                "Modifier": 1.4,
+                "Size": 1
+            },
+            "Cost": 65,
+            "Effects": [
+                {
+                    "Name": "Player Value + 16",
+                    "Description": "Increase Value",
+                    "Value": 16
+                },
+                {
+                    "Name": "Player Value + 213",
+                    "Description": "Increase Cost",
+                    "Value": 213
                 }
             ],
             "Status": "active"
