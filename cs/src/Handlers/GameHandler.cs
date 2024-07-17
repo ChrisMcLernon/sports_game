@@ -58,7 +58,7 @@ namespace sports_game.src.Handlers
             ConfigSeed(seed);
         }
 
-        private void CalculatePositionScore()
+        static private void CalculatePositionScore()
         {
             if (PlayerTeam != null && OpponentTeam != null && PlayerTeam.Players != null && OpponentTeam.Players != null) 
             {
@@ -82,7 +82,7 @@ namespace sports_game.src.Handlers
             }
         }
 
-        private void GenerateStarterTeam()
+        static private void GenerateStarterTeam()
         {
             if (SetRandom == null || TeamNames == null)
             {
@@ -121,7 +121,15 @@ namespace sports_game.src.Handlers
             }
         }
 
-        private void StartGame()
+        static private void InitializeData()
+        {
+            AvailablePlayers = JsonReader.Read<List<Person>>("Football_Player_Stats");
+            AvailableStaff = JsonReader.Read<List<Person>>("Football_Staff_Stats");
+            TeamNames = JsonReader.Read<List<string>>("Team_Names");
+            MarketHandler = new(AvailablePlayers, AvailableStaff);
+        }
+
+        static private void StartGame()
         {
             Console.WriteLine("Welcome to '_' (0 to exit | 1 to start game)");
             string input = ReadText();
@@ -137,15 +145,7 @@ namespace sports_game.src.Handlers
             }
         }
 
-        private void InitializeData()
-        {
-            AvailablePlayers = JsonReader.Read<List<Person>>("Football_Player_Stats");
-            AvailableStaff = JsonReader.Read<List<Person>>("Football_Staff_Stats");
-            TeamNames = JsonReader.Read<List<string>>("Team_Names");
-            MarketHandler = new MarketHandler();
-        }
-
-        private void PlayGame()
+        static private void PlayGame()
         {
         }
 
