@@ -46,5 +46,53 @@
             }
         ],
         "Status": "active"
+    },
+    {
+        "Name": "Jack",
+        "Age": 35,
+        "Value": 75,
+        "CurrentPosition": {
+            "Name": "WIDE_RECEIVER",
+            "Modifier": 1.75,
+            "Size": 1
+        },
+        "Cost": 75,
+        "Effects": [
+            {
+                "Name": "Player Value + 7.5",
+                "Description": "Increase Value",
+                "Value": 7.5
+            },
+            {
+                "Name": "Player Value + 15",
+                "Description": "Increase Cost",
+                "Value": 15
+            }
+        ],
+        "Status": "active"
+    },
+    {
+        "Name": "Jill",
+        "Age": 28,
+        "Value": 60,
+        "CurrentPosition": {
+            "Name": "TIGHT_END",
+            "Modifier": 1.25,
+            "Size": 1
+        },
+        "Cost": 60,
+        "Effects": [
+            {
+                "Name": "Player Value + 6",
+                "Description": "Increase Value",
+                "Value": 6
+            },
+            {
+                "Name": "Player Value + 12",
+                "Description": "Increase Cost",
+                "Value": 12
+            }
+        ],
+        "Status": "active"
     }
 ]
