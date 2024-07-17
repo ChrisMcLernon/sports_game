@@ -79,7 +79,7 @@ namespace sports_game.src.Handlers
             }
             else
             {
-                throw new Exception("PlayerTeam or OpponentTeam is null");
+                throw new Exception("Some Data not Initialized");
             }
         }
 
