@@ -48,6 +48,30 @@
             "Status": "active"
         },
         {
+            "Name": "Kara",
+            "Age": 22,
+            "Value": 110,
+            "CurrentPosition": {
+                "Name": "KICKER",
+                "Modifier": 2.0,
+                "Size": 1
+            },
+            "Cost": 110,
+            "Effects": [
+                {
+                    "Name": "Player Value + 50",
+                    "Description": "Increase Value",
+                    "Value": 50
+                },
+                {
+                    "Name": "Player Value + 22",
+                    "Description": "Increase Cost",
+                    "Value": 22
+                }
+            ],
+            "Status": "active"
+        },
+        {
             "Name": "Sara",
             "Age": 26,
             "Value": 95,

@@ -59,28 +59,49 @@ namespace sports_game.src.Handlers
             ConfigSeed(seed);
         }
 
-        static private void CalculatePositionScore()
+        static private List<int> CalculateScore()
         {
+            List<int> totalPoints = [0, 0];
+            double unroundedPlayerValue = 0;
+            double unroundedEnemyValue = 0;
+
+
             if (PlayerTeam != null && OpponentTeam != null && PlayerTeam.Players != null && OpponentTeam.Players != null) 
             {
                 foreach (var player in PlayerTeam.Players)
                 {
-                    foreach (var enemy in OpponentTeam.Players)
-                    {
-                        if (player.CurrentPosition.Name == enemy.CurrentPosition.Name)
-                        {
-                            double unroundedPlayerValue = player.Value * player.CurrentPosition.Modifier;
-                            
+                    unroundedPlayerValue = player.Value * player.CurrentPosition.Modifier;
 
-                            double unroundedEnemyValue = enemy.Value * enemy.CurrentPosition.Modifier;
-                        }
-                    }
+                    Console.WriteLine(player.Name + " | " + player.CurrentPosition.Name + " | " + player.CurrentPosition.Modifier + " | " + unroundedPlayerValue);
+
+                    unroundedPlayerValue += PlayerTeam.EffectHandlerTeam.ApplyPersonEffects(player);
+
+                    Console.WriteLine(player.Name + " | " + player.CurrentPosition.Name + " | " + player.CurrentPosition.Modifier + " | " + unroundedPlayerValue);
                 }
+                foreach (var enemy in OpponentTeam.Players)
+                {
+                    unroundedEnemyValue = enemy.Value * enemy.CurrentPosition.Modifier;
+
+                    Console.WriteLine(enemy.Name + " | " + enemy.CurrentPosition.Name + " | " + enemy.CurrentPosition.Modifier + " | " + unroundedEnemyValue);
+
+                    unroundedEnemyValue += OpponentTeam.EffectHandlerTeam.ApplyPersonEffects(enemy);
+
+                    Console.WriteLine(enemy.Name + " | " + enemy.CurrentPosition.Name + " | " + enemy.CurrentPosition.Modifier + " | " + unroundedEnemyValue);
+
+                }
+
+                if (unroundedPlayerValue > unroundedEnemyValue)
+                {
+                    totalPoints[0]++;
+                }
+                else if (unroundedPlayerValue < unroundedEnemyValue)
+                {
+                    totalPoints[1]++;
+                }
+
+                return totalPoints;
             }
-            else
-            {
-                throw new Exception("Some Data not Initialized");
-            }
+            throw new Exception("Some Data not Initialized");
         }
 
         static private void GenerateStarterTeam()
@@ -102,10 +123,13 @@ namespace sports_game.src.Handlers
                 while (PlayerTeam.Players.Count < TeamSize)
                 {
                     PlayerTeam.AddPerson(AvailablePlayers[SetRandom.Next(AvailablePlayers.Count)]);
+                    Console.WriteLine(PlayerTeam.Players[i].Name);
+                    
                 }
                 while (OpponentTeam.Players.Count < TeamSize)
                 {
                     OpponentTeam.AddPerson(AvailablePlayers[SetRandom.Next(AvailablePlayers.Count)]);
+                    Console.WriteLine(PlayerTeam.Players[i].Name);
                 }
             }
 
@@ -147,6 +171,39 @@ namespace sports_game.src.Handlers
             }
         }
 
+        static private bool PlayMatch()
+        {
+            if (PlayerTeam == null || OpponentTeam == null)
+            {
+                throw new Exception("Some Data not Initialized");
+            }
+
+            List<int> score = CalculateScore();
+            int playerScore = score[0];
+            int opponentScore = score[1];
+
+            if (playerScore > opponentScore)
+            {
+                Console.WriteLine("You Win!");
+                Console.WriteLine($"{PlayerTeam.Name}{playerScore} : {OpponentTeam.Name}{opponentScore}");
+                PlayGame();
+                return true;
+            }
+            else if (playerScore < opponentScore)
+            {
+                Console.WriteLine("You Lose!");
+                Console.WriteLine($"{PlayerTeam.Name}{playerScore} : {OpponentTeam.Name}{opponentScore}");
+                Close();
+                return false;
+            }
+            else
+            {
+                Console.WriteLine("Draw!");
+                Console.WriteLine($"{PlayerTeam.Name}{playerScore} : {OpponentTeam.Name}{opponentScore}");
+                return false;
+            }
+        }
+
         static private void PlayGame()
         {
             while (true)
@@ -167,6 +224,7 @@ namespace sports_game.src.Handlers
                         break;
                     case "2":
                         Console.WriteLine("Playing Match");
+                        PlayMatch();
                         break;
                     default:
                         Console.WriteLine("Invalid Input");

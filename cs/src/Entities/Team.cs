@@ -4,16 +4,16 @@ using sports_game.src.Services;
 
 namespace sports_game.src.Entities
 {    
-    public class Team(string name, string icon = "_", string sport = "FOOTBALL", int score = 0, int budget = 0,int interest = 10, bool isPlayer = false)
+    public class Team(string name, string icon = "_", string sport = "FOOTBALL", bool isPlayer = false)
     {
         public string Name { get; set; } = name;
         public List<Person> Staff { get; set; } = [];
         public List<Person> Players { get; set; } = [];
         public string Icon { get; set; } = icon;
         public string Sport { get; set; } = sport;
-        public int Score { get; set; } = score;
-        public int Budget { get; set; } = budget;
-        public int Interest { get; set; } = interest;
+        public int Score { get; set; }
+        static public int Budget { get; set; }
+        static public int Interest { get; set; }
         public bool IsPlayer { get; set; } = isPlayer;
         public EffectHandler EffectHandlerTeam { get; set; } = new EffectHandler();
         public List<string> PossiblePlayerPositions { get; set; } = [];
