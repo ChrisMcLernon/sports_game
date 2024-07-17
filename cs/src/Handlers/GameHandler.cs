@@ -147,6 +147,30 @@ namespace sports_game.src.Handlers
 
         static private void PlayGame()
         {
+            while (true)
+            {
+                Console.WriteLine("What would you like to do?");
+                Console.WriteLine("1. Team Editor");
+                Console.WriteLine("2. Continue to Next Match");
+                Console.WriteLine("0. Exit");
+                string input = ReadText();
+
+                switch (input)
+                {
+                    case "0":
+                        Close();
+                        break;
+                    case "1":
+                        Console.WriteLine("Editing Team");
+                        break;
+                    case "2":
+                        Console.WriteLine("Playing Match");
+                        break;
+                    default:
+                        Console.WriteLine("Invalid Input");
+                        break;
+                }
+            }
         }
 
         public void GameLoop()
