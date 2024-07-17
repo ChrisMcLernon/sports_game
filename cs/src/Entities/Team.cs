@@ -29,8 +29,10 @@ namespace sports_game.src.Entities
 
         public void AddPerson(Person p)
         {
+            Console.WriteLine("Adding person" + p.Name);
             if (PossiblePlayerPositions.Contains(p.CurrentPosition.Name) && !PositionFilled(p.CurrentPosition))
             {
+                Console.WriteLine("Adding player" + p.Name);
                 Players.Add(p);
                 EffectHandlerTeam.AddEffects(p);
             }
