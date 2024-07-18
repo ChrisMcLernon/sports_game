@@ -196,7 +196,7 @@
             "Age": 27,
             "Value": 90,
             "CurrentPosition": {
-                "Name": "RUNNING_BACK",
+                "Name": "QUARTERBACK",
                 "Modifier": 2.0,
                 "Size": 1
             },
@@ -220,7 +220,7 @@
             "Age": 27,
             "Value": 90,
             "CurrentPosition": {
-                "Name": "RUNNING_BACK",
+                "Name": "QUARTERBACK",
                 "Modifier": 2.0,
                 "Size": 1
             },
@@ -256,7 +256,7 @@
                     "Value": 8
                 },
                 {
-                    "Name": "Player Value + 16",
+                    "Name": "Player Cost + 16",
                     "Description": "Increase Cost",
                     "Value": 16
                 }
@@ -283,6 +283,270 @@
                     "Name": "Player Value + 161",
                     "Description": "Increase Cost",
                     "Value": 161
+                }
+            ],
+            "Status": "active"
+        },
+        {
+            "Name": "Alice",
+            "Age": 22,
+            "Value": 110,
+            "CurrentPosition": {
+                "Name": "KICKER",
+                "Modifier": 2.0,
+                "Size": 1
+            },
+            "Cost": 110,
+            "Effects": [
+                {
+                    "Name": "Player Value + 20",
+                    "Description": "Increase Value",
+                    "Value": 20
+                },
+                {
+                    "Name": "Player Value + 30",
+                    "Description": "Increase Cost",
+                    "Value": 30
+                }
+            ],
+            "Status": "active"
+        },
+        {
+            "Name": "Bob",
+            "Age": 22,
+            "Value": 110,
+            "CurrentPosition": {
+                "Name": "KICKER",
+                "Modifier": 2.0,
+                "Size": 1
+            },
+            "Cost": 110,
+            "Effects": [
+                {
+                    "Name": "Player Value + 40",
+                    "Description": "Increase Value",
+                    "Value": 40
+                },
+                {
+                    "Name": "Player Value + 25",
+                    "Description": "Increase Cost",
+                    "Value": 25
+                }
+            ],
+            "Status": "active"
+        },
+        {
+            "Name": "Charlie",
+            "Age": 31,
+            "Value": 85,
+            "CurrentPosition": {
+                "Name": "DEFENSIVE_BACK",
+                "Modifier": 1.8,
+                "Size": 1
+            },
+            "Cost": 85,
+            "Effects": [
+                {
+                    "Name": "Player Value + 12",
+                    "Description": "Increase Value",
+                    "Value": 12
+                },
+                {
+                    "Name": "Player Value + 18",
+                    "Description": "Increase Cost",
+                    "Value": 18
+                }
+            ],
+            "Status": "active"
+        },
+        {
+            "Name": "Diana",
+            "Age": 31,
+            "Value": 85,
+            "CurrentPosition": {
+                "Name": "DEFENSIVE_BACK",
+                "Modifier": 1.8,
+                "Size": 1
+            },
+            "Cost": 85,
+            "Effects": [
+                {
+                    "Name": "Player Value + 17",
+                    "Description": "Increase Value",
+                    "Value": 17
+                },
+                {
+                    "Name": "Player Value + 22",
+                    "Description": "Increase Cost",
+                    "Value": 22
+                }
+            ],
+            "Status": "active"
+        },
+        {
+            "Name": "Eve",
+            "Age": 29,
+            "Value": 65,
+            "CurrentPosition": {
+                "Name": "LINEBACKER",
+                "Modifier": 1.4,
+                "Size": 1
+            },
+            "Cost": 65,
+            "Effects": [
+                {
+                    "Name": "Player Value + 10",
+                    "Description": "Increase Value",
+                    "Value": 10
+                },
+                {
+                    "Name": "Player Value + 14",
+                    "Description": "Increase Cost",
+                    "Value": 14
+                }
+            ],
+            "Status": "active"
+        },
+        {
+            "Name": "Frank",
+            "Age": 29,
+            "Value": 65,
+            "CurrentPosition": {
+                "Name": "LINEBACKER",
+                "Modifier": 1.4,
+                "Size": 1
+            },
+            "Cost": 65,
+            "Effects": [
+                {
+                    "Name": "Player Value + 15",
+                    "Description": "Increase Value",
+                    "Value": 15
+                },
+                {
+                    "Name": "Player Value + 200",
+                    "Description": "Increase Cost",
+                    "Value": 200
+                }
+            ],
+            "Status": "active"
+        },
+        {
+            "Name": "Grace",
+            "Age": 24,
+            "Value": 75,
+            "CurrentPosition": {
+                "Name": "OFFENSIVE_LINE",
+                "Modifier": 1.6,
+                "Size": 1
+            },
+            "Cost": 75,
+            "Effects": [
+                {
+                    "Name": "Player Value + 5",
+                    "Description": "Increase Value",
+                    "Value": 5
+                },
+                {
+                    "Name": "Player Value + 12",
+                    "Description": "Increase Cost",
+                    "Value": 12
+                }
+            ],
+            "Status": "active"
+        },
+        {
+            "Name": "Hank",
+            "Age": 27,
+            "Value": 90,
+            "CurrentPosition": {
+                "Name": "RUNNING_BACK",
+                "Modifier": 2.0,
+                "Size": 1
+            },
+            "Cost": 90,
+            "Effects": [
+                {
+                    "Name": "Player Value + 7",
+                    "Description": "Increase Value",
+                    "Value": 7
+                },
+                {
+                    "Name": "Player Value + 15",
+                    "Description": "Increase Cost",
+                    "Value": 15
+                }
+            ],
+            "Status": "active"
+        },
+        {
+            "Name": "Ivy",
+            "Age": 27,
+            "Value": 90,
+            "CurrentPosition": {
+                "Name": "RUNNING_BACK",
+                "Modifier": 2.0,
+                "Size": 1
+            },
+            "Cost": 90,
+            "Effects": [
+                {
+                    "Name": "Player Value + 50",
+                    "Description": "Increase Value",
+                    "Value": 50
+                },
+                {
+                    "Name": "Player Value + 100",
+                    "Description": "Increase Cost",
+                    "Value": 100
+                }
+            ],
+            "Status": "active"
+        },
+        {
+            "Name": "Jack",
+            "Age": 30,
+            "Value": 80,
+            "CurrentPosition": {
+                "Name": "WIDE_RECEIVER",
+                "Modifier": 1.7,
+                "Size": 1
+            },
+            "Cost": 80,
+            "Effects": [
+                {
+                    "Name": "Player Value + 10",
+                    "Description": "Increase Value",
+                    "Value": 10
+                },
+                {
+                    "Name": "Player Value + 14",
+                    "Description": "Increase Cost",
+                    "Value": 14
+                }
+            ],
+            "Status": "active"
+        },
+        {
+            "Name": "Kim",
+            "Age": 30,
+            "Value": 80,
+            "CurrentPosition": {
+                "Name": "WIDE_RECEIVER",
+                "Modifier": 1.7,
+                "Size": 1
+            },
+            "Cost": 80,
+            "Effects": [
+                {
+                    "Name": "Player Value + 70",
+                    "Description": "Increase Value",
+                    "Value": 70
+                },
+                {
+                    "Name": "Player Value + 120",
+                    "Description": "Increase Cost",
+                    "Value": 120
                 }
             ],
             "Status": "active"

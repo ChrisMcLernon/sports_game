@@ -24,7 +24,7 @@ namespace sports_game.src.Handlers
             PlayGame();
         }
 
-        static private void StartGame()
+        public void StartGame()
         {
             Console.WriteLine("Welcome to '_' (0 to exit | 1 to start game)");
             string input = InputReader.ReadText();
@@ -38,9 +38,14 @@ namespace sports_game.src.Handlers
                 SetSeed();
                 GenerateStarterTeam();
             }
+            else
+            {
+                Console.WriteLine("Invalid Input");
+                StartGame();
+            }
         }
 
-        static private void InitializeData()
+        public void InitializeData()
         {
             AvailablePlayers = JsonReader.Read<List<Person>>("Football_Player_Stats");
             AvailableStaff = JsonReader.Read<List<Person>>("Football_Staff_Stats");
@@ -49,14 +54,14 @@ namespace sports_game.src.Handlers
             EditorHandlerLocal = new();
         }
 
-        static private void SetSeed()
+        public void SetSeed()
         {
             Console.Write("Enter Seed: ");
             string seed = InputReader.ReadText();
             ConfigSeed(seed);
         }
 
-        static private void ConfigSeed(string seed)
+        public void ConfigSeed(string seed)
         {
             int calculatedSeed = 0;
             foreach (char c in seed)
@@ -66,7 +71,7 @@ namespace sports_game.src.Handlers
             SetRandom = new Random(calculatedSeed);
         }
 
-        static private void GenerateStarterTeam()
+        public void GenerateStarterTeam()
         {
             if (SetRandom is null || TeamNames is null)
             {
@@ -100,7 +105,7 @@ namespace sports_game.src.Handlers
             }
         }
 
-        static private void PlayGame()
+        public void PlayGame()
         {
             if (MarketHandlerLocal is null || PlayerTeam is null)
             {
@@ -142,7 +147,7 @@ namespace sports_game.src.Handlers
             }
         }
 
-        static private void PlayMatch()
+        public void PlayMatch()
         {
             GenerateOpponentTeam();
 
@@ -158,25 +163,23 @@ namespace sports_game.src.Handlers
             if (playerScore > opponentScore)
             {
                 Console.WriteLine("You Win!");
-                Console.WriteLine($"{PlayerTeam.Name}: {playerScore} - {OpponentTeam.Name}: {opponentScore}");
+                Console.WriteLine($"\n\n{PlayerTeam.Name}: {playerScore} - {OpponentTeam.Name}: {opponentScore}");
             }
             else if (playerScore < opponentScore)
             {
                 Console.WriteLine("You Lose!");
-                Console.WriteLine($"{PlayerTeam.Name}: {playerScore} - {OpponentTeam.Name}: {opponentScore}");
-                Close();
+                Console.WriteLine($"\n\n{PlayerTeam.Name}: {playerScore} - {OpponentTeam.Name}: {opponentScore}");
             }
             else
             {
                 Console.WriteLine("Draw!");
-                Console.WriteLine($"{PlayerTeam.Name}: {playerScore} - {OpponentTeam.Name}: {opponentScore}");
-                Close();
+                Console.WriteLine($"\n\n{PlayerTeam.Name}: {playerScore} - {OpponentTeam.Name}: {opponentScore}");
             }
 
             HandleOpponentTeam();
         }
 
-        static private void GenerateOpponentTeam()
+        public void GenerateOpponentTeam()
         {
             if (SetRandom is null || TeamNames is null)
             {
@@ -208,7 +211,7 @@ namespace sports_game.src.Handlers
 
         }
 
-        static private void HandleOpponentTeam()
+        public void HandleOpponentTeam()
         {
             if (OpponentTeam is null)
             {
@@ -221,13 +224,13 @@ namespace sports_game.src.Handlers
             }
         }
 
-        static private void Close()
+        public void Close()
         {
             Console.WriteLine("Goodbye!");
             Environment.Exit(0);
         }
 
-        static private void AddAvailablePerson(Person person)
+        public void AddAvailablePerson(Person person)
         {
             if (PlayerTeam is null || OpponentTeam is null)
             {
@@ -244,7 +247,7 @@ namespace sports_game.src.Handlers
             }
         }
 
-        static private void RemoveAvailablePerson(Person person)
+        public void RemoveAvailablePerson(Person person)
         {
             if (PlayerTeam is null || OpponentTeam is null)
             {
@@ -261,7 +264,7 @@ namespace sports_game.src.Handlers
             }
         }
 
-        static private List<int> CalculateScore()
+        public List<int> CalculateScore()
         {
             List<int> totalPoints = [0, 0];
             double unroundedPlayerValue = 0;
@@ -274,22 +277,28 @@ namespace sports_game.src.Handlers
 
             foreach (var player in PlayerTeam.Players)
             {
+                Console.WriteLine($"{player.Name} | {player.CurrentPosition.Name} | {player.CurrentPosition.Modifier} | {player.Value} ");
                 unroundedPlayerValue += player.Value;
-
                 unroundedPlayerValue += PlayerTeam.EffectHandlerTeam.ApplyPersonEffects(player);
+                Console.WriteLine($"Player Value with effects: {unroundedPlayerValue}");
                 unroundedPlayerValue *= player.CurrentPosition.Modifier;
+                Console.Write($"Multipled by {player.CurrentPosition.Modifier} adding {Convert.ToInt32(Math.Round(unroundedPlayerValue))}\n");
 
                 totalPoints[0] += Convert.ToInt32(Math.Round(unroundedPlayerValue));
+                Console.WriteLine($"Added: {Convert.ToInt32(Math.Round(unroundedPlayerValue))} | Total Points: {totalPoints[0]}\n\n");
                 unroundedPlayerValue = 0;
             }
             foreach (var enemy in OpponentTeam.Players)
             {
+                Console.WriteLine($"{enemy.Name} | {enemy.CurrentPosition.Name} | {enemy.CurrentPosition.Modifier} | {enemy.Value} ");
                 unroundedEnemyValue += enemy.Value;
-
                 unroundedEnemyValue += OpponentTeam.EffectHandlerTeam.ApplyPersonEffects(enemy);
+                Console.WriteLine($"Player Value with effects: {unroundedEnemyValue}");
                 unroundedEnemyValue *= enemy.CurrentPosition.Modifier;
+                Console.Write($"Multipled by {enemy.CurrentPosition.Modifier} adding {Convert.ToInt32(Math.Round(unroundedEnemyValue))}\n");
 
                 totalPoints[1] += Convert.ToInt32(Math.Round(unroundedEnemyValue));
+                Console.WriteLine($"Added: {Convert.ToInt32(Math.Round(unroundedEnemyValue))} | Total Points: {totalPoints[1]}\n");
                 unroundedEnemyValue = 0;
 
             }

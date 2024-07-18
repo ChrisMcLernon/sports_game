@@ -14,31 +14,36 @@ namespace sports_game.src.Handlers
 
         public void AddEffects(Person person)
         {
-            Effects.Add(person.CurrentPosition.Name, person.Effects);
+            if (!Effects.TryGetValue(person.CurrentPosition.Name, out List<Effect>? value))
+            {
+                Effects[person.CurrentPosition.Name] = [];
+                foreach (var effect in person.Effects)
+                {
+                    Effects[person.CurrentPosition.Name].Add(effect);
+                }
+            }
+            else if (Effects.TryGetValue(person.CurrentPosition.Name, out List<Effect>? key))
+            {
+                foreach (var effect in person.Effects)
+                {
+                    key.Add(effect);
+                }
+            }
         }
 
-        public float ApplyPersonEffects(Person person)
+        public int ApplyPersonEffects(Person person)
         {
-            float totalEffect = 0;
+            int totalEffect = 0;
             foreach (var effect in Effects[person.CurrentPosition.Name])
             {
                 switch (effect.Description)
                 {
                     case "Increase Value":
                         totalEffect += effect.Value;
-
                         break;
                     
                     case "Decrease Value":
                         totalEffect -= effect.Value;
-                        break;
-                    
-                    case "Increase Cost":
-                        person.Cost += effect.Value;
-                        break;
-
-                    case "Decrease Cost":
-                        person.Cost -= effect.Value;
                         break;
                 }
             }
