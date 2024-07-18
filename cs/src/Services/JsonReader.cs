@@ -2,11 +2,11 @@ using System.Text.Json;
 
 namespace sports_game.src.Services
 {
-    public class JsonReader
+    static public class JsonReader
     {
-        private static readonly string BASE_PATH = Path.GetFullPath("../cs/src/Data/Data.json");
+        static private readonly string BASE_PATH = Path.GetFullPath("../cs/src/Data/Data.json");
 
-        public static T Read<T>(string key)
+        static public T Read<T>(string key)
         {
         
             string jsonString = File.ReadAllText(BASE_PATH);

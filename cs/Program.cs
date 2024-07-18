@@ -2,9 +2,9 @@ using sports_game.src.Handlers;
 
 namespace sports_game
 {
-    public class Program
+    static public class Program
     {
-        public static void Main()
+        static private void Main()
         {
             GameHandler gameHandler = new();
 

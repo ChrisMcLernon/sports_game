@@ -1,8 +1,8 @@
 namespace sports_game.src.Services
 {
-    public class InputReader
+    static public class InputReader
     {
-        public static string ReadText(string prompt = "")
+        static public string ReadText(string prompt = "")
         {
             while (true)
             {

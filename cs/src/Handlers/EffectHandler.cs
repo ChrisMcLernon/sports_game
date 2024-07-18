@@ -1,4 +1,3 @@
-using System.Security;
 using sports_game.src.Entities;
 using sports_game.src.Models;
 
@@ -6,7 +5,7 @@ namespace sports_game.src.Handlers
 {
     public class EffectHandler
     {
-        public Dictionary<string, List<Effect>> Effects { get; set; } = [];
+        static public Dictionary<string, List<Effect>> Effects { get; set; } = [];
 
         public void RemoveEffects(Person person)
         {

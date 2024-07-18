@@ -19,12 +19,17 @@ namespace sports_game.src.Entities
         public List<string> PossiblePlayerPositions { get; set; } = [];
         public List<string> PossibleStaffPositions { get; set; } = [];
 
-        public void GeneratePossiblePositions()
+        public void ReplacePlayer(Person p, Person replacement)
         {
-            if (Sport == "FOOTBALL"){
-                PossiblePlayerPositions = JsonReader.Read<List<string>>("Football_Player_Positions");
-                PossibleStaffPositions = JsonReader.Read<List<string>>("Football_Staff_Positions");
-            }
+            RemovePerson(p);
+            AddPerson(replacement);
+        }
+
+        public void RemovePerson(Person p)
+        {
+            if (!Players.Remove(p))
+                Staff.Remove(p);
+            EffectHandlerTeam.RemoveEffects(p);
         }
 
         public void AddPerson(Person p)
@@ -43,16 +48,17 @@ namespace sports_game.src.Entities
             }
         }
 
+        public void GeneratePossiblePositions()
+        {
+            if (Sport == "FOOTBALL"){
+                PossiblePlayerPositions = JsonReader.Read<List<string>>("Football_Player_Positions");
+                PossibleStaffPositions = JsonReader.Read<List<string>>("Football_Staff_Positions");
+            }
+        }
+
         public void CalcInterest()
         {
             Budget += Interest * (Budget % 20);
-        }
-
-        public void ReplacePlayer(Person p, Person replacement)
-        {
-            if (!Players.Remove(p))
-                Staff.Remove(p);
-            AddPerson(replacement);
         }
 
         public bool PositionFilled(Position pos)
