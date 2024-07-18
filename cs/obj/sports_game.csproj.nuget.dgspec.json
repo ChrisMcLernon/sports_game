@@ -1,25 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\CodingDir\\sports_game\\cs\\sports_game.csproj": {}
+    "/Users/chrismclernon/CodingDir/sports_game/cs/sports_game.csproj": {}
   },
   "projects": {
-    "C:\\CodingDir\\sports_game\\cs\\sports_game.csproj": {
+    "/Users/chrismclernon/CodingDir/sports_game/cs/sports_game.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\CodingDir\\sports_game\\cs\\sports_game.csproj",
+        "projectUniqueName": "/Users/chrismclernon/CodingDir/sports_game/cs/sports_game.csproj",
         "projectName": "sports_game",
-        "projectPath": "C:\\CodingDir\\sports_game\\cs\\sports_game.csproj",
-        "packagesPath": "C:\\Users\\Chris McLernon\\.nuget\\packages\\",
-        "outputPath": "C:\\CodingDir\\sports_game\\cs\\obj\\",
+        "projectPath": "/Users/chrismclernon/CodingDir/sports_game/cs/sports_game.csproj",
+        "packagesPath": "/Users/chrismclernon/.nuget/packages/",
+        "outputPath": "/Users/chrismclernon/CodingDir/sports_game/cs/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Chris McLernon\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/Users/chrismclernon/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -58,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.302/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
