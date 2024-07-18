@@ -5,7 +5,7 @@ namespace sports_game.src.Handlers
 {
     public class EffectHandler
     {
-        static public Dictionary<string, List<Effect>> Effects { get; set; } = [];
+        public Dictionary<string, List<Effect>> Effects { get; set; } = [];
 
         public void RemoveEffects(Person person)
         {

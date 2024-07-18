@@ -216,6 +216,30 @@
             "Status": "active"
         },
         {
+            "Name": "Jason",
+            "Age": 27,
+            "Value": 90,
+            "CurrentPosition": {
+                "Name": "RUNNING_BACK",
+                "Modifier": 2.0,
+                "Size": 1
+            },
+            "Cost": 90,
+            "Effects": [
+                {
+                    "Name": "Player Value + 190",
+                    "Description": "Increase Value",
+                    "Value": 190
+                },
+                {
+                    "Name": "Player Value + 180",
+                    "Description": "Increase Cost",
+                    "Value": 180
+                }
+            ],
+            "Status": "active"
+        },
+        {
             "Name": "Paul",
             "Age": 30,
             "Value": 80,
@@ -235,6 +259,30 @@
                     "Name": "Player Value + 16",
                     "Description": "Increase Cost",
                     "Value": 16
+                }
+            ],
+            "Status": "active"
+        },
+        {
+            "Name": "Charlie",
+            "Age": 30,
+            "Value": 80,
+            "CurrentPosition": {
+                "Name": "WIDE_RECEIVER",
+                "Modifier": 1.7,
+                "Size": 1
+            },
+            "Cost": 80,
+            "Effects": [
+                {
+                    "Name": "Player Value + 80",
+                    "Description": "Increase Value",
+                    "Value": 80
+                },
+                {
+                    "Name": "Player Value + 161",
+                    "Description": "Increase Cost",
+                    "Value": 161
                 }
             ],
             "Status": "active"

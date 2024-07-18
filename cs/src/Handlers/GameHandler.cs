@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using sports_game.src.Entities;
 using sports_game.src.Models;
 using sports_game.src.Services;
@@ -14,7 +15,7 @@ namespace sports_game.src.Handlers
         static private MarketHandler? MarketHandlerLocal { get; set; }
         static private EditorHandler? EditorHandlerLocal { get; set; }
         static private Random? SetRandom { get; set; }
-        static private int TeamSize { get; set; } = 2;
+        static private int TeamSize { get; set; } = 5;
         static private int StaffSize { get; set; } = 3;
 
         public void GameLoop()
@@ -75,41 +76,43 @@ namespace sports_game.src.Handlers
             AvailablePlayers = [.. AvailablePlayers.OrderBy(x => SetRandom.Next())];
             string teamName = InputReader.ReadText("Enter Team Name: ");
             PlayerTeam = new Team(teamName);
-            OpponentTeam = new Team(TeamNames[SetRandom.Next(TeamNames.Count)]);
             PlayerTeam.GeneratePossiblePositions();
 
-            for (int i = 0; i < AvailablePlayers.Count; i++)
+            while (PlayerTeam.Players.Count < TeamSize && AvailablePlayers.Count > 0)
             {
-                while (PlayerTeam.Players.Count < TeamSize)
+                Person player = AvailablePlayers[SetRandom.Next(AvailablePlayers.Count)];
+                if (!PlayerTeam.PositionFilled(player.CurrentPosition))
                 {
-                    Person player = AvailablePlayers[SetRandom.Next(AvailablePlayers.Count)];
                     PlayerTeam.AddPerson(player);
-                    Console.WriteLine(player.Name + " | " + player.CurrentPosition.Name + " | " + player.CurrentPosition.Modifier + " | " + player.Value);
-                    if (PlayerTeam.Players.Contains(player))
-                    {
-                        RemoveAvailablePerson(player);
-                        Console.WriteLine("Removed -> " + player.Name + " | " + player.CurrentPosition.Name + " | " + player.CurrentPosition.Modifier + " | " + player.Value);
-                    }
-
+                    AvailablePlayers.Remove(player);
                 }
+
             }
 
-            for (int i = 0; i < AvailableStaff.Count; i++)
+            while (PlayerTeam.Staff.Count < StaffSize && AvailableStaff.Count > 0)
             {
-                while (PlayerTeam.Staff.Count < StaffSize)
+                Person staff = AvailableStaff[SetRandom.Next(AvailableStaff.Count)];
+                if (!PlayerTeam.PositionFilled(staff.CurrentPosition))
                 {
-                    PlayerTeam.AddPerson(AvailableStaff[SetRandom.Next(AvailableStaff.Count)]);
+                    PlayerTeam.AddPerson(staff);
+                    AvailableStaff.Remove(staff);
                 }
             }
         }
 
         static private void PlayGame()
         {
+            if (MarketHandlerLocal is null)
+            {
+                throw new Exception("Some Data not Initialized");
+            }
+
             while (true)
             {
                 Console.WriteLine("What would you like to do?");
                 Console.WriteLine("1. Team Editor");
                 Console.WriteLine("2. Continue to Next Match");
+                Console.WriteLine("3. Market");
                 Console.WriteLine("0. Exit");
                 string input = InputReader.ReadText();
 
@@ -132,6 +135,9 @@ namespace sports_game.src.Handlers
                     case "2":
                         Console.WriteLine("Playing Match");
                         PlayMatch();
+                        break;
+                    case "3":
+                        MarketHandlerLocal.MarketMenu();
                         break;
                     default:
                         Console.WriteLine("Invalid Input");
@@ -176,7 +182,7 @@ namespace sports_game.src.Handlers
 
         static private void GenerateOpponentTeam()
         {
-            if (PlayerTeam is null || OpponentTeam is null || SetRandom is null || TeamNames is null)
+            if (SetRandom is null || TeamNames is null)
             {
                 throw new Exception("Some Data not Initialized");
             }
@@ -184,29 +190,26 @@ namespace sports_game.src.Handlers
             OpponentTeam = new Team(TeamNames[SetRandom.Next(TeamNames.Count)]);
             OpponentTeam.GeneratePossiblePositions();
 
-            while (OpponentTeam.Players.Count < TeamSize)
+            while (OpponentTeam.Players.Count < TeamSize && AvailablePlayers.Count > 0)
             {
                 Person player = AvailablePlayers[SetRandom.Next(AvailablePlayers.Count)];
-                OpponentTeam.AddPerson(player);
-                Console.WriteLine(player.Name + " | " + player.CurrentPosition.Name + " | " + player.CurrentPosition.Modifier + " | " + player.Value);
-                if (OpponentTeam.Players.Contains(player))
+                if (!OpponentTeam.PositionFilled(player.CurrentPosition))
                 {
+                    OpponentTeam.AddPerson(player);
                     RemoveAvailablePerson(player);
-                    Console.WriteLine("Removed -> " + player.Name + " | " + player.CurrentPosition.Name + " | " + player.CurrentPosition.Modifier + " | " + player.Value);
-                }
-                else if (OpponentTeam.Players.Count == 0)
-                {
-                    Console.WriteLine("No Players Added to Opponent Team");
                 }
             }
 
-            for (int i = 0; i < AvailableStaff.Count; i++)
+            while (OpponentTeam.Staff.Count < StaffSize && AvailableStaff.Count > 0)
             {
-                while (OpponentTeam.Staff.Count < StaffSize)
+                Person staff = AvailableStaff[SetRandom.Next(AvailableStaff.Count)];
+                if (!OpponentTeam.PositionFilled(staff.CurrentPosition))
                 {
-                    OpponentTeam.AddPerson(AvailableStaff[SetRandom.Next(AvailableStaff.Count)]);
+                    OpponentTeam.AddPerson(staff);
+                    RemoveAvailablePerson(staff);
                 }
             }
+
         }
 
         static private void HandleOpponentTeam()
@@ -277,12 +280,8 @@ namespace sports_game.src.Handlers
             {
                 unroundedPlayerValue += player.Value;
 
-                Console.WriteLine(player.Name + " | " + player.CurrentPosition.Name + " | " + player.CurrentPosition.Modifier + " | " + unroundedPlayerValue);
-
                 unroundedPlayerValue += PlayerTeam.EffectHandlerTeam.ApplyPersonEffects(player);
                 unroundedPlayerValue *= player.CurrentPosition.Modifier;
-
-                Console.WriteLine(player.Name + " | " + player.CurrentPosition.Name + " | " + player.CurrentPosition.Modifier + " | " + unroundedPlayerValue);
 
                 totalPoints[0] += Convert.ToInt32(Math.Round(unroundedPlayerValue));
                 unroundedPlayerValue = 0;
@@ -291,12 +290,8 @@ namespace sports_game.src.Handlers
             {
                 unroundedEnemyValue += enemy.Value;
 
-                Console.WriteLine(enemy.Name + " | " + enemy.CurrentPosition.Name + " | " + enemy.CurrentPosition.Modifier + " | " + unroundedEnemyValue);
-
                 unroundedEnemyValue += OpponentTeam.EffectHandlerTeam.ApplyPersonEffects(enemy);
                 unroundedEnemyValue *= enemy.CurrentPosition.Modifier;
-
-                Console.WriteLine(enemy.Name + " | " + enemy.CurrentPosition.Name + " | " + enemy.CurrentPosition.Modifier + " | " + unroundedEnemyValue);
 
                 totalPoints[1] += Convert.ToInt32(Math.Round(unroundedEnemyValue));
                 unroundedEnemyValue = 0;
