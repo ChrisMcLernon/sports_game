@@ -18,24 +18,6 @@ namespace sports_game.src.Handlers
         static private int TeamSize { get; set; } = 2;
         static private int StaffSize { get; set; } = 3;
 
-        static private string ReadText(string prompt = "")
-        {
-            while (true)
-            {
-                Console.Write(prompt);
-                string? input = Console.ReadLine();
-                
-                if (input == "" || input == null)
-                {
-                    Console.WriteLine("No input is invalid");
-                }
-                else
-                {
-                    return input;
-                }
-            }
-        }
-
         static private void AddAvailablePerson(Person person)
         {
             if (PlayerTeam == null || OpponentTeam == null || AvailablePlayers == null || AvailableStaff == null)
@@ -87,7 +69,7 @@ namespace sports_game.src.Handlers
         static private void SetSeed()
         {
             Console.Write("Enter Seed: ");
-            string seed = ReadText();
+            string seed = InputReader.ReadText();
             ConfigSeed(seed);
         }
 
@@ -179,7 +161,7 @@ namespace sports_game.src.Handlers
             }
 
             AvailablePlayers = [.. AvailablePlayers.OrderBy(x => SetRandom.Next())];
-            string teamName = ReadText("Enter Team Name: ");
+            string teamName = InputReader.ReadText("Enter Team Name: ");
             PlayerTeam = new Team(teamName);
             OpponentTeam = new Team(TeamNames[SetRandom.Next(TeamNames.Count)]);
             PlayerTeam.GeneratePossiblePositions();
@@ -221,7 +203,7 @@ namespace sports_game.src.Handlers
         static private void StartGame()
         {
             Console.WriteLine("Welcome to '_' (0 to exit | 1 to start game)");
-            string input = ReadText();
+            string input = InputReader.ReadText();
             if (input == "0")
             {
                 Close();
@@ -289,7 +271,7 @@ namespace sports_game.src.Handlers
                 Console.WriteLine("1. Team Editor");
                 Console.WriteLine("2. Continue to Next Match");
                 Console.WriteLine("0. Exit");
-                string input = ReadText();
+                string input = InputReader.ReadText();
 
                 switch (input)
                 {
