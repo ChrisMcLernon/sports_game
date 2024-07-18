@@ -15,8 +15,8 @@ namespace sports_game.src.Handlers
         static private MarketHandler? MarketHandlerLocal { get; set; }
         static private EditorHandler? EditorHandlerLocal { get; set; }
         static private Random? SetRandom { get; set; }
-        static private int TeamSize { get; set; } = 5;
-        static private int StaffSize { get; set; } = 3;
+        static private int TeamSize { get; } = 5;
+        static private int StaffSize { get; } = 3;
 
         public void GameLoop()
         {
@@ -102,7 +102,7 @@ namespace sports_game.src.Handlers
 
         static private void PlayGame()
         {
-            if (MarketHandlerLocal is null)
+            if (MarketHandlerLocal is null || PlayerTeam is null)
             {
                 throw new Exception("Some Data not Initialized");
             }
@@ -123,10 +123,6 @@ namespace sports_game.src.Handlers
                         break;
                     case "1":
                         Console.WriteLine("Editing Team");
-                        if (PlayerTeam is null)
-                        {
-                            throw new Exception("Some Data not Initialized");
-                        }
                         foreach (var player in PlayerTeam.Players)
                         {
                             Console.WriteLine($"{player.Name} | {player.CurrentPosition.Name} | {player.CurrentPosition.Modifier} | {player.Value}");
