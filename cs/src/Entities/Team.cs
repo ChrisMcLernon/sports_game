@@ -9,6 +9,8 @@ namespace sports_game.src.Entities
         public string Name { get; set; } = name;
         public List<Person> Staff { get; set; } = [];
         public List<Person> Players { get; set; } = [];
+        public List<Person> BenchedPlayers { get; set; } = [];
+        public List<Person> BenchedStaff { get; set; } = [];
         public string Icon { get; set; } = icon;
         public string Sport { get; set; } = sport;
         public int Score { get; set; }

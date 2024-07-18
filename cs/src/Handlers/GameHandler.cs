@@ -107,7 +107,7 @@ namespace sports_game.src.Handlers
 
         public void PlayGame()
         {
-            if (MarketHandlerLocal is null || PlayerTeam is null)
+            if (MarketHandlerLocal is null || PlayerTeam is null || EditorHandlerLocal is null)
             {
                 throw new Exception("Some Data not Initialized");
             }
@@ -116,29 +116,28 @@ namespace sports_game.src.Handlers
             {
                 Console.WriteLine("What would you like to do?");
                 Console.WriteLine("1. Team Editor");
-                Console.WriteLine("2. Continue to Next Match");
-                Console.WriteLine("3. Market");
+                Console.WriteLine("2. Visit Market");
+                Console.WriteLine("3. Continue to Next Match");
                 Console.WriteLine("0. Exit");
-                string input = InputReader.ReadText();
+                string input = InputReader.ReadText("Enter your choice: ");
 
                 switch (input)
                 {
                     case "0":
+                        //Console.Clear();
                         Close();
                         break;
                     case "1":
-                        Console.WriteLine("Editing Team");
-                        foreach (var player in PlayerTeam.Players)
-                        {
-                            Console.WriteLine($"{player.Name} | {player.CurrentPosition.Name} | {player.CurrentPosition.Modifier} | {player.Value}");
-                        }
+                        //Console.Clear();
+                        EditorHandlerLocal.EditorInterface(PlayGame);
                         break;
                     case "2":
-                        Console.WriteLine("Playing Match");
-                        PlayMatch();
+                        //Console.Clear();
+                        MarketHandlerLocal.MarketInterface(PlayGame);
                         break;
                     case "3":
-                        MarketHandlerLocal.MarketMenu();
+                        //Console.Clear();
+                        PlayMatch();
                         break;
                     default:
                         Console.WriteLine("Invalid Input");

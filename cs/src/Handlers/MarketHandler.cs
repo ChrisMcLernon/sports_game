@@ -8,12 +8,12 @@ namespace sports_game.src.Handlers
         private List<Person> AvailablePlayers { get; set;} = availablePlayers;
         private List<Person> AvailableStaff { get; set;} = availableStaff;
 
-        public void MarketMenu() {
+        public void MarketInterface(Action action) {
             Console.WriteLine("Welcome to the Market!");
-            Console.WriteLine("1. Buy Player");
-            Console.WriteLine("2. Buy Staff");
-            Console.WriteLine("3. Sell Player");
-            Console.WriteLine("4. Sell Staff");
+            Console.WriteLine("1. Buy Player [Not Implemented]");
+            Console.WriteLine("2. Buy Staff [Not Implemented]");
+            Console.WriteLine("3. Sell Player [Not Implemented]");
+            Console.WriteLine("4. Sell Staff [Not Implemented]");
             Console.WriteLine("5. Exit Market");
             Console.WriteLine();
             string input = InputReader.ReadText("Enter your choice: ");
@@ -21,6 +21,7 @@ namespace sports_game.src.Handlers
             {
                 switch(input)
                 {
+                    /*
                     case "1":
                         BuyPlayer();
                         break;
@@ -33,20 +34,16 @@ namespace sports_game.src.Handlers
                     case "4":
                         SellStaff();
                         break;
+                    */
                     case "5":
                         Console.WriteLine("Exiting Market...");
-                        ExitMarket();
+                        ExitMarket(action);
                         break;
                     default:
                         Console.WriteLine("Invalid choice. Please try again.");
                         break;
                 }
             }
-        }
-
-        private void ExitMarket()
-        {
-            throw new NotImplementedException();
         }
 
         private void SellStaff()
@@ -67,6 +64,11 @@ namespace sports_game.src.Handlers
         private void BuyPlayer()
         {
             throw new NotImplementedException();
+        }
+
+        private void ExitMarket(Action returnToMenu)
+        {
+            returnToMenu();
         }
     }
 }
