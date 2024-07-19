@@ -7,16 +7,20 @@ namespace sports_game.src.Handlers
 {
     public class GameHandler()
     {
-        static private Team? PlayerTeam { get; set; }
+        public Team? PlayerTeam { get; set; }
         static private Team? OpponentTeam { get; set; }
-        static private List<Person> AvailablePlayers { get; set; } = [];
-        static private List<Person> AvailableStaff { get; set; } = [];
+        public List<Person> AvailablePlayers { get; set; } = [];
+        public List<Person> AvailableStaff { get; set; } = [];
         static private List<string>? TeamNames { get; set; }
         static private MarketHandler? MarketHandlerLocal { get; set; }
         static private EditorHandler? EditorHandlerLocal { get; set; }
-        static private Random? SetRandom { get; set; }
+        private string Seed { get; set; }
+        public Random? SetRandom { get; set; }
         static private int TeamSize { get; } = 5;
         static private int StaffSize { get; } = 3;
+        public int Round { get; set; } = 1;
+        public CategoryService PlayerCategoryService { get; set; }
+        public CategoryService StaffCategoryService { get; set; }
 
         public void GameLoop()
         {
@@ -50,15 +54,52 @@ namespace sports_game.src.Handlers
             AvailablePlayers = JsonReader.Read<List<Person>>("Football_Player_Stats");
             AvailableStaff = JsonReader.Read<List<Person>>("Football_Staff_Stats");
             TeamNames = JsonReader.Read<List<string>>("Team_Names");
-            MarketHandlerLocal = new(AvailablePlayers, AvailableStaff);
-            EditorHandlerLocal = new();
+
+            if (AvailablePlayers is null || AvailableStaff is null || TeamNames is null)
+            {
+                throw new Exception("Some Data not Initialized");
+            }
+
+            var playerCategoryCommon = new Category("COMMON", 0.7);
+            var playerCategoryUncommon = new Category("UNCOMMON", 0.3);
+            var playerCategoryRare = new Category("RARE", 0.2);
+            var playerCategoryEpic = new Category("EPIC", 0.1);
+            var playerCategoryLegendary = new Category("LEGENDARY", 0.01);
+            var staffCategoryCommon = new Category("COMMON", 0.7);
+            var staffCategoryUncommon = new Category("UNCOMMON", 0.3);
+            var staffCategoryRare = new Category("RARE", 0.2);
+            var staffCategoryEpic = new Category("EPIC", 0.1);
+            var staffCategoryLegendary = new Category("LEGENDARY", 0.01);
+
+            Console.WriteLine($"{AvailablePlayers[0].Rarity} | {AvailablePlayers[0].Name}");
+
+            PlayerCategoryService = new CategoryService(Convert.ToInt32(Seed));
+            StaffCategoryService = new CategoryService(Convert.ToInt32(Seed));
+
+            PlayerCategoryService.AddCategory(playerCategoryCommon);
+            PlayerCategoryService.AddCategory(playerCategoryUncommon);
+            PlayerCategoryService.AddCategory(playerCategoryRare);
+            PlayerCategoryService.AddCategory(playerCategoryEpic);
+            PlayerCategoryService.AddCategory(playerCategoryLegendary);
+
+            StaffCategoryService.AddCategory(staffCategoryCommon);
+            StaffCategoryService.AddCategory(staffCategoryUncommon);
+            StaffCategoryService.AddCategory(staffCategoryRare);
+            StaffCategoryService.AddCategory(staffCategoryEpic);
+            StaffCategoryService.AddCategory(staffCategoryLegendary);
+
+            PlayerCategoryService.DistributeItems(AvailablePlayers);
+            StaffCategoryService.DistributeItems(AvailableStaff);
+
+            MarketHandlerLocal = new(this);
+            EditorHandlerLocal = new(this);
         }
 
         public void SetSeed()
         {
             Console.Write("Enter Seed: ");
-            string seed = InputReader.ReadText();
-            ConfigSeed(seed);
+            Seed = InputReader.ReadText();
+            ConfigSeed(Seed);
         }
 
         public void ConfigSeed(string seed)
@@ -91,7 +132,6 @@ namespace sports_game.src.Handlers
                     PlayerTeam.AddPerson(player);
                     AvailablePlayers.Remove(player);
                 }
-
             }
 
             while (PlayerTeam.Staff.Count < StaffSize && AvailableStaff.Count > 0)
@@ -103,6 +143,16 @@ namespace sports_game.src.Handlers
                     AvailableStaff.Remove(staff);
                 }
             }
+
+            Person benchedPlayer = AvailablePlayers[SetRandom.Next(AvailablePlayers.Count)];
+            PlayerTeam.BenchedPlayers.Add(benchedPlayer);
+            AvailablePlayers.Remove(benchedPlayer);
+            Console.WriteLine("Benching Player: " + benchedPlayer.Name);
+
+            Person benchedStaff = AvailableStaff[SetRandom.Next(AvailableStaff.Count)];
+            PlayerTeam.BenchedStaff.Add(benchedStaff);
+            AvailableStaff.Remove(benchedStaff);
+            Console.WriteLine("Benching Staff: " + benchedStaff.Name);
         }
 
         public void PlayGame()
@@ -114,11 +164,11 @@ namespace sports_game.src.Handlers
 
             while (true)
             {
-                Console.WriteLine("What would you like to do?");
+                Console.WriteLine("\n\nWhat would you like to do?");
                 Console.WriteLine("1. Team Editor");
                 Console.WriteLine("2. Visit Market");
                 Console.WriteLine("3. Continue to Next Match");
-                Console.WriteLine("0. Exit");
+                Console.WriteLine("0. Exit\n");
                 string input = InputReader.ReadText("Enter your choice: ");
 
                 switch (input)
@@ -129,15 +179,32 @@ namespace sports_game.src.Handlers
                         break;
                     case "1":
                         //Console.Clear();
-                        EditorHandlerLocal.EditorInterface(PlayGame);
+                        EditorHandlerLocal.EditorInterface();
                         break;
                     case "2":
                         //Console.Clear();
-                        MarketHandlerLocal.MarketInterface(PlayGame);
+                        MarketHandlerLocal.MarketInterface();
                         break;
                     case "3":
                         //Console.Clear();
-                        PlayMatch();
+                        foreach (var c in PlayerCategoryService.Categories)
+                        {
+                            Console.WriteLine($"{c.Name} | {c.People.Count}");
+                            foreach (var p in c.People)
+                            {
+                                Console.WriteLine(p.Name);
+                            }
+                        }
+                        foreach (var c in StaffCategoryService.Categories)
+                        {
+                            Console.WriteLine($"{c.Name} | {c.People.Count}");
+                            foreach (var p in c.People)
+                            {
+                                Console.WriteLine(p.Name);
+                            }
+                        }
+
+                        PlayRound();
                         break;
                     default:
                         Console.WriteLine("Invalid Input");
@@ -146,7 +213,7 @@ namespace sports_game.src.Handlers
             }
         }
 
-        public void PlayMatch()
+        public void PlayRound()
         {
             GenerateOpponentTeam();
 
@@ -176,6 +243,22 @@ namespace sports_game.src.Handlers
             }
 
             HandleOpponentTeam();
+            HandleRoundEnd();
+        }
+
+        private void HandleRoundEnd()
+        {
+            if (PlayerTeam is null || OpponentTeam is null)
+            {
+                throw new Exception("Some Data not Initialized");
+            }
+
+            PlayerTeam.CalcInterest();
+            OpponentTeam.CalcInterest();
+            
+
+            Round++;
+            Console.WriteLine($"Round {Round} Complete!");
         }
 
         public void GenerateOpponentTeam()
@@ -221,6 +304,10 @@ namespace sports_game.src.Handlers
             {
                 AddAvailablePerson(player);
             }
+            foreach (var staff in OpponentTeam.Staff)
+            {
+                AddAvailablePerson(staff);
+            }
         }
 
         public void Close()
@@ -231,7 +318,7 @@ namespace sports_game.src.Handlers
 
         public void AddAvailablePerson(Person person)
         {
-            if (PlayerTeam is null || OpponentTeam is null)
+            if (PlayerTeam is null)
             {
                 throw new Exception("Some Data not Initialized");
             }

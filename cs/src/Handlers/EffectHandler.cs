@@ -9,20 +9,20 @@ namespace sports_game.src.Handlers
 
         public void RemoveEffects(Person person)
         {
-            Effects.Remove(person.CurrentPosition.Name);
+            Effects.Remove(person.Name);
         }
 
         public void AddEffects(Person person)
         {
-            if (!Effects.TryGetValue(person.CurrentPosition.Name, out List<Effect>? value))
+            if (!Effects.TryGetValue(person.Name, out List<Effect>? value))
             {
-                Effects[person.CurrentPosition.Name] = [];
+                Effects[person.Name] = [];
                 foreach (var effect in person.Effects)
                 {
-                    Effects[person.CurrentPosition.Name].Add(effect);
+                    Effects[person.Name].Add(effect);
                 }
             }
-            else if (Effects.TryGetValue(person.CurrentPosition.Name, out List<Effect>? key))
+            else if (Effects.TryGetValue(person.Name, out List<Effect>? key))
             {
                 foreach (var effect in person.Effects)
                 {
@@ -34,7 +34,7 @@ namespace sports_game.src.Handlers
         public int ApplyPersonEffects(Person person)
         {
             int totalEffect = 0;
-            foreach (var effect in Effects[person.CurrentPosition.Name])
+            foreach (var effect in Effects[person.Name])
             {
                 switch (effect.Description)
                 {
@@ -57,15 +57,7 @@ namespace sports_game.src.Handlers
                 foreach (var e in effect.Value)
                 {
                     switch (e.Description)
-                    {
-                        case "Increase Budget":
-                            Team.Budget += e.Value;
-                            break;
-                        
-                        case "Decrease Budget":
-                            Team.Budget -= e.Value;
-                            break;
-                        
+                    {                        
                         case "Increase Interest":
                             Team.Interest += e.Value;
                             break;

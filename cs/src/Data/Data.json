@@ -25,7 +25,7 @@
     [
         {
             "Name": "Tom",
-            "Age": 22,
+            "Rarity": "LEGENDARY",
             "Value": 110,
             "CurrentPosition": {
                 "Name": "KICKER",
@@ -49,7 +49,7 @@
         },
         {
             "Name": "Kara",
-            "Age": 22,
+            "Rarity": "LEGENDARY",
             "Value": 110,
             "CurrentPosition": {
                 "Name": "KICKER",
@@ -73,7 +73,7 @@
         },
         {
             "Name": "Harry",
-            "Age": 31,
+            "Rarity": "RARE",
             "Value": 85,
             "CurrentPosition": {
                 "Name": "DEFENSIVE_BACK",
@@ -97,7 +97,7 @@
         },
         {
             "Name": "Gary",
-            "Age": 31,
+            "Rarity": "RARE",
             "Value": 85,
             "CurrentPosition": {
                 "Name": "DEFENSIVE_BACK",
@@ -121,7 +121,7 @@
         },
         {
             "Name": "Emily",
-            "Age": 29,
+            "Rarity": "RARE",
             "Value": 65,
             "CurrentPosition": {
                 "Name": "LINEBACKER",
@@ -145,7 +145,7 @@
         },
         {
             "Name": "Randall",
-            "Age": 29,
+            "Rarity": "COMMON",
             "Value": 65,
             "CurrentPosition": {
                 "Name": "LINEBACKER",
@@ -169,7 +169,7 @@
         },
         {
             "Name": "Mike",
-            "Age": 24,
+            "Rarity": "EPIC",
             "Value": 75,
             "CurrentPosition": {
                 "Name": "OFFENSIVE_LINE",
@@ -193,7 +193,7 @@
         },
         {
             "Name": "Anna",
-            "Age": 27,
+            "Rarity": "EPIC",
             "Value": 90,
             "CurrentPosition": {
                 "Name": "QUARTERBACK",
@@ -217,7 +217,7 @@
         },
         {
             "Name": "Jason",
-            "Age": 27,
+            "Rarity": "COMMON",
             "Value": 90,
             "CurrentPosition": {
                 "Name": "QUARTERBACK",
@@ -241,7 +241,7 @@
         },
         {
             "Name": "Paul",
-            "Age": 30,
+            "Rarity": "LEGENDARY",
             "Value": 80,
             "CurrentPosition": {
                 "Name": "WIDE_RECEIVER",
@@ -265,7 +265,7 @@
         },
         {
             "Name": "Charlie",
-            "Age": 30,
+            "Rarity": "COMMON",
             "Value": 80,
             "CurrentPosition": {
                 "Name": "WIDE_RECEIVER",
@@ -289,7 +289,7 @@
         },
         {
             "Name": "Alice",
-            "Age": 22,
+            "Rarity": "COMMON",
             "Value": 110,
             "CurrentPosition": {
                 "Name": "KICKER",
@@ -313,7 +313,7 @@
         },
         {
             "Name": "Bob",
-            "Age": 22,
+            "Rarity": "COMMON",
             "Value": 110,
             "CurrentPosition": {
                 "Name": "KICKER",
@@ -337,7 +337,7 @@
         },
         {
             "Name": "Charlie",
-            "Age": 31,
+            "Rarity": "COMMON",
             "Value": 85,
             "CurrentPosition": {
                 "Name": "DEFENSIVE_BACK",
@@ -361,7 +361,7 @@
         },
         {
             "Name": "Diana",
-            "Age": 31,
+            "Rarity": "COMMON",
             "Value": 85,
             "CurrentPosition": {
                 "Name": "DEFENSIVE_BACK",
@@ -385,7 +385,7 @@
         },
         {
             "Name": "Eve",
-            "Age": 29,
+            "Rarity": "COMMON",
             "Value": 65,
             "CurrentPosition": {
                 "Name": "LINEBACKER",
@@ -409,7 +409,7 @@
         },
         {
             "Name": "Frank",
-            "Age": 29,
+            "Rarity": "COMMON",
             "Value": 65,
             "CurrentPosition": {
                 "Name": "LINEBACKER",
@@ -433,7 +433,7 @@
         },
         {
             "Name": "Grace",
-            "Age": 24,
+            "Rarity": "COMMON",
             "Value": 75,
             "CurrentPosition": {
                 "Name": "OFFENSIVE_LINE",
@@ -457,7 +457,7 @@
         },
         {
             "Name": "Hank",
-            "Age": 27,
+            "Rarity": "COMMON",
             "Value": 90,
             "CurrentPosition": {
                 "Name": "RUNNING_BACK",
@@ -481,7 +481,7 @@
         },
         {
             "Name": "Ivy",
-            "Age": 27,
+            "Rarity": "COMMON",
             "Value": 90,
             "CurrentPosition": {
                 "Name": "RUNNING_BACK",
@@ -505,7 +505,7 @@
         },
         {
             "Name": "Jack",
-            "Age": 30,
+            "Rarity": "COMMON",
             "Value": 80,
             "CurrentPosition": {
                 "Name": "WIDE_RECEIVER",
@@ -529,7 +529,7 @@
         },
         {
             "Name": "Kim",
-            "Age": 30,
+            "Rarity": "RARE",
             "Value": 80,
             "CurrentPosition": {
                 "Name": "WIDE_RECEIVER",
@@ -556,7 +556,7 @@
     [
         {
             "Name": "Lisa",
-            "Age": 40,
+            "Rarity": "EPIC",
             "Value": 120,
             "CurrentPosition": {
                 "Name": "HEAD_COACH",
@@ -580,7 +580,7 @@
         },
         {
             "Name": "Mark",
-            "Age": 38,
+            "Rarity": "RARE",
             "Value": 95,
             "CurrentPosition": {
                 "Name": "DEFENSIVE_COORDINATOR",
@@ -604,7 +604,7 @@
         },
         {
             "Name": "Rachel",
-            "Age": 34,
+            "Rarity": "COMMON",
             "Value": 85,
             "CurrentPosition": {
                 "Name": "OFFENSIVE_COORDINATOR",
@@ -628,7 +628,7 @@
         },
         {
             "Name": "Tim",
-            "Age": 36,
+            "Rarity": "RARE",
             "Value": 75,
             "CurrentPosition": {
                 "Name": "SPECIAL_TEAMS_COACH",
@@ -652,7 +652,7 @@
         },
         {
             "Name": "Nina",
-            "Age": 29,
+            "Rarity": "COMMON",
             "Value": 65,
             "CurrentPosition": {
                 "Name": "TRAINER",
@@ -676,10 +676,10 @@
         },
         {
             "Name": "George",
-            "Age": 45,
+            "Rarity": "COMMON",
             "Value": 55,
             "CurrentPosition": {
-                "Name": "EQUIPMENT_MANAGER",
+                "Name": "EQUIPMENT_MANRarityR",
                 "Modifier": 1.25,
                 "Size": 1
             },
@@ -699,8 +699,80 @@
             "Status": "active"
         },
         {
+            "Name": "Ryan",
+            "Rarity": "COMMON",
+            "Value": 70,
+            "CurrentPosition": {
+                "Name": "MASTERMIND",
+                "Modifier": 2.2,
+                "Size": 1
+            },
+            "Cost": 70,
+            "Effects": [
+                {
+                    "Name": "Player Value + 7",
+                    "Description": "Increase Value",
+                    "Value": 7
+                },
+                {
+                    "Name": "Player Value + 14",
+                    "Description": "Increase Cost",
+                    "Value": 14
+                }
+            ],
+            "Status": "active"
+        },
+        {
             "Name": "Sam",
-            "Age": 37,
+            "Rarity": "COMMON",
+            "Value": 70,
+            "CurrentPosition": {
+                "Name": "MASTERMIND",
+                "Modifier": 2.2,
+                "Size": 1
+            },
+            "Cost": 70,
+            "Effects": [
+                {
+                    "Name": "Player Value + 7",
+                    "Description": "Increase Value",
+                    "Value": 7
+                },
+                {
+                    "Name": "Player Value + 14",
+                    "Description": "Increase Cost",
+                    "Value": 14
+                }
+            ],
+            "Status": "active"
+        },
+        {
+            "Name": "Carly",
+            "Rarity": "COMMON",
+            "Value": 70,
+            "CurrentPosition": {
+                "Name": "MASTERMIND",
+                "Modifier": 2.2,
+                "Size": 1
+            },
+            "Cost": 70,
+            "Effects": [
+                {
+                    "Name": "Player Value + 7",
+                    "Description": "Increase Value",
+                    "Value": 7
+                },
+                {
+                    "Name": "Player Value + 14",
+                    "Description": "Increase Cost",
+                    "Value": 14
+                }
+            ],
+            "Status": "active"
+        },
+        {
+            "Name": "Bill",
+            "Rarity": "COMMON",
             "Value": 70,
             "CurrentPosition": {
                 "Name": "MASTERMIND",
@@ -754,7 +826,7 @@
         "Vikings",
         "Vipers",
         "Volcanoes",
-        "Voyagers",
+        "VoyRarityrs",
         "Vultures",
         "War Eagles",
         "Warriors",

@@ -14,7 +14,7 @@ namespace sports_game.src.Entities
         public string Icon { get; set; } = icon;
         public string Sport { get; set; } = sport;
         public int Score { get; set; }
-        static public int Budget { get; set; }
+        public int Budget { get; set; }
         static public int Interest { get; set; }
         public bool IsPlayer { get; set; } = isPlayer;
         public EffectHandler EffectHandlerTeam { get; set; } = new EffectHandler();
@@ -36,7 +36,7 @@ namespace sports_game.src.Entities
 
         public void AddPerson(Person p)
         {
-            if (PossiblePlayerPositions.Contains(p.CurrentPosition.Name) && !PositionFilled(p.CurrentPosition))
+            if (PossiblePlayerPositions.Contains(p.CurrentPosition.Name))
             {
                 Players.Add(p);
                 EffectHandlerTeam.AddEffects(p);
@@ -45,6 +45,10 @@ namespace sports_game.src.Entities
             {
                 Staff.Add(p);
                 EffectHandlerTeam.AddEffects(p);
+            }
+            else
+            {
+                Console.WriteLine("Invalid Position or Position Filled");
             }
         }
 
@@ -59,6 +63,8 @@ namespace sports_game.src.Entities
         public void CalcInterest()
         {
             Budget += Interest * (Budget % 20);
+            Console.WriteLine($"\nInterest: +{Interest * (Budget % 20)}");
+            Console.WriteLine($"Budget: {Budget}");
         }
 
         public bool PositionFilled(Position pos)
