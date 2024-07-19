@@ -8,10 +8,7 @@ namespace sports_game
         static private void Main()
         {
             GameHandler gameHandler = new();
-
             gameHandler.GameLoop();
-
-            
         }
     }
 }
