@@ -10,11 +10,11 @@ namespace sports_game.src.Handlers
             Console.WriteLine("2. Edit Staff [Not Implemented]");
             Console.WriteLine("3. Edit Teams [Not Implemented]");
             Console.WriteLine("4. Edit Positions [Not Implemented]");
-            Console.WriteLine("5. Exit Editor [Not Implemented]");
+            Console.WriteLine("5. Exit Editor");
             Console.WriteLine();
-            string input = InputReader.ReadText("Enter your choice: ");
             while(true)
             {
+                string input = InputReader.ReadText("Enter your choice: ");
                 switch(input)
                 {
                     /*

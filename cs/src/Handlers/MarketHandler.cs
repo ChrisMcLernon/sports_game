@@ -16,9 +16,9 @@ namespace sports_game.src.Handlers
             Console.WriteLine("4. Sell Staff [Not Implemented]");
             Console.WriteLine("5. Exit Market");
             Console.WriteLine();
-            string input = InputReader.ReadText("Enter your choice: ");
             while(true)
             {
+                string input = InputReader.ReadText("Enter your choice: ");
                 switch(input)
                 {
                     /*
