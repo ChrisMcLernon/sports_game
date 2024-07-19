@@ -27,7 +27,7 @@ namespace sports_game.src.Handlers
                 Console.WriteLine("2. Buy Staff");
                 Console.WriteLine("3. Sell Player");
                 Console.WriteLine("4. Sell Staff");
-                Console.WriteLine("0. Exit Market\n");
+                Console.WriteLine("0. Exit Market");
 
                 string input = InputReader.ReadText("Enter your choice: ");
                 switch(input)
@@ -85,32 +85,36 @@ namespace sports_game.src.Handlers
         {
             if (BenchStaff.Count != 0)
             {
-                Console.WriteLine();
-                for(int i = 0; i < BenchStaff.Count; i++)
+                while (true)
                 {
-                    Console.WriteLine($"{i + 1}. {BenchStaff[i].Name} | {BenchStaff[i].CurrentPosition.Name} | {BenchStaff[i].Cost}");
-                }
-                Console.WriteLine("0. Exit\n");
+                    Console.WriteLine();
+                    for(int i = 0; i < BenchStaff.Count; i++)
+                    {
+                        Console.Write($"{i + 1}. ");
+                        BenchStaff[i].PrintInfo();
+                    }
+                    Console.WriteLine("0. Exit\n");
 
-                string input = InputReader.ReadText("Enter the number of the staff you want to sell: ");
+                    string input = InputReader.ReadText("Enter the number of the staff you want to sell: ");
 
-                if (int.TryParse(input, out int index) && index > 0 && index <= BenchStaff.Count)
-                {
-                    Person chosenStaff = BenchStaff[index - 1];
-                    gameHandler.AddAvailablePerson(chosenStaff);
-                    gameHandler.PlayerTeam.Budget += chosenStaff.Cost;
-                    BenchStaff.RemoveAt(index - 1);
-                    
-                    Console.WriteLine("Staff sold successfully!");
-                }
-                else if (input == "0")
-                {
-                    MarketInterface();
+                    if (int.TryParse(input, out int index) && index > 0 && index <= BenchStaff.Count)
+                    {
+                        Person chosenStaff = BenchStaff[index - 1];
+                        gameHandler.AddAvailablePerson(chosenStaff);
+                        gameHandler.PlayerTeam.Budget += chosenStaff.Cost;
+                        BenchStaff.RemoveAt(index - 1);
+                        
+                        Console.WriteLine("Staff sold successfully!");
+                    }
+                    else if (input == "0")
+                    {
+                        MarketInterface();
 
-                }
-                else
-                {
-                    Console.WriteLine("Invalid input. Please try again.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid input. Please try again.");
+                    }
                 }
             }
             else
@@ -125,32 +129,36 @@ namespace sports_game.src.Handlers
         {
             if (BenchPlayers.Count != 0)
             {
-                Console.WriteLine();
-                for(int i = 0; i < BenchPlayers.Count; i++)
+                while (true)
                 {
-                    Console.WriteLine($"{i + 1}. {BenchPlayers[i].Name} | {BenchPlayers[i].CurrentPosition.Name} | {BenchPlayers[i].Cost}");
-                }
-                Console.WriteLine("0. Exit\n");
+                    Console.WriteLine();
+                    for(int i = 0; i < BenchPlayers.Count; i++)
+                    {
+                        Console.Write($"{i + 1}. ");
+                        BenchPlayers[i].PrintInfo();
+                    }
+                    Console.WriteLine("0. Exit\n");
 
-                string input = InputReader.ReadText("Enter the number of the player you want to sell: ");
+                    string input = InputReader.ReadText("Enter the number of the player you want to sell: ");
 
-                if (int.TryParse(input, out int index) && index > 0 && index <= BenchPlayers.Count)
-                {
-                    Person chosenPlayer = BenchPlayers[index - 1];
-                    gameHandler.AddAvailablePerson(chosenPlayer);
-                    gameHandler.PlayerTeam.Budget += chosenPlayer.Cost;
-                    BenchPlayers.RemoveAt(index - 1);
-                    
-                    Console.WriteLine("Player sold successfully!");
-                }
-                else if (input == "0")
-                {
-                    MarketInterface();
+                    if (int.TryParse(input, out int index) && index > 0 && index <= BenchPlayers.Count)
+                    {
+                        Person chosenPlayer = BenchPlayers[index - 1];
+                        gameHandler.AddAvailablePerson(chosenPlayer);
+                        gameHandler.PlayerTeam.Budget += chosenPlayer.Cost;
+                        BenchPlayers.RemoveAt(index - 1);
+                        
+                        Console.WriteLine("Player sold successfully!");
+                    }
+                    else if (input == "0")
+                    {
+                        MarketInterface();
 
-                }
-                else
-                {
-                    Console.WriteLine("Invalid input. Please try again.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid input. Please try again.");
+                    }
                 }
             }
             else
@@ -164,39 +172,43 @@ namespace sports_game.src.Handlers
         {
             if (PurchaseableStaff.Count > 0)
             {
-                Console.WriteLine();
-                for(int i = 0; i < PurchaseableStaff.Count; i++)
+                while (true)
                 {
-                    Console.WriteLine($"{i + 1}. {PurchaseableStaff[i].Name} | {PurchaseableStaff[i].Value} | {PurchaseableStaff[i].CurrentPosition.Modifier} | {PurchaseableStaff[i].Cost} | {PurchaseableStaff[i].Rarity}");
-                }
-                Console.WriteLine("0. Exit\n");
-
-                string input = InputReader.ReadText("Enter the number of the staff you want to buy: ");
-
-                if (int.TryParse(input, out int index) && index > 0 && index <= PurchaseableStaff.Count)
-                {
-                    Person chosenStaff = PurchaseableStaff[index - 1];
-                    if (gameHandler.PlayerTeam.Budget >= chosenStaff.Cost)
+                    Console.WriteLine();
+                    for(int i = 0; i < PurchaseableStaff.Count; i++)
                     {
-                        BenchStaff.Add(chosenStaff);
-                        gameHandler.PlayerTeam.Budget -= chosenStaff.Cost;
-                        PurchaseableStaff.RemoveAt(index - 1);
-                        
-                        Console.WriteLine("Staff bought successfully!");
+                        Console.Write($"{i + 1}. ");
+                        PurchaseableStaff[i].PrintInfo();
+                    }
+                    Console.WriteLine("0. Exit\n");
+
+                    string input = InputReader.ReadText("Enter the number of the staff you want to buy: ");
+
+                    if (int.TryParse(input, out int index) && index > 0 && index <= PurchaseableStaff.Count)
+                    {
+                        Person chosenStaff = PurchaseableStaff[index - 1];
+                        if (gameHandler.PlayerTeam.Budget >= chosenStaff.Cost)
+                        {
+                            BenchStaff.Add(chosenStaff);
+                            gameHandler.PlayerTeam.Budget -= chosenStaff.Cost;
+                            PurchaseableStaff.RemoveAt(index - 1);
+                            
+                            Console.WriteLine("Staff bought successfully!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("You do not have enough budget to buy this staff.");
+                        }
+                    }
+                    else if (input == "0")
+                    {
+                        MarketInterface();
+
                     }
                     else
                     {
-                        Console.WriteLine("You do not have enough budget to buy this staff.");
+                        Console.WriteLine("Invalid input. Please try again.");
                     }
-                }
-                else if (input == "0")
-                {
-                    MarketInterface();
-
-                }
-                else
-                {
-                    Console.WriteLine("Invalid input. Please try again.");
                 }
             }
             else
@@ -210,39 +222,43 @@ namespace sports_game.src.Handlers
         {
             if (PurchaseablePlayers.Count > 0)
             {
-                Console.WriteLine();
-                for(int i = 0; i < PurchaseablePlayers.Count; i++)
+                while (true)
                 {
-                    Console.WriteLine($"{i + 1}. {PurchaseablePlayers[i].Name} | {PurchaseablePlayers[i].Value} | {PurchaseablePlayers[i].CurrentPosition.Modifier} | {PurchaseablePlayers[i].Cost} | {PurchaseablePlayers[i].Rarity}");
-                }
-                Console.WriteLine("0. Exit\n");
-
-                string input = InputReader.ReadText("Enter the number of the player you want to buy: ");
-
-                if (int.TryParse(input, out int index) && index > 0 && index <= PurchaseablePlayers.Count)
-                {
-                    Person chosenPlayer = PurchaseablePlayers[index - 1];
-                    if (gameHandler.PlayerTeam.Budget >= chosenPlayer.Cost)
+                    Console.WriteLine();
+                    for(int i = 0; i < PurchaseablePlayers.Count; i++)
                     {
-                        BenchPlayers.Add(chosenPlayer);
-                        gameHandler.PlayerTeam.Budget -= chosenPlayer.Cost;
-                        PurchaseablePlayers.RemoveAt(index - 1);
-                        
-                        Console.WriteLine("Player bought successfully!");
+                        Console.Write($"{i + 1}. ");
+                        PurchaseablePlayers[i].PrintInfo();
+                    }
+                    Console.WriteLine("0. Exit\n");
+
+                    string input = InputReader.ReadText("Enter the number of the player you want to buy: ");
+
+                    if (int.TryParse(input, out int index) && index > 0 && index <= PurchaseablePlayers.Count)
+                    {
+                        Person chosenPlayer = PurchaseablePlayers[index - 1];
+                        if (gameHandler.PlayerTeam.Budget >= chosenPlayer.Cost)
+                        {
+                            BenchPlayers.Add(chosenPlayer);
+                            gameHandler.PlayerTeam.Budget -= chosenPlayer.Cost;
+                            PurchaseablePlayers.RemoveAt(index - 1);
+                            
+                            Console.WriteLine("Player bought successfully!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("You do not have enough budget to buy this player.");
+                        }
+                    }
+                    else if (input == "0")
+                    {
+                        MarketInterface();
+
                     }
                     else
                     {
-                        Console.WriteLine("You do not have enough budget to buy this player.");
+                        Console.WriteLine("Invalid input. Please try again.");
                     }
-                }
-                else if (input == "0")
-                {
-                    MarketInterface();
-
-                }
-                else
-                {
-                    Console.WriteLine("Invalid input. Please try again.");
                 }
             }
             else

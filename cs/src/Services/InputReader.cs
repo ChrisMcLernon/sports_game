@@ -6,7 +6,7 @@ namespace sports_game.src.Services
         {
             while (true)
             {
-                Console.Write(prompt);
+                Console.Write("\n" + prompt);
                 string? input = Console.ReadLine();
                 
                 if (input == "" || input == null)

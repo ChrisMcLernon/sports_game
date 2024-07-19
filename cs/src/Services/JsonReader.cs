@@ -4,7 +4,7 @@ namespace sports_game.src.Services
 {
     static public class JsonReader
     {
-        static private readonly string BASE_PATH = Path.GetFullPath("../cs/src/Data/Data.json");
+        static private readonly string BASE_PATH = Path.GetFullPath("../../../../cs/src/Data/Data.json");
 
         static public T Read<T>(string key)
         {

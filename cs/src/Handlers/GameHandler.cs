@@ -71,8 +71,6 @@ namespace sports_game.src.Handlers
             var staffCategoryEpic = new Category("EPIC", 0.1);
             var staffCategoryLegendary = new Category("LEGENDARY", 0.01);
 
-            Console.WriteLine($"{AvailablePlayers[0].Rarity} | {AvailablePlayers[0].Name}");
-
             PlayerCategoryService = new CategoryService(Convert.ToInt32(Seed));
             StaffCategoryService = new CategoryService(Convert.ToInt32(Seed));
 
@@ -147,12 +145,10 @@ namespace sports_game.src.Handlers
             Person benchedPlayer = AvailablePlayers[SetRandom.Next(AvailablePlayers.Count)];
             PlayerTeam.BenchedPlayers.Add(benchedPlayer);
             AvailablePlayers.Remove(benchedPlayer);
-            Console.WriteLine("Benching Player: " + benchedPlayer.Name);
 
             Person benchedStaff = AvailableStaff[SetRandom.Next(AvailableStaff.Count)];
             PlayerTeam.BenchedStaff.Add(benchedStaff);
             AvailableStaff.Remove(benchedStaff);
-            Console.WriteLine("Benching Staff: " + benchedStaff.Name);
         }
 
         public void PlayGame()
@@ -168,7 +164,7 @@ namespace sports_game.src.Handlers
                 Console.WriteLine("1. Team Editor");
                 Console.WriteLine("2. Visit Market");
                 Console.WriteLine("3. Continue to Next Match");
-                Console.WriteLine("0. Exit\n");
+                Console.WriteLine("0. Exit");
                 string input = InputReader.ReadText("Enter your choice: ");
 
                 switch (input)
@@ -187,23 +183,6 @@ namespace sports_game.src.Handlers
                         break;
                     case "3":
                         //Console.Clear();
-                        foreach (var c in PlayerCategoryService.Categories)
-                        {
-                            Console.WriteLine($"{c.Name} | {c.People.Count}");
-                            foreach (var p in c.People)
-                            {
-                                Console.WriteLine(p.Name);
-                            }
-                        }
-                        foreach (var c in StaffCategoryService.Categories)
-                        {
-                            Console.WriteLine($"{c.Name} | {c.People.Count}");
-                            foreach (var p in c.People)
-                            {
-                                Console.WriteLine(p.Name);
-                            }
-                        }
-
                         PlayRound();
                         break;
                     default:
@@ -229,16 +208,19 @@ namespace sports_game.src.Handlers
             if (playerScore > opponentScore)
             {
                 Console.WriteLine("You Win!");
+                PlayerTeam.Budget += 100;
                 Console.WriteLine($"\n\n{PlayerTeam.Name}: {playerScore} - {OpponentTeam.Name}: {opponentScore}");
             }
             else if (playerScore < opponentScore)
             {
                 Console.WriteLine("You Lose!");
+                PlayerTeam.Budget += 25;
                 Console.WriteLine($"\n\n{PlayerTeam.Name}: {playerScore} - {OpponentTeam.Name}: {opponentScore}");
             }
             else
             {
                 Console.WriteLine("Draw!");
+                PlayerTeam.Budget += 50;
                 Console.WriteLine($"\n\n{PlayerTeam.Name}: {playerScore} - {OpponentTeam.Name}: {opponentScore}");
             }
 
@@ -255,7 +237,6 @@ namespace sports_game.src.Handlers
 
             PlayerTeam.CalcInterest();
             OpponentTeam.CalcInterest();
-            
 
             Round++;
             Console.WriteLine($"Round {Round} Complete!");
@@ -363,7 +344,7 @@ namespace sports_game.src.Handlers
 
             foreach (var player in PlayerTeam.Players)
             {
-                Console.WriteLine($"{player.Name} | {player.CurrentPosition.Name} | {player.CurrentPosition.Modifier} | {player.Value} ");
+                player.PrintInfo();
                 unroundedPlayerValue += player.Value;
                 unroundedPlayerValue += PlayerTeam.EffectHandlerTeam.ApplyPersonEffects(player);
                 Console.WriteLine($"Player Value with effects: {unroundedPlayerValue}");
@@ -376,7 +357,7 @@ namespace sports_game.src.Handlers
             }
             foreach (var enemy in OpponentTeam.Players)
             {
-                Console.WriteLine($"{enemy.Name} | {enemy.CurrentPosition.Name} | {enemy.CurrentPosition.Modifier} | {enemy.Value} ");
+                enemy.PrintInfo();
                 unroundedEnemyValue += enemy.Value;
                 unroundedEnemyValue += OpponentTeam.EffectHandlerTeam.ApplyPersonEffects(enemy);
                 Console.WriteLine($"Player Value with effects: {unroundedEnemyValue}");
