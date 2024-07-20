@@ -167,7 +167,7 @@ namespace sports_game.src.Handlers
             else if (AvailablePlayers.Count == 0 || AvailableStaff.Count == 0)
             {
                 Console.WriteLine("No Players or Staff Available");
-                StartGame();
+                Close();
             }
             while (true)
             {
