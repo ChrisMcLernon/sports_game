@@ -14,13 +14,15 @@ namespace sports_game.src.Handlers
         static private List<string>? TeamNames { get; set; }
         static private MarketHandler? MarketHandlerLocal { get; set; }
         static private EditorHandler? EditorHandlerLocal { get; set; }
-        private string Seed { get; set; }
+        private string? Seed { get; set; }
         public Random? SetRandom { get; set; }
         static private int TeamSize { get; } = 5;
-        static private int StaffSize { get; } = 3;
+        static private int StaffSize { get; } = 2;
         public int Round { get; set; } = 1;
-        public CategoryService PlayerCategoryService { get; set; }
-        public CategoryService StaffCategoryService { get; set; }
+        public int Losses { get; set; } = 0;
+        public CategoryService? PlayerCategoryService { get; set; }
+        public CategoryService? StaffCategoryService { get; set; }
+        public int Wins { get; private set; } = 0;
 
         public void GameLoop()
         {
@@ -54,6 +56,10 @@ namespace sports_game.src.Handlers
             AvailablePlayers = JsonReader.Read<List<Person>>("Football_Player_Stats");
             AvailableStaff = JsonReader.Read<List<Person>>("Football_Staff_Stats");
             TeamNames = JsonReader.Read<List<string>>("Team_Names");
+
+            Round = 1;
+            Losses = 0;
+            Wins = 0;
 
             if (AvailablePlayers is null || AvailableStaff is null || TeamNames is null)
             {
@@ -124,31 +130,31 @@ namespace sports_game.src.Handlers
 
             while (PlayerTeam.Players.Count < TeamSize && AvailablePlayers.Count > 0)
             {
-                Person player = AvailablePlayers[SetRandom.Next(AvailablePlayers.Count)];
+                Person player = PlayerCategoryService.PickItem();
                 if (!PlayerTeam.PositionFilled(player.CurrentPosition))
                 {
                     PlayerTeam.AddPerson(player);
-                    AvailablePlayers.Remove(player);
+                    RemoveAvailablePerson(player);
                 }
             }
 
             while (PlayerTeam.Staff.Count < StaffSize && AvailableStaff.Count > 0)
             {
-                Person staff = AvailableStaff[SetRandom.Next(AvailableStaff.Count)];
+                Person staff = StaffCategoryService.PickItem();
                 if (!PlayerTeam.PositionFilled(staff.CurrentPosition))
                 {
                     PlayerTeam.AddPerson(staff);
-                    AvailableStaff.Remove(staff);
+                    RemoveAvailablePerson(staff);
                 }
             }
 
-            Person benchedPlayer = AvailablePlayers[SetRandom.Next(AvailablePlayers.Count)];
+            Person benchedPlayer = PlayerCategoryService.PickItem();
             PlayerTeam.BenchedPlayers.Add(benchedPlayer);
-            AvailablePlayers.Remove(benchedPlayer);
+            RemoveAvailablePerson(benchedPlayer);
 
-            Person benchedStaff = AvailableStaff[SetRandom.Next(AvailableStaff.Count)];
+            Person benchedStaff = StaffCategoryService.PickItem();
             PlayerTeam.BenchedStaff.Add(benchedStaff);
-            AvailableStaff.Remove(benchedStaff);
+            RemoveAvailablePerson(benchedStaff);
         }
 
         public void PlayGame()
@@ -210,12 +216,23 @@ namespace sports_game.src.Handlers
                 Console.WriteLine("You Win!");
                 PlayerTeam.Budget += 100;
                 Console.WriteLine($"\n\n{PlayerTeam.Name}: {playerScore} - {OpponentTeam.Name}: {opponentScore}");
+                Wins++;
+                if (Wins == 10)
+                {
+                    StartGame();
+                }
             }
             else if (playerScore < opponentScore)
             {
                 Console.WriteLine("You Lose!");
                 PlayerTeam.Budget += 25;
                 Console.WriteLine($"\n\n{PlayerTeam.Name}: {playerScore} - {OpponentTeam.Name}: {opponentScore}");
+                Losses++;
+                if (Losses == 3)
+                {
+                    Console.WriteLine("You have lost 3 games in a row. Game Over!");
+                    StartGame();
+                }
             }
             else
             {
@@ -254,7 +271,7 @@ namespace sports_game.src.Handlers
 
             while (OpponentTeam.Players.Count < TeamSize && AvailablePlayers.Count > 0)
             {
-                Person player = AvailablePlayers[SetRandom.Next(AvailablePlayers.Count)];
+                Person player = PlayerCategoryService.PickItem();
                 if (!OpponentTeam.PositionFilled(player.CurrentPosition))
                 {
                     OpponentTeam.AddPerson(player);
@@ -264,7 +281,7 @@ namespace sports_game.src.Handlers
 
             while (OpponentTeam.Staff.Count < StaffSize && AvailableStaff.Count > 0)
             {
-                Person staff = AvailableStaff[SetRandom.Next(AvailableStaff.Count)];
+                Person staff = StaffCategoryService.PickItem();
                 if (!OpponentTeam.PositionFilled(staff.CurrentPosition))
                 {
                     OpponentTeam.AddPerson(staff);
@@ -307,16 +324,18 @@ namespace sports_game.src.Handlers
             if (PlayerTeam.PossiblePlayerPositions.Contains(person.CurrentPosition.Name))
             {
                 AvailablePlayers.Add(person);
+                PlayerCategoryService.AddItem(person);
             }
             else
             {
                 AvailableStaff.Add(person);
+                StaffCategoryService.AddItem(person);
             }
         }
 
         public void RemoveAvailablePerson(Person person)
         {
-            if (PlayerTeam is null || OpponentTeam is null)
+            if (PlayerTeam is null)
             {
                 throw new Exception("Some Data not Initialized");
             }
@@ -324,10 +343,12 @@ namespace sports_game.src.Handlers
             if (PlayerTeam.PossiblePlayerPositions.Contains(person.CurrentPosition.Name))
             {
                 AvailablePlayers.Remove(person);
+                PlayerCategoryService.RemoveItem(person);
             }
             else
             {
                 AvailableStaff.Remove(person);
+                StaffCategoryService.RemoveItem(person);
             }
         }
 

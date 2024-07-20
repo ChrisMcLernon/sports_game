@@ -68,6 +68,7 @@ namespace sports_game.src.Handlers
                 if (!PurchaseablePlayers.Contains(newPlayer))
                 {
                     PurchaseablePlayers.Add(newPlayer);
+                    gameHandler.RemoveAvailablePerson(newPlayer);
                 }
             }
             while (PurchaseableStaff.Count != 4)
@@ -76,6 +77,7 @@ namespace sports_game.src.Handlers
                 if (!PurchaseableStaff.Contains(newStaff))
                 {
                     PurchaseableStaff.Add(newStaff);
+                    gameHandler.RemoveAvailablePerson(newStaff);
                 }
             }
                 
@@ -190,6 +192,7 @@ namespace sports_game.src.Handlers
                         if (gameHandler.PlayerTeam.Budget >= chosenStaff.Cost)
                         {
                             BenchStaff.Add(chosenStaff);
+                            gameHandler.StaffCategoryService.RemoveItem(chosenStaff);
                             gameHandler.PlayerTeam.Budget -= chosenStaff.Cost;
                             PurchaseableStaff.RemoveAt(index - 1);
                             
@@ -240,6 +243,7 @@ namespace sports_game.src.Handlers
                         if (gameHandler.PlayerTeam.Budget >= chosenPlayer.Cost)
                         {
                             BenchPlayers.Add(chosenPlayer);
+                            gameHandler.PlayerCategoryService.RemoveItem(chosenPlayer);
                             gameHandler.PlayerTeam.Budget -= chosenPlayer.Cost;
                             PurchaseablePlayers.RemoveAt(index - 1);
                             

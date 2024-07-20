@@ -793,6 +793,102 @@
                 }
             ],
             "Status": "active"
+        },
+        {
+            "Name": "Kenny",
+            "Rarity": "COMMON",
+            "Value": 70,
+            "CurrentPosition": {
+                "Name": "MASTERMIND",
+                "Modifier": 2.2,
+                "Size": 1
+            },
+            "Cost": 70,
+            "Effects": [
+                {
+                    "Name": "Player Value + 7",
+                    "Description": "Increase Value",
+                    "Value": 7
+                },
+                {
+                    "Name": "Player Value + 14",
+                    "Description": "Increase Cost",
+                    "Value": 14
+                }
+            ],
+            "Status": "active"
+        },
+        {
+            "Name": "Lenny",
+            "Rarity": "COMMON",
+            "Value": 70,
+            "CurrentPosition": {
+                "Name": "MASTERMIND",
+                "Modifier": 2.2,
+                "Size": 1
+            },
+            "Cost": 70,
+            "Effects": [
+                {
+                    "Name": "Player Value + 7",
+                    "Description": "Increase Value",
+                    "Value": 7
+                },
+                {
+                    "Name": "Player Value + 14",
+                    "Description": "Increase Cost",
+                    "Value": 14
+                }
+            ],
+            "Status": "active"
+        },
+        {
+            "Name": "Karen",
+            "Rarity": "COMMON",
+            "Value": 70,
+            "CurrentPosition": {
+                "Name": "MASTERMIND",
+                "Modifier": 2.2,
+                "Size": 1
+            },
+            "Cost": 70,
+            "Effects": [
+                {
+                    "Name": "Player Value + 7",
+                    "Description": "Increase Value",
+                    "Value": 7
+                },
+                {
+                    "Name": "Player Value + 14",
+                    "Description": "Increase Cost",
+                    "Value": 14
+                }
+            ],
+            "Status": "active"
+        },
+        {
+            "Name": "Benny",
+            "Rarity": "COMMON",
+            "Value": 70,
+            "CurrentPosition": {
+                "Name": "MASTERMIND",
+                "Modifier": 2.2,
+                "Size": 1
+            },
+            "Cost": 70,
+            "Effects": [
+                {
+                    "Name": "Player Value + 7",
+                    "Description": "Increase Value",
+                    "Value": 7
+                },
+                {
+                    "Name": "Player Value + 14",
+                    "Description": "Increase Cost",
+                    "Value": 14
+                }
+            ],
+            "Status": "active"
         }
     ],
     "Team_Names":

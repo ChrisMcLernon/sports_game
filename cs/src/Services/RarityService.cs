@@ -1,4 +1,6 @@
-﻿namespace sports_game.src.Models
+﻿using sports_game.src.Handlers;
+
+namespace sports_game.src.Models
 {
     public class CategoryService(int seed)
     {
@@ -19,26 +21,38 @@
             }
         }
 
+        public void RemoveItem(Person person)
+        {
+            var category = Categories.FirstOrDefault(c => c.Name == person.Rarity);
+            category?.People.Remove(person);
+        }
+
+        public void AddItem(Person person)
+        {
+            var category = Categories.FirstOrDefault(c => c.Name == person.Rarity);
+            category?.People.Add(person);
+        }
+
         public Person PickItem()
         {
             double totalWeight = Categories.Sum(c => c.Weight);
             double randomValue = _random.NextDouble() * totalWeight;
 
-            foreach (var category in Categories)
-            {
-                if (randomValue < category.Weight)
+            while (true){
+                foreach (var category in Categories)
                 {
-                    if (category.People.Count != 0)
+                    if (randomValue < category.Weight)
                     {
-                        int itemIndex = _random.Next(category.People.Count);
-                        return category.People[itemIndex];
+                        if (category.People.Count != 0)
+                        {
+                            int itemIndex = _random.Next(category.People.Count);
+                            return category.People[itemIndex];
+                        }
                     }
+
+                    randomValue -= category.Weight;
                 }
-
-                randomValue -= category.Weight;
             }
-
-            throw new Exception("Error"); // In case of an error
         }
     }
 }
