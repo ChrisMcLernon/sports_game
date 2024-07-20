@@ -163,7 +163,11 @@ namespace sports_game.src.Handlers
             {
                 throw new Exception("Some Data not Initialized");
             }
-
+            else if (AvailablePlayers.Count == 0 || AvailableStaff.Count == 0)
+            {
+                Console.WriteLine("No Players or Staff Available");
+                StartGame();
+            }
             while (true)
             {
                 Console.WriteLine("\n\nWhat would you like to do?");
