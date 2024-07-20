@@ -214,7 +214,7 @@ namespace sports_game.src.Handlers
 
             List<int> score = CalculateScore();
             int playerScore = score[0];
-            int opponentScore = score[1];
+            int opponentScore = (int)(score[1] * (Round * 0.5));
 
             if (playerScore > opponentScore)
             {
