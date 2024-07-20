@@ -32,6 +32,7 @@ namespace sports_game.src.Handlers
 
         public void StartGame()
         {
+            Console.Clear();
             Console.WriteLine("Welcome to '_' (0 to exit | 1 to start game)");
             string input = InputReader.ReadText();
             if (input == "0")
@@ -125,7 +126,7 @@ namespace sports_game.src.Handlers
 
             AvailablePlayers = [.. AvailablePlayers.OrderBy(x => SetRandom.Next())];
             string teamName = InputReader.ReadText("Enter Team Name: ");
-            PlayerTeam = new Team(teamName);
+            PlayerTeam = new Team(teamName, "_", "FOOTBALL", true);
             PlayerTeam.GeneratePossiblePositions();
 
             while (PlayerTeam.Players.Count < TeamSize && AvailablePlayers.Count > 0)
@@ -223,7 +224,9 @@ namespace sports_game.src.Handlers
                 Wins++;
                 if (Wins == 10)
                 {
-                    StartGame();
+                    Console.WriteLine("You Win the Game!");
+                    Console.Clear();
+                    Close();
                 }
             }
             else if (playerScore < opponentScore)
@@ -234,8 +237,9 @@ namespace sports_game.src.Handlers
                 Losses++;
                 if (Losses == 3)
                 {
-                    Console.WriteLine("You have lost 3 games in a row. Game Over!");
-                    StartGame();
+                    Console.Clear();
+                    Console.WriteLine("Game Over!");
+                    Close();
                 }
             }
             else

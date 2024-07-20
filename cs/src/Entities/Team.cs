@@ -15,7 +15,7 @@ namespace sports_game.src.Entities
         public string Sport { get; set; } = sport;
         public int Score { get; set; }
         public int Budget { get; set; }
-        static public int Interest { get; set; } = 1;
+        static public int Interest { get; set; } = 10;
         public bool IsPlayer { get; set; } = isPlayer;
         public EffectHandler EffectHandlerTeam { get; set; } = new EffectHandler();
         public List<string> PossiblePlayerPositions { get; set; } = [];
@@ -62,9 +62,29 @@ namespace sports_game.src.Entities
 
         public void CalcInterest()
         {
-            Budget += Interest * (Budget % 120);
-            Console.WriteLine($"\nInterest: +{Interest * (Budget % 120)}");
-            Console.WriteLine($"Budget: {Budget}");
+            int tempBudget = Budget;
+            if (IsPlayer)
+            {
+                Console.Write("Interest: ");
+            }
+            while (tempBudget != 0)
+            {
+                if (tempBudget >= 100)
+                {
+                    Budget += Interest;
+                    tempBudget -= 100;
+                }
+                else
+                {
+                    break;
+                }
+                Console.Write("+ ");
+            }
+            if (IsPlayer)
+            {
+                Console.WriteLine($"\nBudget: {Budget}");
+            }
+
         }
 
         public bool PositionFilled(Position pos)
