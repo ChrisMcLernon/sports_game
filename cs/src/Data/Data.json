@@ -166,6 +166,102 @@
                 }
             ],
             "Status": "active"
+        },
+        {
+            "Name": "Eve",
+            "Rarity": "COMMON",
+            "ID": "PL-000005",
+            "Value": 60,
+            "CurrentPositionID": "PP-000005",
+            "Cost": 70,
+            "Effects": [
+                {
+                    "Name": "Player Value + 60",
+                    "Description": "Increase Value",
+                    "Value": 60
+                }
+            ],
+            "Status": "active"
+        },
+        {
+            "Name": "Frank",
+            "Rarity": "COMMON",
+            "ID": "PL-000006",
+            "Value": 60,
+            "CurrentPositionID": "PP-000006",
+            "Cost": 70,
+            "Effects": [
+                {
+                    "Name": "Player Value + 60",
+                    "Description": "Increase Value",
+                    "Value": 60
+                }
+            ],
+            "Status": "active"
+        },
+        {
+            "Name": "Gina",
+            "Rarity": "COMMON",
+            "ID": "PL-000007",
+            "Value": 60,
+            "CurrentPositionID": "PP-000007",
+            "Cost": 70,
+            "Effects": [
+                {
+                    "Name": "Player Value + 60",
+                    "Description": "Increase Value",
+                    "Value": 60
+                }
+            ],
+            "Status": "active"
+        },
+        {
+            "Name": "Hank",
+            "Rarity": "COMMON",
+            "ID": "PL-000008",
+            "Value": 60,
+            "CurrentPositionID": "PP-000008",
+            "Cost": 70,
+            "Effects": [
+                {
+                    "Name": "Player Value + 60",
+                    "Description": "Increase Value",
+                    "Value": 60
+                }
+            ],
+            "Status": "active"
+        },
+        {
+            "Name": "Ivy",
+            "Rarity": "COMMON",
+            "ID": "PL-000009",
+            "Value": 60,
+            "CurrentPositionID": "PP-000009",
+            "Cost": 70,
+            "Effects": [
+                {
+                    "Name": "Player Value + 60",
+                    "Description": "Increase Value",
+                    "Value": 60
+                }
+            ],
+            "Status": "active"
+        },
+        {
+            "Name": "Jack",
+            "Rarity": "COMMON",
+            "ID": "PL-000010",
+            "Value": 60,
+            "CurrentPositionID": "PP-000010",
+            "Cost": 70,
+            "Effects": [
+                {
+                    "Name": "Player Value + 60",
+                    "Description": "Increase Value",
+                    "Value": 60
+                }
+            ],
+            "Status": "active"
         }
     ],
     "Football_Staff_Stats":
@@ -229,6 +325,54 @@
             "ID": "SF-000004",
             "Value": 60,
             "CurrentPositionID": "SP-000004",
+            "Cost": 70,
+            "Effects": [
+                {
+                    "Name": "Player Value + 6",
+                    "Description": "Increase Value",
+                    "Value": 6
+                }
+            ],
+            "Status": "active"
+        },
+        {
+            "Name": "Pam",
+            "Rarity": "COMMON",
+            "ID": "SF-000005",
+            "Value": 60,
+            "CurrentPositionID": "SP-000005",
+            "Cost": 70,
+            "Effects": [
+                {
+                    "Name": "Player Value + 6",
+                    "Description": "Increase Value",
+                    "Value": 6
+                }
+            ],
+            "Status": "active"
+        },
+        {
+            "Name": "Quinn",
+            "Rarity": "COMMON",
+            "ID": "SF-000006",
+            "Value": 60,
+            "CurrentPositionID": "SP-000006",
+            "Cost": 70,
+            "Effects": [
+                {
+                    "Name": "Player Value + 6",
+                    "Description": "Increase Value",
+                    "Value": 6
+                }
+            ],
+            "Status": "active"
+        },
+        {
+            "Name": "Rita",
+            "Rarity": "COMMON",
+            "ID": "SF-000007",
+            "Value": 60,
+            "CurrentPositionID": "SP-000007",
             "Cost": 70,
             "Effects": [
                 {

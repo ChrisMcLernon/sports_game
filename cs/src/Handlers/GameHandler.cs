@@ -21,6 +21,7 @@ namespace sports_game.src.Handlers
         public CategoryService? PlayerCategoryService { get; set; }
         public CategoryService? StaffCategoryService { get; set; }
         public int Wins { get; private set; } = 0;
+        public Sport CurrentSport { get; set; }
 
         public void GameLoop()
         {
@@ -138,25 +139,29 @@ namespace sports_game.src.Handlers
 
         public void GenerateStarterTeam()
         {
-            if (SetRandom is null || TeamNames is null)
-            {
-                throw new Exception("Some Data not Initialized");
-            }
-
             AvailablePlayers = [.. AvailablePlayers.OrderBy(x => SetRandom.Next())];
             string teamName = InputReader.ReadText("Enter Team Name: ");
-            Sport chosenSport = PickSport();
-            PlayerTeam = new Team(teamName, chosenSport, "_", true);
-            PlayerTeam.CurrentSport.GeneratePositions();
+            CurrentSport = PickSport();
+            PlayerTeam = new Team(teamName, "_", true);
+            CurrentSport.GeneratePositions();
 
-            while (PlayerTeam.Players.Count < PlayerTeam.CurrentSport.TeamSize && AvailablePlayers.Count > 0)
+            foreach (var player in AvailablePlayers)
+            {
+                AddPosition(player);
+            }
+            foreach (var staff in AvailableStaff)
+            {
+                AddPosition(staff);
+            }
+
+            while (PlayerTeam.Players.Count < CurrentSport.TeamSize && AvailablePlayers.Count > 0)
             {
                 Person player = PlayerCategoryService.PickItem();
                 PlayerTeam.AddPerson(player, false);
                 RemoveAvailablePerson(player);
             }
 
-            while (PlayerTeam.Staff.Count < PlayerTeam.CurrentSport.StaffSize && AvailableStaff.Count > 0)
+            while (PlayerTeam.Staff.Count < CurrentSport.StaffSize && AvailableStaff.Count > 0)
             {
                 Person staff = StaffCategoryService.PickItem();
                 PlayerTeam.AddPerson(staff, false);
@@ -175,11 +180,50 @@ namespace sports_game.src.Handlers
             Console.WriteLine($"{PlayerTeam.Players.Count} Players | {PlayerTeam.Staff.Count} Staff | {PlayerTeam.BenchedPlayers.Count} Benched Players | {PlayerTeam.BenchedStaff.Count} Benched Staff");
         }
 
+        public void AddPosition(Person p)
+        {
+            while (p.CurrentPosition == null)
+            {
+                foreach (var position in CurrentSport.PossiblePlayerPositions)
+                {
+                    if (position.ID == p.CurrentPositionID)
+                    {
+                        p.CurrentPosition = position;
+                        break;
+                    }
+                }
+                foreach (var position in CurrentSport.PossibleStaffPositions)
+                {
+                    if (position.ID == p.CurrentPositionID)
+                    {
+                        p.CurrentPosition = position;
+                        break;
+                    }
+                }
+            }
+        }
         public void PlayGame()
         {
-            if (MarketHandlerLocal is null || PlayerTeam is null || EditorHandlerLocal is null)
+            foreach (var player in PlayerTeam.Players)
             {
-                throw new Exception("Some Data not Initialized");
+                Console.WriteLine("Players:");
+                player.PrintInfo();
+            }
+            foreach (var staff in PlayerTeam.Staff)
+            {
+                Console.WriteLine("Staff:");
+                staff.PrintInfo();
+            }
+
+            foreach (var player in AvailablePlayers)
+            {
+                Console.WriteLine("Available Players:");
+                player.PrintInfo();
+            }
+            foreach (var staff in AvailableStaff)
+            {
+                Console.WriteLine("Available Staff:");
+                staff.PrintInfo();
             }
 
             while (true)
@@ -219,11 +263,6 @@ namespace sports_game.src.Handlers
         public void PlayRound()
         {
             GenerateOpponentTeam();
-
-            if (PlayerTeam is null || OpponentTeam is null)
-            {
-                throw new Exception("Some Data not Initialized");
-            }
 
             List<int> score = CalculateScore();
             int playerScore = score[0];
@@ -268,10 +307,6 @@ namespace sports_game.src.Handlers
 
         private void HandleRoundEnd()
         {
-            if (PlayerTeam is null || OpponentTeam is null)
-            {
-                throw new Exception("Some Data not Initialized");
-            }
 
             PlayerTeam.CalcInterest();
             OpponentTeam.CalcInterest();
@@ -282,22 +317,18 @@ namespace sports_game.src.Handlers
 
         public void GenerateOpponentTeam()
         {
-            if (SetRandom is null || TeamNames is null)
-            {
-                throw new Exception("Some Data not Initialized");
-            }
 
-            OpponentTeam = new Team(TeamNames[SetRandom.Next(TeamNames.Count)], PlayerTeam.CurrentSport);
-            OpponentTeam.CurrentSport.GeneratePositions();
+            OpponentTeam = new Team(TeamNames[SetRandom.Next(TeamNames.Count)]);
+            CurrentSport.GeneratePositions();
 
-            while (OpponentTeam.Players.Count < OpponentTeam.CurrentSport.TeamSize && AvailablePlayers.Count > 0)
+            while (OpponentTeam.Players.Count < CurrentSport.TeamSize && AvailablePlayers.Count > 0)
             {
                 Person player = PlayerCategoryService.PickItem();
                 OpponentTeam.AddPerson(player, false);
                 RemoveAvailablePerson(player);
             }
 
-            while (OpponentTeam.Staff.Count < OpponentTeam.CurrentSport.StaffSize && AvailableStaff.Count > 0)
+            while (OpponentTeam.Staff.Count < CurrentSport.StaffSize && AvailableStaff.Count > 0)
             {
                 Person staff = StaffCategoryService.PickItem();
                 OpponentTeam.AddPerson(staff, false);
@@ -308,10 +339,6 @@ namespace sports_game.src.Handlers
 
         public void HandleOpponentTeam()
         {
-            if (OpponentTeam is null)
-            {
-                throw new Exception("Some Data not Initialized");
-            }
 
             foreach (var player in OpponentTeam.Players)
             {
@@ -331,12 +358,7 @@ namespace sports_game.src.Handlers
 
         public void AddAvailablePerson(Person person)
         {
-            if (PlayerTeam is null)
-            {
-                throw new Exception("Some Data not Initialized");
-            }
-
-            if (PlayerTeam.CurrentSport.PossiblePlayerPositions.Contains(person.CurrentPosition))
+            if (CurrentSport.PossiblePlayerPositions.ToList().Exists(p => p.ID == person.CurrentPositionID))
             {
                 AvailablePlayers.Add(person);
                 PlayerCategoryService.AddItem(person);
@@ -350,12 +372,7 @@ namespace sports_game.src.Handlers
 
         public void RemoveAvailablePerson(Person person)
         {
-            if (PlayerTeam is null)
-            {
-                throw new Exception("Some Data not Initialized");
-            }
-
-            if (PlayerTeam.CurrentSport.PossiblePlayerPositions.Contains(person.CurrentPosition))
+            if (CurrentSport.PossiblePlayerPositions.ToList().Exists(p => p.ID == person.CurrentPositionID))
             {
                 AvailablePlayers.Remove(person);
                 PlayerCategoryService.RemoveItem(person);
@@ -372,11 +389,6 @@ namespace sports_game.src.Handlers
             List<int> totalPoints = [0, 0];
             double unroundedPlayerValue = 0;
             double unroundedEnemyValue = 0;
-
-            if (PlayerTeam is null || OpponentTeam is null)
-            {
-                throw new Exception("Some Data not Initialized");
-            }
 
             foreach (var player in PlayerTeam.Players)
             {

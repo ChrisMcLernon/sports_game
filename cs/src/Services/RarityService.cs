@@ -16,8 +16,7 @@ namespace sports_game.src.Services
         {
             foreach (var person in people)
             {
-                var category = Categories.FirstOrDefault(c => c.Name == person.Rarity);
-                category?.People.Add(person);
+                AddItem(person);
             }
         }
 

@@ -63,13 +63,13 @@ namespace sports_game.src.Handlers
             {
                 foreach (var player in PurchaseablePlayers)
                 {
-                    gameHandler.PlayerCategoryService.AddItem(player);
+                    gameHandler.AddAvailablePerson(player);
                 }
                 PurchaseablePlayers.Clear();
 
                 foreach (var staff in PurchaseableStaff)
                 {
-                    gameHandler.StaffCategoryService.AddItem(staff);
+                    gameHandler.AddAvailablePerson(staff);
                 }
                 PurchaseableStaff.Clear();
             }

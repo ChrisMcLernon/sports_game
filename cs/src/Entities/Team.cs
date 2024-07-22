@@ -4,7 +4,7 @@ using sports_game.src.Services;
 
 namespace sports_game.src.Entities
 {    
-    public class Team(string name, Sport sport, string icon = "_", bool isPlayer = false)
+    public class Team(string name, string icon = "_", bool isPlayer = false)
     {
         public string Name { get; set; } = name;
         public List<Person> Staff { get; set; } = [];
@@ -17,7 +17,6 @@ namespace sports_game.src.Entities
         static public int Interest { get; set; } = 10;
         public bool IsPlayer { get; set; } = isPlayer;
         public EffectHandler EffectHandlerTeam { get; set; } = new EffectHandler();
-        public Sport CurrentSport { get; set; } = sport;
 
         public void ReplacePlayer(Person p, Person replacement)
         {
@@ -39,63 +38,32 @@ namespace sports_game.src.Entities
 
         public void AddPerson(Person p, bool isBenched)
         {
-            AddPosition(p);
-            
             switch (isBenched)
             {
                 case true:
-                    if (p.CurrentPosition is Position benchedPosition)
+                    if (p.CurrentPositionID.Contains("PP"))
                     {
-                        if (benchedPosition.ID.Contains("PP"))
-                        {
-                            BenchedPlayers.Add(p);
-                        }
-                        else
-                        {
-                            BenchedStaff.Add(p);
-                        }
+                        BenchedPlayers.Add(p);
+                    }
+                    else
+                    {
+                        BenchedStaff.Add(p);
                     }
                     break;
-                
+
                 case false:
-                    if (p.CurrentPosition is Position position)
+                    if (p.CurrentPositionID.Contains("PP"))
                     {
-                        if (position.ID.Contains("PP"))
-                        {
-                            Players.Add(p);
-                        }
-                        else
-                        {
-                            Staff.Add(p);
-                        }
+                        Players.Add(p);
+                    }
+                    else
+                    {
+                        Staff.Add(p);
                     }
                     break;
             }
 
             EffectHandlerTeam.AddEffects(p);
-        }
-
-        private void AddPosition(Person p)
-        {
-            while (p.CurrentPosition == null)
-            {
-                foreach (var position in CurrentSport.PossiblePlayerPositions)
-                {
-                    if (position.ID == p.CurrentPositionID)
-                    {
-                        p.CurrentPosition = position;
-                        break;
-                    }
-                }
-                foreach (var position in CurrentSport.PossibleStaffPositions)
-                {
-                    if (position.ID == p.CurrentPositionID)
-                    {
-                        p.CurrentPosition = position;
-                        break;
-                    }
-                }
-            }
         }
 
         public void CalcInterest()
