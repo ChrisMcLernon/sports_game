@@ -166,102 +166,6 @@
                 }
             ],
             "Status": "active"
-        },
-        {
-            "Name": "Eddy",
-            "Rarity": "COMMON",
-            "ID": "PL-000005",
-            "Value": 60,
-            "CurrentPositionID": "PP-000005",
-            "Cost": 70,
-            "Effects": [
-                {
-                    "Name": "Player Value + 60",
-                    "Description": "Increase Value",
-                    "Value": 60
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "Frank",
-            "Rarity": "COMMON",
-            "ID": "PL-000006",
-            "Value": 60,
-            "CurrentPositionID": "PP-000006",
-            "Cost": 70,
-            "Effects": [
-                {
-                    "Name": "Player Value + 60",
-                    "Description": "Increase Value",
-                    "Value": 60
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "George",
-            "Rarity": "COMMON",
-            "ID": "PL-000007",
-            "Value": 60,
-            "CurrentPositionID": "PP-000007",
-            "Cost": 70,
-            "Effects": [
-                {
-                    "Name": "Player Value + 60",
-                    "Description": "Increase Value",
-                    "Value": 60
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "Harry",
-            "Rarity": "COMMON",
-            "ID": "PL-000008",
-            "Value": 60,
-            "CurrentPositionID": "PP-000008",
-            "Cost": 70,
-            "Effects": [
-                {
-                    "Name": "Player Value + 60",
-                    "Description": "Increase Value",
-                    "Value": 60
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "Ivan",
-            "Rarity": "COMMON",
-            "ID": "PL-000009",
-            "Value": 60,
-            "CurrentPositionID": "PP-000009",
-            "Cost": 70,
-            "Effects": [
-                {
-                    "Name": "Player Value + 60",
-                    "Description": "Increase Value",
-                    "Value": 60
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "Jack",
-            "Rarity": "COMMON",
-            "ID": "PL-000010",
-            "Value": 60,
-            "CurrentPositionID": "PP-000010",
-            "Cost": 70,
-            "Effects": [
-                {
-                    "Name": "Player Value + 60",
-                    "Description": "Increase Value",
-                    "Value": 60
-                }
-            ],
-            "Status": "active"
         }
     ],
     "Football_Staff_Stats":
@@ -331,27 +235,6 @@
                     "Name": "Player Value + 6",
                     "Description": "Increase Value",
                     "Value": 6
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "Pam",
-            "Rarity": "COMMON",
-            "ID": "SF-000005",
-            "Value": 40,
-            "CurrentPositionID": "SP-000005",
-            "Cost": 50,
-            "Effects": [
-                {
-                    "Name": "Player Value + 4",
-                    "Description": "Increase Value",
-                    "Value": 4
-                },
-                {
-                    "Name": "Player Value + 8",
-                    "Description": "Increase Cost",
-                    "Value": 8
                 }
             ],
             "Status": "active"

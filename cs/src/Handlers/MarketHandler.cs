@@ -55,7 +55,7 @@ namespace sports_game.src.Handlers
             }
         }
 
-        private void GenerateMarketLists()
+        public void GenerateMarketLists()
         {
             BenchPlayers = gameHandler.PlayerTeam.BenchedPlayers;
             BenchStaff = gameHandler.PlayerTeam.BenchedStaff;
@@ -65,34 +65,56 @@ namespace sports_game.src.Handlers
                 {
                     gameHandler.PlayerCategoryService.AddItem(player);
                 }
+                PurchaseablePlayers.Clear();
+
                 foreach (var staff in PurchaseableStaff)
                 {
                     gameHandler.StaffCategoryService.AddItem(staff);
                 }
+                PurchaseableStaff.Clear();
             }
 
-            while (PurchaseablePlayers.Count != 4)
+            while (gameHandler.AvailablePlayers.Count > 0)
             {
                 Person newPlayer = gameHandler.PlayerCategoryService.PickItem();
+                newPlayer.PrintInfo();
                 if (!PurchaseablePlayers.Contains(newPlayer))
                 {
                     PurchaseablePlayers.Add(newPlayer);
                     gameHandler.RemoveAvailablePerson(newPlayer);
+                    if (PurchaseablePlayers.Count == 1)
+                    {
+                        break;
+                    }
+                }
+                else if (gameHandler.AvailablePlayers.Count == 0)
+                {
+                    Console.WriteLine("No more players available.");
+                    break;
                 }
             }
-            while (PurchaseableStaff.Count != 4)
+            while (gameHandler.AvailableStaff.Count > 0)
             {
                 Person newStaff = gameHandler.StaffCategoryService.PickItem();
+                newStaff.PrintInfo();
                 if (!PurchaseableStaff.Contains(newStaff))
                 {
                     PurchaseableStaff.Add(newStaff);
                     gameHandler.RemoveAvailablePerson(newStaff);
+                    if (PurchaseableStaff.Count == 1)
+                    {
+                        break;
+                    }
                 }
-            }
+                else if (gameHandler.AvailableStaff.Count == 0)
+                {
+                    Console.WriteLine("No more staff available.");
+                    break;
+                }
                 
+            }
         }
-
-        private void SellStaff()
+        public void SellStaff()
         {
             while (BenchStaff.Count != 0)
             {
@@ -129,7 +151,7 @@ namespace sports_game.src.Handlers
             MarketInterface();
         }
 
-        private void SellPlayer()
+        public void SellPlayer()
         {
             while (BenchPlayers.Count != 0)
             {
@@ -166,7 +188,7 @@ namespace sports_game.src.Handlers
             MarketInterface();
         }
 
-        private void BuyStaff()
+        public void BuyStaff()
         {
             while (PurchaseableStaff.Count != 0)
             {
@@ -211,7 +233,7 @@ namespace sports_game.src.Handlers
             MarketInterface();
         }
 
-        private void BuyPlayer()
+        public void BuyPlayer()
         {
             while (PurchaseablePlayers.Count > 0)
             {
@@ -257,7 +279,7 @@ namespace sports_game.src.Handlers
             MarketInterface();
         }
 
-        private void ExitMarket()
+        public void ExitMarket()
         {
             gameHandler.PlayGame();
         }

@@ -77,10 +77,6 @@ namespace sports_game.src.Handlers
             AvailableStaff = JsonReader.Read<List<Person>>("Football_Staff_Stats");
             TeamNames = JsonReader.Read<List<string>>("Team_Names");
 
-            Console.WriteLine(AvailablePlayers.Count);
-            Console.WriteLine(AvailableStaff.Count);
-            Console.WriteLine(TeamNames.Count);
-
             Round = 1;
             Losses = 0;
             Wins = 0;
@@ -160,11 +156,6 @@ namespace sports_game.src.Handlers
                 RemoveAvailablePerson(player);
             }
 
-            foreach (var player in PlayerTeam.Players)
-            {
-                player.PrintInfo();
-            }
-
             while (PlayerTeam.Staff.Count < PlayerTeam.CurrentSport.StaffSize && AvailableStaff.Count > 0)
             {
                 Person staff = StaffCategoryService.PickItem();
@@ -181,7 +172,7 @@ namespace sports_game.src.Handlers
             RemoveAvailablePerson(benchedStaff);
             
             Console.WriteLine($"{PlayerTeam.Name} Created!");
-            Console.WriteLine($"{AvailablePlayers.Count} Players Left | {AvailableStaff.Count} Staff Left | {PlayerTeam.Players.Count} Players | {PlayerTeam.Staff.Count} Staff | {PlayerTeam.BenchedPlayers.Count} Benched Players | {PlayerTeam.BenchedStaff.Count} Benched Staff");
+            Console.WriteLine($"{PlayerTeam.Players.Count} Players | {PlayerTeam.Staff.Count} Staff | {PlayerTeam.BenchedPlayers.Count} Benched Players | {PlayerTeam.BenchedStaff.Count} Benched Staff");
         }
 
         public void PlayGame()
@@ -190,16 +181,7 @@ namespace sports_game.src.Handlers
             {
                 throw new Exception("Some Data not Initialized");
             }
-            else if (AvailablePlayers.Count == 0 || AvailableStaff.Count == 0)
-            {
-                foreach (var player in PlayerTeam.Players)
-                {
-                    player.PrintInfo();
-                }
 
-                Console.WriteLine("No Players or Staff Available");
-                Close();
-            }
             while (true)
             {
                 Console.WriteLine("\n\nWhat would you like to do?");

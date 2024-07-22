@@ -32,7 +32,7 @@
 
         public void PrintInfo()
         {
-            Console. WriteLine($"Name: {Name} | Rarity: {Rarity} | Value: {Value} | Position: {CurrentPosition.Name} | Modifier: {CurrentPosition.Modifier} | Cost: ${Cost}");
+            Console. WriteLine($"Name: {Name} | Rarity: {Rarity} | Value: {Value} | Cost: ${Cost}");
         }
     }
 }
