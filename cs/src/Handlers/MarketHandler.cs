@@ -185,7 +185,7 @@ namespace sports_game.src.Handlers
                     Person chosenStaff = PurchaseableStaff[index - 1];
                     if (gameHandler.PlayerTeam.Budget >= chosenStaff.Cost)
                     {
-                        BenchStaff.Add(chosenStaff);
+                        gameHandler.PlayerTeam.AddPerson(chosenStaff, true);
                         gameHandler.StaffCategoryService.RemoveItem(chosenStaff);
                         gameHandler.PlayerTeam.Budget -= chosenStaff.Cost;
                         PurchaseableStaff.RemoveAt(index - 1);
@@ -231,7 +231,7 @@ namespace sports_game.src.Handlers
                     Person chosenPlayer = PurchaseablePlayers[index - 1];
                     if (gameHandler.PlayerTeam.Budget >= chosenPlayer.Cost)
                     {
-                        BenchPlayers.Add(chosenPlayer);
+                        gameHandler.PlayerTeam.AddPerson(chosenPlayer, true);
                         gameHandler.PlayerCategoryService.RemoveItem(chosenPlayer);
                         gameHandler.PlayerTeam.Budget -= chosenPlayer.Cost;
                         PurchaseablePlayers.RemoveAt(index - 1);

@@ -9,20 +9,20 @@ namespace sports_game.src.Handlers
 
         public void RemoveEffects(Person person)
         {
-            Effects.Remove(person.Name);
+            Effects.Remove(person.ID);
         }
 
         public void AddEffects(Person person)
         {
-            if (!Effects.TryGetValue(person.Name, out List<Effect>? value))
+            if (!Effects.TryGetValue(person.ID, out List<Effect>? value))
             {
-                Effects[person.Name] = [];
+                Effects[person.ID] = [];
                 foreach (var effect in person.Effects)
                 {
-                    Effects[person.Name].Add(effect);
+                    Effects[person.ID].Add(effect);
                 }
             }
-            else if (Effects.TryGetValue(person.Name, out List<Effect>? key))
+            else if (Effects.TryGetValue(person.ID, out List<Effect>? key))
             {
                 foreach (var effect in person.Effects)
                 {
@@ -34,7 +34,7 @@ namespace sports_game.src.Handlers
         public int ApplyPersonEffects(Person person)
         {
             int totalEffect = 0;
-            foreach (var effect in Effects[person.Name])
+            foreach (var effect in Effects[person.ID])
             {
                 switch (effect.Description)
                 {
@@ -43,7 +43,7 @@ namespace sports_game.src.Handlers
                         break;
                     
                     case "Decrease Value":
-                        totalEffect -= effect.Value;
+                        person.Value -= effect.Value;
                         break;
                 }
             }
@@ -52,22 +52,7 @@ namespace sports_game.src.Handlers
 
         public void ApplyTeamEffects()
         {
-            foreach (var effect in Effects)
-            {
-                foreach (var e in effect.Value)
-                {
-                    switch (e.Description)
-                    {                        
-                        case "Increase Interest":
-                            Team.Interest += e.Value;
-                            break;
-                        
-                        case "Decrease Interest":
-                            Team.Interest -= e.Value;
-                            break;
-                    }
-                }
-            }
+
         }
     }
 }

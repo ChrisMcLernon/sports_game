@@ -209,8 +209,6 @@ namespace sports_game.src.Handlers
 
                     if (gameHandler.PlayerTeam.Staff.Contains(replacement) && !gameHandler.PlayerTeam.BenchedStaff.Contains(replacee))
                     {
-                        gameHandler.PlayerTeam.BenchedStaff.Add(replacee);
-                        gameHandler.PlayerTeam.BenchedStaff.Remove(replacement);
                         Console.WriteLine("Staff replaced successfully.");
                     }
                     else

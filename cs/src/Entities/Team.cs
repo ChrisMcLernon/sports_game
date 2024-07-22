@@ -4,7 +4,7 @@ using sports_game.src.Services;
 
 namespace sports_game.src.Entities
 {    
-    public class Team(string name, string icon = "_", string sport = "FOOTBALL", bool isPlayer = false)
+    public class Team(string name, Sport sport, string icon = "_", bool isPlayer = false)
     {
         public string Name { get; set; } = name;
         public List<Person> Staff { get; set; } = [];
@@ -12,51 +12,89 @@ namespace sports_game.src.Entities
         public List<Person> BenchedPlayers { get; set; } = [];
         public List<Person> BenchedStaff { get; set; } = [];
         public string Icon { get; set; } = icon;
-        public string Sport { get; set; } = sport;
         public int Score { get; set; }
         public int Budget { get; set; }
         static public int Interest { get; set; } = 10;
         public bool IsPlayer { get; set; } = isPlayer;
         public EffectHandler EffectHandlerTeam { get; set; } = new EffectHandler();
-        public List<string> PossiblePlayerPositions { get; set; } = [];
-        public List<string> PossibleStaffPositions { get; set; } = [];
+        public Sport CurrentSport { get; set; } = sport;
 
         public void ReplacePlayer(Person p, Person replacement)
         {
             RemovePerson(p);
-            AddPerson(replacement);
+            RemovePerson(replacement);
+            AddPerson(p, true);
+            AddPerson(replacement, false);
         }
 
         public void RemovePerson(Person p)
         {
-            if (!Players.Remove(p))
-                Staff.Remove(p);
+            if (!Players.Remove(p) && !BenchedPlayers.Remove(p) && !Staff.Remove(p) && !BenchedStaff.Remove(p))
+            {
+                throw new Exception("Person not found");
+            }
+
             EffectHandlerTeam.RemoveEffects(p);
         }
 
-        public void AddPerson(Person p)
+        public void AddPerson(Person p, bool isBenched)
         {
-            if (PossiblePlayerPositions.Contains(p.CurrentPosition.Name))
+            AddPosition(p);
+            
+            switch (isBenched)
             {
-                Players.Add(p);
-                EffectHandlerTeam.AddEffects(p);
+                case true:
+                    if (p.CurrentPosition is Position benchedPosition)
+                    {
+                        if (benchedPosition.ID.Contains("PP"))
+                        {
+                            BenchedPlayers.Add(p);
+                        }
+                        else
+                        {
+                            BenchedStaff.Add(p);
+                        }
+                    }
+                    break;
+                
+                case false:
+                    if (p.CurrentPosition is Position position)
+                    {
+                        if (position.ID.Contains("PP"))
+                        {
+                            Players.Add(p);
+                        }
+                        else
+                        {
+                            Staff.Add(p);
+                        }
+                    }
+                    break;
             }
-            else if (PossibleStaffPositions.Contains(p.CurrentPosition.Name) && !PositionFilled(p.CurrentPosition))
-            {
-                Staff.Add(p);
-                EffectHandlerTeam.AddEffects(p);
-            }
-            else
-            {
-                Console.WriteLine("Invalid Position or Position Filled");
-            }
+
+            EffectHandlerTeam.AddEffects(p);
         }
 
-        public void GeneratePossiblePositions()
+        private void AddPosition(Person p)
         {
-            if (Sport == "FOOTBALL"){
-                PossiblePlayerPositions = JsonReader.Read<List<string>>("Football_Player_Positions");
-                PossibleStaffPositions = JsonReader.Read<List<string>>("Football_Staff_Positions");
+            while (p.CurrentPosition == null)
+            {
+                foreach (var position in CurrentSport.PossiblePlayerPositions)
+                {
+                    if (position.ID == p.CurrentPositionID)
+                    {
+                        p.CurrentPosition = position;
+                        break;
+                    }
+                }
+                foreach (var position in CurrentSport.PossibleStaffPositions)
+                {
+                    if (position.ID == p.CurrentPositionID)
+                    {
+                        p.CurrentPosition = position;
+                        break;
+                    }
+                }
             }
         }
 
@@ -85,34 +123,6 @@ namespace sports_game.src.Entities
                 Console.WriteLine($"\nBudget: {Budget}");
             }
 
-        }
-
-        public bool PositionFilled(Position pos)
-        {
-            int numPlayersInPosition = 0;
-            foreach (var player in Players)
-            {
-                if (player.CurrentPosition.Name == pos.Name)
-                {
-                    numPlayersInPosition++;
-                    if (numPlayersInPosition == pos.Size)
-                    {
-                        return true;
-                    }
-                }
-            }
-            foreach (var members in Staff)
-            {
-                if (members.CurrentPosition.Name == pos.Name)
-                {
-                    numPlayersInPosition++;
-                    if (numPlayersInPosition == pos.Size)
-                    {
-                        return true;
-                    }
-                }
-            }
-            return false;
         }
     }
 }
