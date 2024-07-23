@@ -207,15 +207,20 @@ namespace sports_game.src.Handlers
         {
             while (true)
             {
-                Console.WriteLine("\n\nWhat would you like to do?");
+                Console.WriteLine($"\n\nRound {Round}");
+                if (Round % 3 == 0)
+                {
+                    Console.WriteLine($"Boss Round! (x{Math.Round(Round * 0.5, 1)} Points)");
+                }
+                else
+                {
+                    Console.WriteLine($"(x{Math.Round(Round * 0.2, 1)} Points)");
+                }
+                Console.WriteLine("What would you like to do?");
                 Console.WriteLine("1. Team Editor");
                 Console.WriteLine("2. Visit Market");
                 Console.WriteLine("3. Continue to Next Match");
                 Console.WriteLine("0. Exit");
-                if (Round % 3 == 0)
-                {
-                    Console.WriteLine($"Boss Round! (x{Round * 0.5} Points)");
-                }
 
                 string input = InputReader.ReadText("Enter your choice: ");
 
@@ -254,11 +259,11 @@ namespace sports_game.src.Handlers
             int opponentScore;
             if ((Round % 3) == 0)
             {
-                opponentScore = (int)(playerScore * (Round * 0.5));
+                opponentScore = (int)(playerScore * Math.Round(Round * 0.5, 1));
             }
             else
             {
-                opponentScore = (int)(playerScore * (Round * 0.2));
+                opponentScore = (int)(playerScore * Math.Round(Round * 0.2, 1));
             }
 
             if (playerScore > opponentScore)

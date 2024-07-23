@@ -104,17 +104,18 @@
     "Football_Player_Stats":
     [
         {
-            "Name": "Alex",
+            "Name": "Jimmy 'U-Cant' Hitme",
             "Rarity": "LEGENDARY",
             "ID": "PL-000001",
-            "Value": 100,
+            "Value": 120,
             "CurrentPositionID": "PP-000001",
             "Cost": 110,
             "Effects": [
                 {
-                    "Name": "Player Value + 100",
-                    "Description": "Increase Value",
-                    "Value": 100
+                    "Name": "Multiply Position",
+                    "Description": "Multiply Linebacker Position by 2",
+                    "Value": 2,
+                    "Target": "PP-000007"
                 }
             ],
             "Status": "active"
