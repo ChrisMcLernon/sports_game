@@ -62,8 +62,6 @@ namespace sports_game.src.Entities
                     }
                     break;
             }
-
-            EffectHandlerTeam.AddEffects(p);
         }
 
         public void CalcInterest()

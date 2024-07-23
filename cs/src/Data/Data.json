@@ -113,9 +113,9 @@
             "Effects": [
                 {
                     "Name": "Multiply Position",
-                    "Description": "Multiply Linebacker Position by 2",
+                    "Description": "Multiply Defensive Back Position by 2",
                     "Value": 2,
-                    "Target": "PP-000007"
+                    "Target": "PP-000008"
                 }
             ],
             "Status": "active"
