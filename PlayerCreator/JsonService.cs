@@ -2,7 +2,7 @@ using System.Text.Json;
 
 static public class JsonService
 {
-    static private readonly string BASE_PATH = Path.GetFullPath("../src/Data/Data.json");
+    static private readonly string BASE_PATH = Path.GetFullPath("../cs/src/Data/Data.json");
 
     static public T Read<T>(string key)
     {
