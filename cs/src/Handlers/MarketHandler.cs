@@ -77,7 +77,6 @@ namespace sports_game.src.Handlers
             while (gameHandler.AvailablePlayers.Count > 0)
             {
                 Person newPlayer = gameHandler.PlayerCategoryService.PickItem();
-                newPlayer.PrintInfo();
                 if (!PurchaseablePlayers.Contains(newPlayer))
                 {
                     PurchaseablePlayers.Add(newPlayer);
@@ -96,7 +95,6 @@ namespace sports_game.src.Handlers
             while (gameHandler.AvailableStaff.Count > 0)
             {
                 Person newStaff = gameHandler.StaffCategoryService.PickItem();
-                newStaff.PrintInfo();
                 if (!PurchaseableStaff.Contains(newStaff))
                 {
                     PurchaseableStaff.Add(newStaff);

@@ -209,7 +209,7 @@ namespace sports_game.src.Handlers
         {
             while (true)
             {
-                Console.WriteLine("What would you like to do?");
+                Console.WriteLine("\n\n\n\nWhat would you like to do?");
                 Console.WriteLine($"{PlayerTeam.Name} | Budget: {PlayerTeam.Budget} | Wins: {Wins} | Losses: {Losses}");
                 Console.WriteLine($"Players: {PlayerTeam.Players.Count} | Staff: {PlayerTeam.Staff.Count} | Benched Players: {PlayerTeam.BenchedPlayers.Count} | Benched Staff: {PlayerTeam.BenchedStaff.Count}");
                 Console.WriteLine("1. Team Editor");
@@ -289,8 +289,32 @@ namespace sports_game.src.Handlers
                 Console.WriteLine($"\n\n{PlayerTeam.Name}: {playerScore} - {OpponentTeam.Name}: {opponentScore}");
             }
 
+            foreach (var player in PlayerTeam.Players)
+            {
+                injuryChance(player);
+            }
+            foreach (var enemy in OpponentTeam.Players)
+            {
+                injuryChance(enemy);
+            }
+
             HandleOpponentTeam();
             HandleRoundEnd();
+        }
+
+        private void injuryChance(Person player)
+        {
+            if (SetRandom.Next(100) < 10)
+            {
+                player.Status = "Injured";
+                Console.WriteLine($"{player.Name} is Injured!");
+            }
+
+            if (player.Status == "Injured")
+            {
+                player.Value /= 2;
+                player.Cost /= 2;
+            }
         }
 
         private void HandleRoundEnd()
