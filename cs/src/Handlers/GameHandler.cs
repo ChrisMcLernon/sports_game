@@ -61,7 +61,7 @@ namespace sports_game.src.Handlers
                 switch (input)
                 {
                     case "1":
-                        Sport chosenSport = JsonReader.Read<Sport>("Football_Sport_Info");
+                        Sport chosenSport = JsonService.Read<Sport>("Football_Sport_Info");
                         return chosenSport;
                     default:
                         Console.WriteLine("Invalid Input");
@@ -75,9 +75,9 @@ namespace sports_game.src.Handlers
 
         public void InitializeData()
         {
-            AvailablePlayers = JsonReader.Read<List<Person>>("Football_Player_Stats");
-            AvailableStaff = JsonReader.Read<List<Person>>("Football_Staff_Stats");
-            TeamNames = JsonReader.Read<List<string>>("Team_Names");
+            AvailablePlayers = JsonService.Read<List<Person>>("Football_Player_Stats");
+            AvailableStaff = JsonService.Read<List<Person>>("Football_Staff_Stats");
+            TeamNames = JsonService.Read<List<string>>("Team_Names");
 
             Round = 1;
             Losses = 0;
@@ -318,7 +318,7 @@ namespace sports_game.src.Handlers
             PlayerTeam.CalcInterest();
             OpponentTeam.CalcInterest();
 
-            PlanningHandlerLocal.Lineup.Clear();
+            PlanningHandlerLocal.CurrentLineup.Clear();
 
             Console.WriteLine($"Round {Round} Complete!");
             Round++;
@@ -439,9 +439,9 @@ namespace sports_game.src.Handlers
                 return totalPoints;
             }
 
-            while (PlanningHandlerLocal.Lineup.Count != 0)
+            while (PlanningHandlerLocal.CurrentLineup.Count != 0)
             {
-                Person p = PlanningHandlerLocal.Lineup.Pop();
+                Person p = PlanningHandlerLocal.CurrentLineup.Pop();
 
                 PlayerTeam.EffectHandlerTeam.AddEffects(p);
 
