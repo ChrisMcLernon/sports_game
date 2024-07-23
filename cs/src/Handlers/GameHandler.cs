@@ -146,6 +146,7 @@ namespace sports_game.src.Handlers
             CurrentSport = PickSport();
             PlayerTeam = new Team(teamName, "_", true);
             CurrentSport.GeneratePositions();
+            PlayerTeam.TeamDataInitialize();
 
             foreach (var player in AvailablePlayers)
             {
@@ -334,6 +335,7 @@ namespace sports_game.src.Handlers
 
             OpponentTeam = new Team(TeamNames[SetRandom.Next(TeamNames.Count)]);
             CurrentSport.GeneratePositions();
+            OpponentTeam.TeamDataInitialize();
 
             while (OpponentTeam.Players.Count < CurrentSport.TeamSize && AvailablePlayers.Count > 0)
             {
@@ -413,7 +415,6 @@ namespace sports_game.src.Handlers
 
                 unroundedEnemyValue += OpponentTeam.EffectHandlerTeam.ApplyPersonEffects(enemy);
                 unroundedEnemyValue *= enemy.CurrentPosition.Modifier;
-
                 totalPoints[1] += Convert.ToInt32(Math.Round(unroundedEnemyValue));
                 unroundedEnemyValue = 0;
 
@@ -424,7 +425,6 @@ namespace sports_game.src.Handlers
 
                 unroundedEnemyValue += OpponentTeam.EffectHandlerTeam.ApplyPersonEffects(staff);
                 unroundedEnemyValue *= staff.CurrentPosition.Modifier;
-
                 totalPoints[1] += Convert.ToInt32(Math.Round(unroundedEnemyValue));
                 unroundedEnemyValue = 0;
             }
@@ -452,10 +452,21 @@ namespace sports_game.src.Handlers
                 p.PrintInfo();
                 unroundedPlayerValue += PlayerTeam.EffectHandlerTeam.ApplyPersonEffects(p);
                 unroundedPlayerValue *= p.CurrentPosition.Modifier;
+                Console.WriteLine($"Total Points: {Convert.ToInt32(Math.Round(unroundedPlayerValue / p.CurrentPosition.Modifier))} multiplied by {p.CurrentPosition.Modifier} = {Convert.ToInt32(Math.Round(unroundedPlayerValue))}");
 
                 totalPoints[0] += Convert.ToInt32(Math.Round(unroundedPlayerValue));
                 unroundedPlayerValue = 0;
             }
+
+            foreach (var p in PlayerTeam.Players)
+            {
+                PlayerTeam.EffectHandlerTeam.RemoveEffects (p);
+            }
+            foreach (var p in PlayerTeam.Staff)
+            {
+                PlayerTeam.EffectHandlerTeam.RemoveEffects(p);
+            }
+
             return totalPoints;
         }
     }

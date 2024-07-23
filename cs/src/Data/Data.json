@@ -118,8 +118,8 @@
                     "Target": "PP-000008"
                 },
                 {
-                    "Name": "Increase Cost + 50",
-                    "Description": "Increase Cost",
+                    "Name": "Decrease Cost",
+                    "Description": "Decrease Cost by 50",
                     "Value": 50
                 }
             ],
@@ -134,15 +134,16 @@
             "Cost": 90,
             "Effects": [
                 {
-                    "Name": "Multiply Position",
-                    "Description": "Quarterback Position * 2",
-                    "Value": 2,
+                    "Name": "Multiply Position by Size",
+                    "Description": "Quarterback Position Multiplied by size",
+                    "Value": 0,
                     "Target": "PP-000001"
                 },
                 {
-                    "Name": "Decrease Value + 50",
-                    "Description": "Decrease Value",
-                    "Value": 50
+                    "Name": "Add Value by Size",
+                    "Description": "Add Value multiplied by number of Quarterbacks",
+                    "Value": 50,
+                    "Target": "PP-000001"
                 }
             ],
             "Status": "active"
@@ -385,14 +386,16 @@
             "Cost": 120,
             "Effects": [
                 {
-                    "Name": "Player Value + 12",
-                    "Description": "Increase Value",
-                    "Value": 12
+                    "Name": "Multiply Position by Size",
+                    "Description": "Multiply Quarterback by Size",
+                    "Value": 0,
+                    "Target": "PP-000001"
                 },
                 {
-                    "Name": "Player Value + 24",
-                    "Description": "Increase Cost",
-                    "Value": 24
+                    "Name": "Add Value by Size",
+                    "Description": "Add Value multiplied by number of Quarterbacks",
+                    "Value": 100,
+                    "Target": "PP-000001"
                 }
             ],
             "Status": "active"

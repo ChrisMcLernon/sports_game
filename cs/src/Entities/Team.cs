@@ -16,7 +16,12 @@ namespace sports_game.src.Entities
         public int Budget { get; set; }
         static public int Interest { get; set; } = 10;
         public bool IsPlayer { get; set; } = isPlayer;
-        public EffectHandler EffectHandlerTeam { get; set; } = new EffectHandler();
+        public EffectHandler EffectHandlerTeam { get; set; }
+
+        public void TeamDataInitialize()
+        {
+            EffectHandlerTeam = new EffectHandler(this);
+        }
 
         public void ReplacePlayer(Person p, Person replacement)
         {
