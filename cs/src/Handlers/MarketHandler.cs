@@ -21,7 +21,18 @@ namespace sports_game.src.Handlers
 
             while(true)
             {
-                Console.WriteLine("\n\nWelcome to the Market!");
+                Console.WriteLine("\n\nPlayers:");
+                foreach(var player in gameHandler.PlayerTeam.Players)
+                {
+                    player.PrintInfo();
+                }
+                Console.WriteLine("\nStaff:");
+                foreach(var staff in gameHandler.PlayerTeam.Staff)
+                {
+                    staff.PrintInfo();
+                }
+
+                Console.WriteLine("\nWelcome to the Market!");
                 Console.WriteLine($"Budget: {gameHandler.PlayerTeam.Budget}");
                 Console.WriteLine("1. Buy Player");
                 Console.WriteLine("2. Buy Staff");

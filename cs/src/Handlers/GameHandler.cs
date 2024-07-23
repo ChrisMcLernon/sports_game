@@ -214,8 +214,7 @@ namespace sports_game.src.Handlers
                 Console.WriteLine($"{PlayerTeam.Name} | Budget: {PlayerTeam.Budget} | Wins: {Wins} | Losses: {Losses}");
                 Console.WriteLine($"Players: {PlayerTeam.Players.Count} | Staff: {PlayerTeam.Staff.Count} | Benched Players: {PlayerTeam.BenchedPlayers.Count} | Benched Staff: {PlayerTeam.BenchedStaff.Count}");
                 Console.WriteLine("1. Team Editor");
-                Console.WriteLine("2. Visit Market");
-                Console.WriteLine("3. Continue to Match Planning");
+                Console.WriteLine("2. Continue to Match Planning");
                 Console.WriteLine("0. Exit");
 
                 string input = InputReader.ReadText("Enter your choice: ");
@@ -232,11 +231,6 @@ namespace sports_game.src.Handlers
                         break;
                     case "2":
                         //Console.Clear();
-                        MarketHandlerLocal.MarketInterface();
-                        break;
-                    case "3":
-                        //Console.Clear();
-                        
                         PlayRound();
                         break;
                     default:
@@ -328,6 +322,8 @@ namespace sports_game.src.Handlers
 
             Console.WriteLine($"Round {Round} Complete!");
             Round++;
+
+            MarketHandlerLocal.MarketInterface();
         }
 
         public void GenerateOpponentTeam()
