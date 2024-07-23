@@ -33,13 +33,14 @@ namespace sports_game.src.Handlers
 
         public int ApplyPersonEffects(Person person)
         {
-            int totalEffect = 0;
+            int totalEffect = person.Value;
             foreach (var effect in Effects[person.ID])
             {
                 switch (effect.Description)
                 {
                     case "Increase Value":
                         totalEffect += effect.Value;
+                        Console.WriteLine($"{person.Name} has increased value by {effect.Value} = {totalEffect}");
                         break;
                     
                     case "Decrease Value":
@@ -47,12 +48,24 @@ namespace sports_game.src.Handlers
                         break;
                 }
             }
+
+            foreach (var effect in Effects)
+            {
+                foreach (var e in effect.Value)
+                {
+                    switch (e.Name)
+                    {
+                        case "Multiply Position":
+                            if (e.Target == person.CurrentPositionID)
+                            {
+                                totalEffect *= e.Value;
+                                Console.WriteLine($"{person.Name} has had their value multiplied by {e.Value} due to {e.Description} = {totalEffect}");
+                            }
+                            break;
+                    }
+                }
+            }
             return totalEffect;
-        }
-
-        public void ApplyTeamEffects()
-        {
-
         }
     }
 }

@@ -16,7 +16,7 @@ namespace sports_game.src.Handlers
         static private EditorHandler? EditorHandlerLocal { get; set; }
         private string? Seed { get; set; }
         public Random? SetRandom { get; set; }
-        public int Round { get; set; } = 1;
+        public int Round { get; set; } = 0;
         public int Losses { get; set; } = 0;
         public CategoryService? PlayerCategoryService { get; set; }
         public CategoryService? StaffCategoryService { get; set; }
@@ -202,30 +202,9 @@ namespace sports_game.src.Handlers
                 }
             }
         }
+
         public void PlayGame()
         {
-            foreach (var player in PlayerTeam.Players)
-            {
-                Console.WriteLine("Players:");
-                player.PrintInfo();
-            }
-            foreach (var staff in PlayerTeam.Staff)
-            {
-                Console.WriteLine("Staff:");
-                staff.PrintInfo();
-            }
-
-            foreach (var player in AvailablePlayers)
-            {
-                Console.WriteLine("Available Players:");
-                player.PrintInfo();
-            }
-            foreach (var staff in AvailableStaff)
-            {
-                Console.WriteLine("Available Staff:");
-                staff.PrintInfo();
-            }
-
             while (true)
             {
                 Console.WriteLine("\n\nWhat would you like to do?");
@@ -233,6 +212,11 @@ namespace sports_game.src.Handlers
                 Console.WriteLine("2. Visit Market");
                 Console.WriteLine("3. Continue to Next Match");
                 Console.WriteLine("0. Exit");
+                if (Round % 3 == 0)
+                {
+                    Console.WriteLine($"Boss Round! (x{Round * 0.5} Points)");
+                }
+
                 string input = InputReader.ReadText("Enter your choice: ");
 
                 switch (input)
@@ -251,6 +235,7 @@ namespace sports_game.src.Handlers
                         break;
                     case "3":
                         //Console.Clear();
+                        
                         PlayRound();
                         break;
                     default:
@@ -266,7 +251,15 @@ namespace sports_game.src.Handlers
 
             List<int> score = CalculateScore();
             int playerScore = score[0];
-            int opponentScore = (int)(score[1] * (Round * 0.5));
+            int opponentScore;
+            if ((Round % 3) == 0)
+            {
+                opponentScore = (int)(playerScore * (Round * 0.5));
+            }
+            else
+            {
+                opponentScore = (int)(playerScore * (Round * 0.2));
+            }
 
             if (playerScore > opponentScore)
             {
@@ -276,8 +269,8 @@ namespace sports_game.src.Handlers
                 Wins++;
                 if (Wins == 10)
                 {
-                    Console.WriteLine("You Win the Game!");
                     Console.Clear();
+                    Console.WriteLine("You Win the Game!");
                     Close();
                 }
             }
@@ -311,8 +304,8 @@ namespace sports_game.src.Handlers
             PlayerTeam.CalcInterest();
             OpponentTeam.CalcInterest();
 
-            Round++;
             Console.WriteLine($"Round {Round} Complete!");
+            Round++;
         }
 
         public void GenerateOpponentTeam()
@@ -393,7 +386,6 @@ namespace sports_game.src.Handlers
             foreach (var player in PlayerTeam.Players)
             {
                 player.PrintInfo();
-                unroundedPlayerValue += player.Value;
                 unroundedPlayerValue += PlayerTeam.EffectHandlerTeam.ApplyPersonEffects(player);
                 Console.WriteLine($"Player Value with effects: {unroundedPlayerValue}");
                 unroundedPlayerValue *= player.CurrentPosition.Modifier;
@@ -406,7 +398,6 @@ namespace sports_game.src.Handlers
             foreach (var staff in PlayerTeam.Staff)
             {
                 staff.PrintInfo();
-                unroundedPlayerValue += staff.Value;
                 unroundedPlayerValue += PlayerTeam.EffectHandlerTeam.ApplyPersonEffects(staff);
                 Console.WriteLine($"Staff Value with effects: {unroundedPlayerValue}\n");
                 unroundedPlayerValue *= staff.CurrentPosition.Modifier;
@@ -420,7 +411,6 @@ namespace sports_game.src.Handlers
             foreach (var enemy in OpponentTeam.Players)
             {
                 enemy.PrintInfo();
-                unroundedEnemyValue += enemy.Value;
                 unroundedEnemyValue += OpponentTeam.EffectHandlerTeam.ApplyPersonEffects(enemy);
                 Console.WriteLine($"Player Value with effects: {unroundedEnemyValue}");
                 unroundedEnemyValue *= enemy.CurrentPosition.Modifier;
@@ -434,7 +424,6 @@ namespace sports_game.src.Handlers
             foreach (var staff in OpponentTeam.Staff)
             {
                 staff.PrintInfo();
-                unroundedEnemyValue += staff.Value;
                 unroundedEnemyValue += OpponentTeam.EffectHandlerTeam.ApplyPersonEffects(staff);
                 Console.WriteLine($"Staff Value with effects: {unroundedEnemyValue}\n");
                 unroundedEnemyValue *= staff.CurrentPosition.Modifier;
