@@ -254,15 +254,7 @@ namespace sports_game.src.Handlers
             List<int> score = CalculateScore();
 
             int playerScore = score[0];
-            int opponentScore;
-            if ((Round % 3) == 0)
-            {
-                opponentScore = (int)(playerScore * Math.Round(Round * 0.5, 1));
-            }
-            else
-            {
-                opponentScore = (int)(playerScore * Math.Round(Round * 0.2, 1));
-            }
+            int opponentScore = score[1];
 
             if (playerScore > opponentScore)
             {
@@ -411,6 +403,15 @@ namespace sports_game.src.Handlers
 
                 totalPoints[1] += Convert.ToInt32(Math.Round(unroundedEnemyValue));
                 unroundedEnemyValue = 0;
+            }
+
+            if ((Round % 3) == 0)
+            {
+                totalPoints[1] = (int)(totalPoints[1] * Math.Round(Round * 0.5, 1));
+            }
+            else
+            {
+                totalPoints[1] = (int)(totalPoints[1] * Math.Round(Round * 0.2, 1));
             }
 
             if (isPreview)

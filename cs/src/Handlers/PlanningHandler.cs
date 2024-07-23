@@ -11,16 +11,8 @@ namespace sports_game.src.Handlers
         public void PlanningInterface()
         {
             Console.WriteLine($"\n\nRound {gameHandler.Round}");
-            if (gameHandler.Round % 3 == 0)
-            {
-                Console.WriteLine($"Boss Round! (x{Math.Round(gameHandler.Round * 0.5, 1)} Points)");
-            }
-            else
-            {
-                Console.WriteLine($"(x{Math.Round(gameHandler.Round * 0.2, 1)} Points)");
-            }
             Console.WriteLine($"Opponent: {gameHandler.OpponentTeam.Name}");
-            Console.WriteLine($"{gameHandler.CalculateScore(true)[1]}");
+            Console.WriteLine($"Potential Score: {gameHandler.CalculateScore(true)[1]} (+/-)");
             Console.WriteLine($"Choose your order:");
             Lineup = ChooseLineup();
         }
