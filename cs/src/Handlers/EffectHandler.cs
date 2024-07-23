@@ -34,7 +34,11 @@ namespace sports_game.src.Handlers
                 {
                     case "Increase Value":
                         person.Value += effect.Value;
-                        Console.WriteLine($"Added {effect.Value} to Value of {person.Name}");
+                        if (TeamLocal.IsPlayer)
+                        {
+                            Console.WriteLine($"Added {effect.Value} to Value of {person.Name}");
+
+                        }
                         break;
                     
                     case "Decrease Value":
@@ -46,12 +50,18 @@ namespace sports_game.src.Handlers
                         {
                             person.Value -= effect.Value;
                         }
-                        Console.WriteLine($"Subtracted {effect.Value} from Value of {person.Name}");
+                        if (TeamLocal.IsPlayer)
+                        {
+                            Console.WriteLine($"Subtracted {effect.Value} from Value of {person.Name}");
+                        }
                         break;
 
                     case "Increase Cost":
                         person.Cost += effect.Value;
-                        Console.WriteLine($"Added {effect.Value} to Cost of {person.Name}");
+                        if (TeamLocal.IsPlayer)
+                        {
+                            Console.WriteLine($"Added {effect.Value} to Cost of {person.Name}");
+                        }
                         break;
                     
                     case "Decrease Cost":
@@ -63,7 +73,10 @@ namespace sports_game.src.Handlers
                         {
                             person.Cost -= effect.Value;
                         }
-                        Console.WriteLine($"Subtracted {effect.Value} from Cost of {person.Name} | Total Effect: {totalEffect}");
+                        if (TeamLocal.IsPlayer)
+                        {
+                            Console.WriteLine($"Subtracted {effect.Value} from Cost of {person.Name}");
+                        }
                         break;
                     
                     default:
@@ -81,7 +94,10 @@ namespace sports_game.src.Handlers
                             if (e.Target == person.CurrentPositionID)
                             {
                                 totalEffect *= e.Value;
-                                Console.WriteLine($"Multiplied {totalEffect / e.Value} by {e.Value} | Total Effect: {totalEffect}");
+                                if (TeamLocal.IsPlayer)
+                                {
+                                    Console.WriteLine($"Multiplied {totalEffect / e.Value} by {e.Value} | Total Effect: {totalEffect}");
+                                }
                             }
                             break;
                         
@@ -97,7 +113,10 @@ namespace sports_game.src.Handlers
                             if (posSize > 0 && e.Target == person.CurrentPositionID)
                             {
                                 totalEffect *= posSize;
-                                Console.WriteLine($"Multiplied {totalEffect / posSize} by {posSize} | Total Effect: {totalEffect}");
+                                if (TeamLocal.IsPlayer)
+                                {
+                                    Console.WriteLine($"Multiplied {totalEffect / posSize} by {posSize} | Total Effect: {totalEffect}");
+                                }
                             }
                             break;
 
@@ -113,7 +132,10 @@ namespace sports_game.src.Handlers
                             if (size > 0 && e.Target == person.CurrentPositionID)
                             {
                                 totalEffect += size * e.Value;
-                                Console.WriteLine($"Added {size * e.Value} to Value | Total Effect: {totalEffect}");
+                                if (TeamLocal.IsPlayer)
+                                {
+                                    Console.WriteLine($"Added {size * e.Value} to Value | Total Effect: {totalEffect}");
+                                }
                             }
                             break;
                             

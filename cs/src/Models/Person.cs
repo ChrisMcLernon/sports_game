@@ -33,6 +33,11 @@
         public void PrintInfo()
         {
             Console. WriteLine($"Name: {Name} | Rarity: {Rarity} | Value: {Value} | Cost: ${Cost} | Status: {Status} | Position: {CurrentPosition.Name}");
+
+            foreach (Effect effect in Effects)
+            {
+                Console.WriteLine($"Effect: {effect.Name} | Description: {effect.Description} | Value: {effect.Value} | Target: {effect.Target}");
+            }
         }
     }
 }

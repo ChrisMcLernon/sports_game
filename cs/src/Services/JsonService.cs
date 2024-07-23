@@ -2,7 +2,7 @@ using System.Text.Json;
 
 namespace sports_game.src.Services
 {
-    static public class JsonReader
+    static public class JsonService
     {
         static private readonly string BASE_PATH = Path.GetFullPath("../cs/src/Data/Data.json");
 
@@ -29,6 +29,30 @@ namespace sports_game.src.Services
             }
         
             throw new KeyNotFoundException($"Key '{key}' not found.");
+        }
+
+        static public void Write<T>(string key, T value)
+        {
+            string jsonString = File.ReadAllText(BASE_PATH);
+            JsonDocument document = JsonDocument.Parse(jsonString);
+            JsonElement root = document.RootElement;
+
+            // Convert existing JSON structure to a mutable dictionary
+            var dictionary = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(jsonString);
+
+            if (dictionary == null)
+            {
+                throw new InvalidOperationException("Failed to deserialize existing JSON data.");
+            }
+
+            // Add or update the key-value pair
+            dictionary[key] = JsonSerializer.SerializeToElement(value);
+
+            // Serialize updated dictionary back to JSON
+            string updatedJsonString = JsonSerializer.Serialize(dictionary, new JsonSerializerOptions { WriteIndented = true });
+
+            // Write updated JSON back to file
+            File.WriteAllText(BASE_PATH, updatedJsonString);
         }
     }
 }

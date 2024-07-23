@@ -6,22 +6,28 @@ namespace sports_game.src.Handlers
     public class PlanningHandler(GameHandler gh)
     {
         private GameHandler gameHandler = gh;
-        public Stack<Person> Lineup { get; set; }
+        public Stack<Person> CurrentLineup { get; set; }
+        public Stack<Person> PrevLineup { get; set; }
+        public List<Person> injuredPlayers = [];
 
         public void PlanningInterface()
         {
             while (true)
             {
-                Console.WriteLine($"\n\nRound {gameHandler.Round}");
+                Console.WriteLine($"\nRound {gameHandler.Round}");
                 Console.WriteLine($"Opponent: {gameHandler.OpponentTeam.Name}");
                 Console.WriteLine($"Potential Score: {gameHandler.CalculateScore(true)[1]} (+/-)");
                 Console.WriteLine("1. Choose Lineup and Start");
-                Console.WriteLine("2. Medical Attention");
+                if (injuredPlayers.Count != 0)
+                {
+                    Console.WriteLine("2. Medical Attention");
+                }
 
                 switch (InputReader.ReadText("Choose Option: "))
                 {
                     case "1":
-                        Lineup = ChooseLineup();
+                        CurrentLineup = ChooseLineup();
+                        PrevLineup = new Stack<Person>(CurrentLineup);
                         return;
 
                     case "2":
@@ -37,20 +43,17 @@ namespace sports_game.src.Handlers
 
         private void MedicalAttention()
         {
-            List<Person> injuredPlayers = [];
             while (true)
             {
-                foreach (Person player in gameHandler.PlayerTeam.Players)
+                Console.WriteLine($"Cost To Give Aid: 100");
+                foreach (Person player in injuredPlayers)
                 {
-                    if (player.Status == "Injured")
+                    if (gameHandler.PlayerTeam.Players.Contains(player))
                     {
-                        injuredPlayers.Add(player);
-                        Console.Write(injuredPlayers.Count + ". ");
-                        player.PrintInfo();
-                        Console.WriteLine($"Cost To Give Aid: {player.Cost / 2}");
+                        Console.WriteLine($"{injuredPlayers.IndexOf(player) + 1}. {player.Name}");
                     }
                 }
-                
+
                 if (injuredPlayers.Count == 0)
                 {
                     Console.WriteLine("No injured players.");
@@ -70,13 +73,14 @@ namespace sports_game.src.Handlers
                 else
                 {
                     Person p = injuredPlayers[choice - 1];
-                    if (gameHandler.PlayerTeam.Budget < p.Cost / 2)
+                    if (gameHandler.PlayerTeam.Budget < 100)
                     {
                         Console.WriteLine("Not enough budget to give medical attention.");
                         return;
                     }
                     else
                     {
+                        gameHandler.PlayerTeam.Budget -= 100;
                         p.Status = "Active";
                         p.Cost *= 2;
                         if (p.Value < 0)
@@ -88,6 +92,7 @@ namespace sports_game.src.Handlers
                             p.Value *= 2;
                         }
                         Console.WriteLine($"{p.Name} is now active.");
+                        injuredPlayers.Remove(p);
                         return;
                     }
                 }
@@ -100,6 +105,15 @@ namespace sports_game.src.Handlers
             List<Person> lineupList = [.. gameHandler.PlayerTeam.Players];
             lineupList.AddRange(gameHandler.PlayerTeam.Staff);
             Stack<Person> lineup = new();
+
+            if (PrevLineup is not null && PrevLineup.Count != 0)
+            {
+                Console.WriteLine("Keep Lineup?");
+                if (InputReader.ReadText("Y/N: ").ToLower() == "y")
+                {
+                    return PrevLineup;
+                }
+            }
 
             while (lineupList.Count != 0)
             {

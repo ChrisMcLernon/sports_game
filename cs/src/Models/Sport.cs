@@ -14,8 +14,8 @@ namespace sports_game.src.Models
 
         public void GeneratePositions()
         {
-            PossiblePlayerPositions = JsonReader.Read<List<Position>>($"{Name}_Player_Positions");
-            PossibleStaffPositions = JsonReader.Read<List<Position>>($"{Name}_Staff_Positions");
+            PossiblePlayerPositions = JsonService.Read<List<Position>>($"{Name}_Player_Positions");
+            PossibleStaffPositions = JsonService.Read<List<Position>>($"{Name}_Staff_Positions");
         }
     }
 }
