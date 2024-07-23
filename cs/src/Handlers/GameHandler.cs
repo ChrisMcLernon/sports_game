@@ -210,6 +210,8 @@ namespace sports_game.src.Handlers
             while (true)
             {
                 Console.WriteLine("What would you like to do?");
+                Console.WriteLine($"{PlayerTeam.Name} | Budget: {PlayerTeam.Budget} | Wins: {Wins} | Losses: {Losses}");
+                Console.WriteLine($"Players: {PlayerTeam.Players.Count} | Staff: {PlayerTeam.Staff.Count} | Benched Players: {PlayerTeam.BenchedPlayers.Count} | Benched Staff: {PlayerTeam.BenchedStaff.Count}");
                 Console.WriteLine("1. Team Editor");
                 Console.WriteLine("2. Visit Market");
                 Console.WriteLine("3. Continue to Match Planning");
@@ -250,6 +252,7 @@ namespace sports_game.src.Handlers
             PlanningHandlerLocal.PlanningInterface();
 
             List<int> score = CalculateScore();
+
             int playerScore = score[0];
             int opponentScore;
             if ((Round % 3) == 0)
@@ -330,6 +333,9 @@ namespace sports_game.src.Handlers
                 RemoveAvailablePerson(staff);
             }
 
+            Console.WriteLine($"Players: {PlayerTeam.Players.Count} | Staff: {PlayerTeam.Staff.Count} | Benched Players: {PlayerTeam.BenchedPlayers.Count} | Benched Staff: {PlayerTeam.BenchedStaff.Count}");
+
+
         }
 
         public void HandleOpponentTeam()
@@ -379,11 +385,38 @@ namespace sports_game.src.Handlers
             }
         }
 
-        public List<int> CalculateScore()
+        public List<int> CalculateScore(bool isPreview = false)
         {
             List<int> totalPoints = [0, 0];
             double unroundedPlayerValue = 0;
             double unroundedEnemyValue = 0;
+
+            foreach (var enemy in OpponentTeam.Players)
+            {
+                OpponentTeam.EffectHandlerTeam.AddEffects(enemy);
+
+                unroundedEnemyValue += OpponentTeam.EffectHandlerTeam.ApplyPersonEffects(enemy);
+                unroundedEnemyValue *= enemy.CurrentPosition.Modifier;
+
+                totalPoints[1] += Convert.ToInt32(Math.Round(unroundedEnemyValue));
+                unroundedEnemyValue = 0;
+
+            }
+            foreach (var staff in OpponentTeam.Staff)
+            {
+                OpponentTeam.EffectHandlerTeam.AddEffects(staff);
+
+                unroundedEnemyValue += OpponentTeam.EffectHandlerTeam.ApplyPersonEffects(staff);
+                unroundedEnemyValue *= staff.CurrentPosition.Modifier;
+
+                totalPoints[1] += Convert.ToInt32(Math.Round(unroundedEnemyValue));
+                unroundedEnemyValue = 0;
+            }
+
+            if (isPreview)
+            {
+                return totalPoints;
+            }
 
             while (PlanningHandlerLocal.Lineup.Count != 0)
             {
@@ -393,45 +426,11 @@ namespace sports_game.src.Handlers
 
                 p.PrintInfo();
                 unroundedPlayerValue += PlayerTeam.EffectHandlerTeam.ApplyPersonEffects(p);
-                Console.WriteLine($"Player Value with effects: {unroundedPlayerValue}");
                 unroundedPlayerValue *= p.CurrentPosition.Modifier;
-                Console.Write($"Multipled by {p.CurrentPosition.Modifier} adding {Convert.ToInt32(Math.Round(unroundedPlayerValue))}\n");
 
                 totalPoints[0] += Convert.ToInt32(Math.Round(unroundedPlayerValue));
-                Console.WriteLine($"Added: {Convert.ToInt32(Math.Round(unroundedPlayerValue))} | Total Points: {totalPoints[0]}\n\n");
                 unroundedPlayerValue = 0;
             }
-
-            foreach (var enemy in OpponentTeam.Players)
-            {
-                OpponentTeam.EffectHandlerTeam.AddEffects(enemy);
-
-                enemy.PrintInfo();
-                unroundedEnemyValue += OpponentTeam.EffectHandlerTeam.ApplyPersonEffects(enemy);
-                Console.WriteLine($"Player Value with effects: {unroundedEnemyValue}");
-                unroundedEnemyValue *= enemy.CurrentPosition.Modifier;
-                Console.Write($"Multipled by {enemy.CurrentPosition.Modifier} adding {Convert.ToInt32(Math.Round(unroundedEnemyValue))}\n");
-
-                totalPoints[1] += Convert.ToInt32(Math.Round(unroundedEnemyValue));
-                Console.WriteLine($"Added: {Convert.ToInt32(Math.Round(unroundedEnemyValue))} | Total Points: {totalPoints[1]}\n");
-                unroundedEnemyValue = 0;
-
-            }
-            foreach (var staff in OpponentTeam.Staff)
-            {
-                OpponentTeam.EffectHandlerTeam.AddEffects(staff);
-                
-                staff.PrintInfo();
-                unroundedEnemyValue += OpponentTeam.EffectHandlerTeam.ApplyPersonEffects(staff);
-                Console.WriteLine($"Staff Value with effects: {unroundedEnemyValue}\n");
-                unroundedEnemyValue *= staff.CurrentPosition.Modifier;
-                Console.Write($"Multipled by {staff.CurrentPosition.Modifier} adding {Convert.ToInt32(Math.Round(unroundedEnemyValue))}\n");
-                
-                totalPoints[1] += Convert.ToInt32(Math.Round(unroundedEnemyValue));
-                Console.WriteLine($"Added: {Convert.ToInt32(Math.Round(unroundedEnemyValue))} | Total Points: {totalPoints[1]}\n");
-                unroundedEnemyValue = 0;
-            }
-
             return totalPoints;
         }
     }

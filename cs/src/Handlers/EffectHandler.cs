@@ -22,13 +22,6 @@ namespace sports_game.src.Handlers
                     Effects[person.ID].Add(effect);
                 }
             }
-            else if (Effects.TryGetValue(person.ID, out List<Effect>? key))
-            {
-                foreach (var effect in person.Effects)
-                {
-                    key.Add(effect);
-                }
-            }
         }
 
         public int ApplyPersonEffects(Person person)
@@ -40,11 +33,18 @@ namespace sports_game.src.Handlers
                 {
                     case "Increase Value":
                         totalEffect += effect.Value;
-                        Console.WriteLine($"{person.Name} has increased value by {effect.Value} = {totalEffect}");
                         break;
                     
                     case "Decrease Value":
                         person.Value -= effect.Value;
+                        break;
+
+                    case "Increase Cost":
+                        person.Cost += effect.Value;
+                        break;
+                    
+                    case "Decrease Cost":
+                        person.Cost -= effect.Value;
                         break;
                 }
             }
@@ -59,7 +59,6 @@ namespace sports_game.src.Handlers
                             if (e.Target == person.CurrentPositionID)
                             {
                                 totalEffect *= e.Value;
-                                Console.WriteLine($"{person.Name} has had their value multiplied by {e.Value} due to {e.Description} = {totalEffect}");
                             }
                             break;
                     }

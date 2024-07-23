@@ -116,6 +116,11 @@
                     "Description": "Multiply Defensive Back Position by 2",
                     "Value": 2,
                     "Target": "PP-000008"
+                },
+                {
+                    "Name": "Increase Cost + 50",
+                    "Description": "Increase Cost",
+                    "Value": 50
                 }
             ],
             "Status": "active"
@@ -133,6 +138,11 @@
                     "Description": "Quarterback Position * 2",
                     "Value": 2,
                     "Target": "PP-000001"
+                },
+                {
+                    "Name": "Decrease Value + 50",
+                    "Description": "Decrease Value",
+                    "Value": 50
                 }
             ],
             "Status": "active"

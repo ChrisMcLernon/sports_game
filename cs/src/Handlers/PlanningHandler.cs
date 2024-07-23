@@ -20,13 +20,15 @@ namespace sports_game.src.Handlers
                 Console.WriteLine($"(x{Math.Round(gameHandler.Round * 0.2, 1)} Points)");
             }
             Console.WriteLine($"Opponent: {gameHandler.OpponentTeam.Name}");
+            Console.WriteLine($"{gameHandler.CalculateScore(true)[1]}");
             Console.WriteLine($"Choose your order:");
             Lineup = ChooseLineup();
         }
 
         private Stack<Person> ChooseLineup()
         {
-            List<Person> lineupList = gameHandler.PlayerTeam.Players;
+
+            List<Person> lineupList = [.. gameHandler.PlayerTeam.Players];
             lineupList.AddRange(gameHandler.PlayerTeam.Staff);
             Stack<Person> lineup = new();
 
@@ -34,7 +36,7 @@ namespace sports_game.src.Handlers
             {
                 for (int i = 0; i < lineupList.Count; i++)
                 {
-                    Person player = gameHandler.PlayerTeam.Players[i];
+                    Person player = lineupList[i];
                     Console.Write(i + 1 + ". ");
                     player.PrintInfo();
                 }
