@@ -1,637 +1,660 @@
 {
-    "Football_Sport_Info":
+  "Football_Sport_Info": {
+    "Name": "Football",
+    "Description": "Football is a family of team sports that involve, to varying degrees, kicking a ball to score a goal. Unqualified, the word football normally means the form of football that is the most popular where the word is used. Sports commonly called football include association football (known as soccer in some countries); gridiron football (specifically American football or Canadian football); Australian rules football; rugby football (either rugby league or rugby union); and Gaelic football. These various forms of football share to varying extent common origins and are known as football codes.",
+    "Image": "_",
+    "TeamSize": 1,
+    "StaffSize": 1,
+    "Positions": [],
+    "PossiblePlayerPositions": [],
+    "PossibleStaffPositions": []
+  },
+  "Football_Player_Positions": [
     {
-        "Name": "Football",
-        "Description": "Football is a family of team sports that involve, to varying degrees, kicking a ball to score a goal. Unqualified, the word football normally means the form of football that is the most popular where the word is used. Sports commonly called football include association football (known as soccer in some countries); gridiron football (specifically American football or Canadian football); Australian rules football; rugby football (either rugby league or rugby union); and Gaelic football. These various forms of football share to varying extent common origins and are known as football codes.",
-        "Image": "_",
-        "TeamSize": 1,
-        "StaffSize": 1,
-        "Positions": [],
-        "PossiblePlayerPositions": [],
-        "PossibleStaffPositions": []
+      "Name": "QUARTERBACK",
+      "Modifier": 2.0,
+      "ID": "PP-000001"
     },
-    "Football_Player_Positions": 
-    [
+    {
+      "Name": "RUNNING_BACK",
+      "Modifier": 1.8,
+      "ID": "PP-000002"
+    },
+    {
+      "Name": "WIDE_RECEIVER",
+      "Modifier": 1.7,
+      "ID": "PP-000003"
+    },
+    {
+      "Name": "TIGHT_END",
+      "Modifier": 1.6,
+      "ID": "PP-000004"
+    },
+    {
+      "Name": "OFFENSIVE_LINE",
+      "Modifier": 1.2,
+      "ID": "PP-000005"
+    },
+    {
+      "Name": "DEFENSIVE_LINE",
+      "Modifier": 1.2,
+      "ID": "PP-000006"
+    },
+    {
+      "Name": "LINEBACKER",
+      "Modifier": 1.4,
+      "ID": "PP-000007"
+    },
+    {
+      "Name": "DEFENSIVE_BACK",
+      "Modifier": 1.6,
+      "ID": "PP-000008"
+    },
+    {
+      "Name": "KICKER",
+      "Modifier": 1.1,
+      "ID": "PP-000009"
+    },
+    {
+      "Name": "ALL_ROUNDER",
+      "Modifier": 2.2,
+      "ID": "PP-000010"
+    }
+  ],
+  "Football_Staff_Positions": [
+    {
+      "Name": "HEAD_COACH",
+      "Modifier": 2.0,
+      "ID": "SP-000001"
+    },
+    {
+      "Name": "OFFENSIVE_COORDINATOR",
+      "Modifier": 1.8,
+      "ID": "SP-000002"
+    },
+    {
+      "Name": "DEFENSIVE_COORDINATOR",
+      "Modifier": 1.8,
+      "ID": "SP-000003"
+    },
+    {
+      "Name": "SPECIAL_TEAMS_COACH",
+      "Modifier": 1.6,
+      "ID": "SP-000004"
+    },
+    {
+      "Name": "TRAINER",
+      "Modifier": 1.4,
+      "ID": "SP-000005"
+    },
+    {
+      "Name": "EQUIPMENT_MANAGER",
+      "Modifier": 1.2,
+      "ID": "SP-000006"
+    },
+    {
+      "Name": "MASTERMIND",
+      "Modifier": 2.2,
+      "ID": "SP-000007"
+    }
+  ],
+  "Football_Player_Stats": [
+    {
+      "Name": "Jimmy \u0027U-Cant\u0027 Hitme",
+      "Rarity": "LEGENDARY",
+      "ID": "PL-000001",
+      "Value": 120,
+      "CurrentPositionID": "PP-000001",
+      "CurrentPosition": null,
+      "Cost": 110,
+      "Effects": [
         {
-            "Name": "QUARTERBACK",
-            "Modifier": 2.0,
-            "ID": "PP-000001"
+          "Name": "Multiply Position",
+          "Description": "Multiply Defensive Back Position by 2",
+          "Value": 2,
+          "Target": "PP-000008"
         },
         {
-            "Name": "RUNNING_BACK",
-            "Modifier": 1.8,
-            "ID": "PP-000002"
-        },
-        {
-            "Name": "WIDE_RECEIVER",
-            "Modifier": 1.7,
-            "ID": "PP-000003"
-        },
-        {
-            "Name": "TIGHT_END",
-            "Modifier": 1.6,
-            "ID": "PP-000004"
-        },
-        {
-            "Name": "OFFENSIVE_LINE",
-            "Modifier": 1.2,
-            "ID": "PP-000005"
-        },
-        {
-            "Name": "DEFENSIVE_LINE",
-            "Modifier": 1.2,
-            "ID": "PP-000006"
-        },
-        {
-            "Name": "LINEBACKER",
-            "Modifier": 1.4,
-            "ID": "PP-000007"
-        },
-        {
-            "Name": "DEFENSIVE_BACK",
-            "Modifier": 1.6,
-            "ID": "PP-000008"
-        },
-        {
-            "Name": "KICKER",
-            "Modifier": 1.1,
-            "ID": "PP-000009"
-        },
-        {
-            "Name": "ALL_ROUNDER",
-            "Modifier": 2.2,
-            "ID": "PP-000010"
+          "Name": "Decrease Cost",
+          "Description": "Decrease Cost by 50",
+          "Value": 50,
+          "Target": ""
         }
-    ],
-    "Football_Staff_Positions": 
-    [
+      ],
+      "Status": "active"
+    },
+    {
+      "Name": "Bob",
+      "Rarity": "RARE",
+      "ID": "PL-000002",
+      "Value": 80,
+      "CurrentPositionID": "PP-000001",
+      "CurrentPosition": null,
+      "Cost": 90,
+      "Effects": [
         {
-            "Name": "HEAD_COACH",
-            "Modifier": 2.0,
-            "ID": "SP-000001"
+          "Name": "Multiply Position by Size",
+          "Description": "Quarterback Position Multiplied by size",
+          "Value": 0,
+          "Target": "PP-000001"
         },
         {
-            "Name": "OFFENSIVE_COORDINATOR",
-            "Modifier": 1.8,
-            "ID": "SP-000002"
-        },
-        {
-            "Name": "DEFENSIVE_COORDINATOR",
-            "Modifier": 1.8,
-            "ID": "SP-000003"
-        },
-        {
-            "Name": "SPECIAL_TEAMS_COACH",
-            "Modifier": 1.6,
-            "ID": "SP-000004"
-        },
-        {
-            "Name": "TRAINER",
-            "Modifier": 1.4,
-            "ID": "SP-000005"
-        },
-        {
-            "Name": "EQUIPMENT_MANAGER",
-            "Modifier": 1.2,
-            "ID": "SP-000006"
-        },
-        {
-            "Name": "MASTERMIND",
-            "Modifier": 2.2,
-            "ID": "SP-000007"
+          "Name": "Add Value by Size",
+          "Description": "Add Value multiplied by number of Quarterbacks",
+          "Value": 50,
+          "Target": "PP-000001"
         }
-    ],
-    "Football_Player_Stats":
-    [
+      ],
+      "Status": "active"
+    },
+    {
+      "Name": "Charlie",
+      "Rarity": "COMMON",
+      "ID": "PL-000003",
+      "Value": 60,
+      "CurrentPositionID": "PP-000001",
+      "CurrentPosition": null,
+      "Cost": 70,
+      "Effects": [
         {
-            "Name": "Jimmy 'U-Cant' Hitme",
-            "Rarity": "LEGENDARY",
-            "ID": "PL-000001",
-            "Value": 120,
-            "CurrentPositionID": "PP-000001",
-            "Cost": 110,
-            "Effects": [
-                {
-                    "Name": "Multiply Position",
-                    "Description": "Multiply Defensive Back Position by 2",
-                    "Value": 2,
-                    "Target": "PP-000008"
-                },
-                {
-                    "Name": "Decrease Cost",
-                    "Description": "Decrease Cost by 50",
-                    "Value": 50
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "Bob",
-            "Rarity": "RARE",
-            "ID": "PL-000002",
-            "Value": 80,
-            "CurrentPositionID": "PP-000001",
-            "Cost": 90,
-            "Effects": [
-                {
-                    "Name": "Multiply Position by Size",
-                    "Description": "Quarterback Position Multiplied by size",
-                    "Value": 0,
-                    "Target": "PP-000001"
-                },
-                {
-                    "Name": "Add Value by Size",
-                    "Description": "Add Value multiplied by number of Quarterbacks",
-                    "Value": 50,
-                    "Target": "PP-000001"
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "Charlie",
-            "Rarity": "COMMON",
-            "ID": "PL-000003",
-            "Value": 60,
-            "CurrentPositionID": "PP-000001",
-            "Cost": 70,
-            "Effects": [
-                {
-                    "Name": "Multiply Position",
-                    "Description": "Quarterback Position * 2",
-                    "Value": 2,
-                    "Target": "PP-000001"
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "David",
-            "Rarity": "COMMON",
-            "ID": "PL-000004",
-            "Value": 60,
-            "CurrentPositionID": "PP-000004",
-            "Cost": 70,
-            "Effects": [
-                {
-                    "Name": "Multiply Position",
-                    "Description": "Quarterback Position * 2",
-                    "Value": 2,
-                    "Target": "PP-000001"
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "Eve",
-            "Rarity": "COMMON",
-            "ID": "PL-000005",
-            "Value": 60,
-            "CurrentPositionID": "PP-000005",
-            "Cost": 70,
-            "Effects": [
-                {
-                    "Name": "Player Value + 60",
-                    "Description": "Increase Value",
-                    "Value": 60
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "Frank",
-            "Rarity": "COMMON",
-            "ID": "PL-000006",
-            "Value": 60,
-            "CurrentPositionID": "PP-000006",
-            "Cost": 70,
-            "Effects": [
-                {
-                    "Name": "Player Value + 60",
-                    "Description": "Increase Value",
-                    "Value": 60
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "Gina",
-            "Rarity": "COMMON",
-            "ID": "PL-000007",
-            "Value": 60,
-            "CurrentPositionID": "PP-000007",
-            "Cost": 70,
-            "Effects": [
-                {
-                    "Name": "Player Value + 60",
-                    "Description": "Increase Value",
-                    "Value": 60
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "Hank",
-            "Rarity": "COMMON",
-            "ID": "PL-000008",
-            "Value": 60,
-            "CurrentPositionID": "PP-000008",
-            "Cost": 70,
-            "Effects": [
-                {
-                    "Name": "Player Value + 60",
-                    "Description": "Increase Value",
-                    "Value": 60
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "Ivy",
-            "Rarity": "COMMON",
-            "ID": "PL-000009",
-            "Value": 60,
-            "CurrentPositionID": "PP-000009",
-            "Cost": 70,
-            "Effects": [
-                {
-                    "Name": "Player Value + 60",
-                    "Description": "Increase Value",
-                    "Value": 60
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "Jack",
-            "Rarity": "COMMON",
-            "ID": "PL-000010",
-            "Value": 60,
-            "CurrentPositionID": "PP-000010",
-            "Cost": 70,
-            "Effects": [
-                {
-                    "Name": "Player Value + 60",
-                    "Description": "Increase Value",
-                    "Value": 60
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "Kathy",
-            "Rarity": "COMMON",
-            "ID": "PL-000011",
-            "Value": 60,
-            "CurrentPositionID": "PP-000001",
-            "Cost": 70,
-            "Effects": [
-                {
-                    "Name": "Player Value + 60",
-                    "Description": "Increase Value",
-                    "Value": 60
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "Lenny",
-            "Rarity": "COMMON",
-            "ID": "PL-000012",
-            "Value": 60,
-            "CurrentPositionID": "PP-000002",
-            "Cost": 70,
-            "Effects": [
-                {
-                    "Name": "Player Value + 60",
-                    "Description": "Increase Value",
-                    "Value": 60
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "Mandy",
-            "Rarity": "COMMON",
-            "ID": "PL-000013",
-            "Value": 60,
-            "CurrentPositionID": "PP-000003",
-            "Cost": 70,
-            "Effects": [
-                {
-                    "Name": "Player Value + 60",
-                    "Description": "Increase Value",
-                    "Value": 60
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "Ned",
-            "Rarity": "COMMON",
-            "ID": "PL-000014",
-            "Value": 60,
-            "CurrentPositionID": "PP-000004",
-            "Cost": 70,
-            "Effects": [
-                {
-                    "Name": "Player Value + 60",
-                    "Description": "Increase Value",
-                    "Value": 60
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "Oscar",
-            "Rarity": "COMMON",
-            "ID": "PL-000015",
-            "Value": 60,
-            "CurrentPositionID": "PP-000005",
-            "Cost": 70,
-            "Effects": [
-                {
-                    "Name": "Player Value + 60",
-                    "Description": "Increase Value",
-                    "Value": 60
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "Patty",
-            "Rarity": "COMMON",
-            "ID": "PL-000016",
-            "Value": 60,
-            "CurrentPositionID": "PP-000006",
-            "Cost": 70,
-            "Effects": [
-                {
-                    "Name": "Player Value + 60",
-                    "Description": "Increase Value",
-                    "Value": 60
-                }
-            ],
-            "Status": "active"
+          "Name": "Multiply Position",
+          "Description": "Quarterback Position * 2",
+          "Value": 2,
+          "Target": "PP-000001"
         }
-    ],
-    "Football_Staff_Stats":
-    [
+      ],
+      "Status": "active"
+    },
+    {
+      "Name": "David",
+      "Rarity": "COMMON",
+      "ID": "PL-000004",
+      "Value": 60,
+      "CurrentPositionID": "PP-000004",
+      "CurrentPosition": null,
+      "Cost": 70,
+      "Effects": [
         {
-            "Name": "Lisa",
-            "Rarity": "LEGENDARY",
-            "ID": "SF-000001",
-            "Value": 120,
-            "CurrentPositionID": "SP-000001",
-            "Cost": 120,
-            "Effects": [
-                {
-                    "Name": "Multiply Position by Size",
-                    "Description": "Multiply Quarterback by Size",
-                    "Value": 0,
-                    "Target": "PP-000001"
-                },
-                {
-                    "Name": "Add Value by Size",
-                    "Description": "Add Value multiplied by number of Quarterbacks",
-                    "Value": 100,
-                    "Target": "PP-000001"
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "Mona",
-            "Rarity": "RARE",
-            "ID": "SF-000002",
-            "Value": 100,
-            "CurrentPositionID": "SP-000002",
-            "Cost": 110,
-            "Effects": [
-                {
-                    "Name": "Player Value + 10",
-                    "Description": "Increase Value",
-                    "Value": 10
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "Nina",
-            "Rarity": "COMMON",
-            "ID": "SF-000003",
-            "Value": 80,
-            "CurrentPositionID": "SP-000003",
-            "Cost": 90,
-            "Effects": [
-                {
-                    "Name": "Player Value + 8",
-                    "Description": "Increase Value",
-                    "Value": 8
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "Olive",
-            "Rarity": "COMMON",
-            "ID": "SF-000004",
-            "Value": 60,
-            "CurrentPositionID": "SP-000004",
-            "Cost": 70,
-            "Effects": [
-                {
-                    "Name": "Player Value + 6",
-                    "Description": "Increase Value",
-                    "Value": 6
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "Pam",
-            "Rarity": "COMMON",
-            "ID": "SF-000005",
-            "Value": 60,
-            "CurrentPositionID": "SP-000005",
-            "Cost": 70,
-            "Effects": [
-                {
-                    "Name": "Player Value + 6",
-                    "Description": "Increase Value",
-                    "Value": 6
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "Quinn",
-            "Rarity": "COMMON",
-            "ID": "SF-000006",
-            "Value": 60,
-            "CurrentPositionID": "SP-000006",
-            "Cost": 70,
-            "Effects": [
-                {
-                    "Name": "Player Value + 6",
-                    "Description": "Increase Value",
-                    "Value": 6
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "Rita",
-            "Rarity": "COMMON",
-            "ID": "SF-000007",
-            "Value": 60,
-            "CurrentPositionID": "SP-000007",
-            "Cost": 70,
-            "Effects": [
-                {
-                    "Name": "Player Value + 6",
-                    "Description": "Increase Value",
-                    "Value": 6
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "Sam",
-            "Rarity": "COMMON",
-            "ID": "SF-000008",
-            "Value": 60,
-            "CurrentPositionID": "SP-000001",
-            "Cost": 70,
-            "Effects": [
-                {
-                    "Name": "Player Value + 6",
-                    "Description": "Increase Value",
-                    "Value": 6
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "Tina",
-            "Rarity": "COMMON",
-            "ID": "SF-000009",
-            "Value": 60,
-            "CurrentPositionID": "SP-000002",
-            "Cost": 70,
-            "Effects": [
-                {
-                    "Name": "Player Value + 6",
-                    "Description": "Increase Value",
-                    "Value": 6
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "Uma",
-            "Rarity": "COMMON",
-            "ID": "SF-000010",
-            "Value": 60,
-            "CurrentPositionID": "SP-000003",
-            "Cost": 70,
-            "Effects": [
-                {
-                    "Name": "Player Value + 6",
-                    "Description": "Increase Value",
-                    "Value": 6
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "Vera",
-            "Rarity": "COMMON",
-            "ID": "SF-000011",
-            "Value": 60,
-            "CurrentPositionID": "SP-000004",
-            "Cost": 70,
-            "Effects": [
-                {
-                    "Name": "Player Value + 6",
-                    "Description": "Increase Value",
-                    "Value": 6
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "Wendy",
-            "Rarity": "COMMON",
-            "ID": "SF-000012",
-            "Value": 60,
-            "CurrentPositionID": "SP-000005",
-            "Cost": 70,
-            "Effects": [
-                {
-                    "Name": "Player Value + 6",
-                    "Description": "Increase Value",
-                    "Value": 6
-                }
-            ],
-            "Status": "active"
-        },
-        {
-            "Name": "Xena",
-            "Rarity": "COMMON",
-            "ID": "SF-000013",
-            "Value": 60,
-            "CurrentPositionID": "SP-000006",
-            "Cost": 70,
-            "Effects": [
-                {
-                    "Name": "Player Value + 6",
-                    "Description": "Increase Value",
-                    "Value": 6
-                }
-            ],
-            "Status": "active"
+          "Name": "Multiply Position",
+          "Description": "Quarterback Position * 2",
+          "Value": 2,
+          "Target": "PP-000001"
         }
-    ],
-    "Team_Names":
-    [
-        "Thunder Hawks",
-        "Thunderbirds",
-        "Thunderbolts",
-        "Thundercats",
-        "Thunderwolves",
-        "Tidal Waves",
-        "Tide",
-        "Tigers",
-        "Tigersharks",
-        "Tigresses",
-        "Titans",
-        "Tornadoes",
-        "Toucans",
-        "Trailblazers",
-        "Trappers",
-        "Tribal",
-        "Tribes",
-        "Tritons",
-        "Flaming Turtles",
-        "Twin Dragons",
-        "Twisters",
-        "Typhoons",
-        "Unicorns",
-        "Vampires",
-        "Vandals",
-        "Vanguards",
-        "Vikings",
-        "Vipers",
-        "Volcanoes",
-        "Voyagers",
-        "Vultures",
-        "War Eagles",
-        "Warriors",
-        "Wasps",
-        "Water Buffaloes",
-        "Water Rats",
-        "Water Warriors",
-        "Wave"
-    ]
+      ],
+      "Status": "active"
+    },
+    {
+      "Name": "Eve",
+      "Rarity": "COMMON",
+      "ID": "PL-000005",
+      "Value": 60,
+      "CurrentPositionID": "PP-000005",
+      "CurrentPosition": null,
+      "Cost": 70,
+      "Effects": [
+        {
+          "Name": "Player Value \u002B 60",
+          "Description": "Increase Value",
+          "Value": 60,
+          "Target": ""
+        }
+      ],
+      "Status": "active"
+    },
+    {
+      "Name": "Frank",
+      "Rarity": "COMMON",
+      "ID": "PL-000006",
+      "Value": 60,
+      "CurrentPositionID": "PP-000006",
+      "CurrentPosition": null,
+      "Cost": 70,
+      "Effects": [
+        {
+          "Name": "Player Value \u002B 60",
+          "Description": "Increase Value",
+          "Value": 60,
+          "Target": ""
+        }
+      ],
+      "Status": "active"
+    },
+    {
+      "Name": "Gina",
+      "Rarity": "COMMON",
+      "ID": "PL-000007",
+      "Value": 60,
+      "CurrentPositionID": "PP-000007",
+      "CurrentPosition": null,
+      "Cost": 70,
+      "Effects": [
+        {
+          "Name": "Player Value \u002B 60",
+          "Description": "Increase Value",
+          "Value": 60,
+          "Target": ""
+        }
+      ],
+      "Status": "active"
+    },
+    {
+      "Name": "Hank",
+      "Rarity": "COMMON",
+      "ID": "PL-000008",
+      "Value": 60,
+      "CurrentPositionID": "PP-000008",
+      "CurrentPosition": null,
+      "Cost": 70,
+      "Effects": [
+        {
+          "Name": "Player Value \u002B 60",
+          "Description": "Increase Value",
+          "Value": 60,
+          "Target": ""
+        }
+      ],
+      "Status": "active"
+    },
+    {
+      "Name": "Ivy",
+      "Rarity": "COMMON",
+      "ID": "PL-000009",
+      "Value": 60,
+      "CurrentPositionID": "PP-000009",
+      "CurrentPosition": null,
+      "Cost": 70,
+      "Effects": [
+        {
+          "Name": "Player Value \u002B 60",
+          "Description": "Increase Value",
+          "Value": 60,
+          "Target": ""
+        }
+      ],
+      "Status": "active"
+    },
+    {
+      "Name": "Jack",
+      "Rarity": "COMMON",
+      "ID": "PL-000010",
+      "Value": 60,
+      "CurrentPositionID": "PP-000010",
+      "CurrentPosition": null,
+      "Cost": 70,
+      "Effects": [
+        {
+          "Name": "Player Value \u002B 60",
+          "Description": "Increase Value",
+          "Value": 60,
+          "Target": ""
+        }
+      ],
+      "Status": "active"
+    },
+    {
+      "Name": "Kathy",
+      "Rarity": "COMMON",
+      "ID": "PL-000011",
+      "Value": 60,
+      "CurrentPositionID": "PP-000001",
+      "CurrentPosition": null,
+      "Cost": 70,
+      "Effects": [
+        {
+          "Name": "Player Value \u002B 60",
+          "Description": "Increase Value",
+          "Value": 60,
+          "Target": ""
+        }
+      ],
+      "Status": "active"
+    },
+    {
+      "Name": "Lenny",
+      "Rarity": "COMMON",
+      "ID": "PL-000012",
+      "Value": 60,
+      "CurrentPositionID": "PP-000002",
+      "CurrentPosition": null,
+      "Cost": 70,
+      "Effects": [
+        {
+          "Name": "Player Value \u002B 60",
+          "Description": "Increase Value",
+          "Value": 60,
+          "Target": ""
+        }
+      ],
+      "Status": "active"
+    },
+    {
+      "Name": "Mandy",
+      "Rarity": "COMMON",
+      "ID": "PL-000013",
+      "Value": 60,
+      "CurrentPositionID": "PP-000003",
+      "CurrentPosition": null,
+      "Cost": 70,
+      "Effects": [
+        {
+          "Name": "Player Value \u002B 60",
+          "Description": "Increase Value",
+          "Value": 60,
+          "Target": ""
+        }
+      ],
+      "Status": "active"
+    },
+    {
+      "Name": "Ned",
+      "Rarity": "COMMON",
+      "ID": "PL-000014",
+      "Value": 60,
+      "CurrentPositionID": "PP-000004",
+      "CurrentPosition": null,
+      "Cost": 70,
+      "Effects": [
+        {
+          "Name": "Player Value \u002B 60",
+          "Description": "Increase Value",
+          "Value": 60,
+          "Target": ""
+        }
+      ],
+      "Status": "active"
+    },
+    {
+      "Name": "Oscar",
+      "Rarity": "COMMON",
+      "ID": "PL-000015",
+      "Value": 60,
+      "CurrentPositionID": "PP-000005",
+      "CurrentPosition": null,
+      "Cost": 70,
+      "Effects": [
+        {
+          "Name": "Player Value \u002B 60",
+          "Description": "Increase Value",
+          "Value": 60,
+          "Target": ""
+        }
+      ],
+      "Status": "active"
+    },
+    {
+      "Name": "Patty",
+      "Rarity": "COMMON",
+      "ID": "PL-000016",
+      "Value": 60,
+      "CurrentPositionID": "PP-000006",
+      "CurrentPosition": null,
+      "Cost": 70,
+      "Effects": [
+        {
+          "Name": "Player Value \u002B 60",
+          "Description": "Increase Value",
+          "Value": 60,
+          "Target": ""
+        }
+      ],
+      "Status": "active"
+    }
+  ],
+  "Football_Staff_Stats": [
+    {
+      "Name": "Lisa",
+      "Rarity": "LEGENDARY",
+      "ID": "SF-000001",
+      "Value": 120,
+      "CurrentPositionID": "SP-000001",
+      "Cost": 120,
+      "Effects": [
+        {
+          "Name": "Multiply Position by Size",
+          "Description": "Multiply Quarterback by Size",
+          "Value": 0,
+          "Target": "PP-000001"
+        },
+        {
+          "Name": "Add Value by Size",
+          "Description": "Add Value multiplied by number of Quarterbacks",
+          "Value": 100,
+          "Target": "PP-000001"
+        }
+      ],
+      "Status": "active"
+    },
+    {
+      "Name": "Mona",
+      "Rarity": "RARE",
+      "ID": "SF-000002",
+      "Value": 100,
+      "CurrentPositionID": "SP-000002",
+      "Cost": 110,
+      "Effects": [
+        {
+          "Name": "Player Value \u002B 10",
+          "Description": "Increase Value",
+          "Value": 10
+        }
+      ],
+      "Status": "active"
+    },
+    {
+      "Name": "Nina",
+      "Rarity": "COMMON",
+      "ID": "SF-000003",
+      "Value": 80,
+      "CurrentPositionID": "SP-000003",
+      "Cost": 90,
+      "Effects": [
+        {
+          "Name": "Player Value \u002B 8",
+          "Description": "Increase Value",
+          "Value": 8
+        }
+      ],
+      "Status": "active"
+    },
+    {
+      "Name": "Olive",
+      "Rarity": "COMMON",
+      "ID": "SF-000004",
+      "Value": 60,
+      "CurrentPositionID": "SP-000004",
+      "Cost": 70,
+      "Effects": [
+        {
+          "Name": "Player Value \u002B 6",
+          "Description": "Increase Value",
+          "Value": 6
+        }
+      ],
+      "Status": "active"
+    },
+    {
+      "Name": "Pam",
+      "Rarity": "COMMON",
+      "ID": "SF-000005",
+      "Value": 60,
+      "CurrentPositionID": "SP-000005",
+      "Cost": 70,
+      "Effects": [
+        {
+          "Name": "Player Value \u002B 6",
+          "Description": "Increase Value",
+          "Value": 6
+        }
+      ],
+      "Status": "active"
+    },
+    {
+      "Name": "Quinn",
+      "Rarity": "COMMON",
+      "ID": "SF-000006",
+      "Value": 60,
+      "CurrentPositionID": "SP-000006",
+      "Cost": 70,
+      "Effects": [
+        {
+          "Name": "Player Value \u002B 6",
+          "Description": "Increase Value",
+          "Value": 6
+        }
+      ],
+      "Status": "active"
+    },
+    {
+      "Name": "Rita",
+      "Rarity": "COMMON",
+      "ID": "SF-000007",
+      "Value": 60,
+      "CurrentPositionID": "SP-000007",
+      "Cost": 70,
+      "Effects": [
+        {
+          "Name": "Player Value \u002B 6",
+          "Description": "Increase Value",
+          "Value": 6
+        }
+      ],
+      "Status": "active"
+    },
+    {
+      "Name": "Sam",
+      "Rarity": "COMMON",
+      "ID": "SF-000008",
+      "Value": 60,
+      "CurrentPositionID": "SP-000001",
+      "Cost": 70,
+      "Effects": [
+        {
+          "Name": "Player Value \u002B 6",
+          "Description": "Increase Value",
+          "Value": 6
+        }
+      ],
+      "Status": "active"
+    },
+    {
+      "Name": "Tina",
+      "Rarity": "COMMON",
+      "ID": "SF-000009",
+      "Value": 60,
+      "CurrentPositionID": "SP-000002",
+      "Cost": 70,
+      "Effects": [
+        {
+          "Name": "Player Value \u002B 6",
+          "Description": "Increase Value",
+          "Value": 6
+        }
+      ],
+      "Status": "active"
+    },
+    {
+      "Name": "Uma",
+      "Rarity": "COMMON",
+      "ID": "SF-000010",
+      "Value": 60,
+      "CurrentPositionID": "SP-000003",
+      "Cost": 70,
+      "Effects": [
+        {
+          "Name": "Player Value \u002B 6",
+          "Description": "Increase Value",
+          "Value": 6
+        }
+      ],
+      "Status": "active"
+    },
+    {
+      "Name": "Vera",
+      "Rarity": "COMMON",
+      "ID": "SF-000011",
+      "Value": 60,
+      "CurrentPositionID": "SP-000004",
+      "Cost": 70,
+      "Effects": [
+        {
+          "Name": "Player Value \u002B 6",
+          "Description": "Increase Value",
+          "Value": 6
+        }
+      ],
+      "Status": "active"
+    },
+    {
+      "Name": "Wendy",
+      "Rarity": "COMMON",
+      "ID": "SF-000012",
+      "Value": 60,
+      "CurrentPositionID": "SP-000005",
+      "Cost": 70,
+      "Effects": [
+        {
+          "Name": "Player Value \u002B 6",
+          "Description": "Increase Value",
+          "Value": 6
+        }
+      ],
+      "Status": "active"
+    },
+    {
+      "Name": "Xena",
+      "Rarity": "COMMON",
+      "ID": "SF-000013",
+      "Value": 60,
+      "CurrentPositionID": "SP-000006",
+      "Cost": 70,
+      "Effects": [
+        {
+          "Name": "Player Value \u002B 6",
+          "Description": "Increase Value",
+          "Value": 6
+        }
+      ],
+      "Status": "active"
+    }
+  ],
+  "Team_Names": [
+    "Thunder Hawks",
+    "Thunderbirds",
+    "Thunderbolts",
+    "Thundercats",
+    "Thunderwolves",
+    "Tidal Waves",
+    "Tide",
+    "Tigers",
+    "Tigersharks",
+    "Tigresses",
+    "Titans",
+    "Tornadoes",
+    "Toucans",
+    "Trailblazers",
+    "Trappers",
+    "Tribal",
+    "Tribes",
+    "Tritons",
+    "Flaming Turtles",
+    "Twin Dragons",
+    "Twisters",
+    "Typhoons",
+    "Unicorns",
+    "Vampires",
+    "Vandals",
+    "Vanguards",
+    "Vikings",
+    "Vipers",
+    "Volcanoes",
+    "Voyagers",
+    "Vultures",
+    "War Eagles",
+    "Warriors",
+    "Wasps",
+    "Water Buffaloes",
+    "Water Rats",
+    "Water Warriors",
+    "Wave"
+  ]
 }
