@@ -4,8 +4,8 @@
         "Name": "Football",
         "Description": "Football is a family of team sports that involve, to varying degrees, kicking a ball to score a goal. Unqualified, the word football normally means the form of football that is the most popular where the word is used. Sports commonly called football include association football (known as soccer in some countries); gridiron football (specifically American football or Canadian football); Australian rules football; rugby football (either rugby league or rugby union); and Gaelic football. These various forms of football share to varying extent common origins and are known as football codes.",
         "Image": "_",
-        "TeamSize": 4,
-        "StaffSize": 2,
+        "TeamSize": 1,
+        "StaffSize": 1,
         "Positions": [],
         "PossiblePlayerPositions": [],
         "PossibleStaffPositions": []

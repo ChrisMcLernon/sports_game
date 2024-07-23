@@ -2,10 +2,10 @@
 
 namespace sports_game.src.Services
 {
-    public class CategoryService(int seed)
+    public class CategoryService(Random random)
     {
         public List<Category> Categories = [];
-        private readonly Random _random = new(seed);
+        private readonly Random _random = random;
 
         public void AddCategory(Category category)
         {

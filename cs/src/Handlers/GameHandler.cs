@@ -41,8 +41,8 @@ namespace sports_game.src.Handlers
             }
             else if (input == "1")
             {
-                InitializeData();
                 SetSeed();
+                InitializeData();
                 GenerateStarterTeam();
             }
             else
@@ -99,8 +99,8 @@ namespace sports_game.src.Handlers
             var staffCategoryEpic = new Category("EPIC", 0.1);
             var staffCategoryLegendary = new Category("LEGENDARY", 0.01);
 
-            PlayerCategoryService = new CategoryService(Convert.ToInt32(Seed));
-            StaffCategoryService = new CategoryService(Convert.ToInt32(Seed));
+            PlayerCategoryService = new CategoryService(SetRandom);
+            StaffCategoryService = new CategoryService(SetRandom);
 
             PlayerCategoryService.AddCategory(playerCategoryCommon);
             PlayerCategoryService.AddCategory(playerCategoryUncommon);
@@ -137,11 +137,12 @@ namespace sports_game.src.Handlers
                 calculatedSeed += Convert.ToInt32(c);
             }
             SetRandom = new Random(calculatedSeed);
+
+            Console.WriteLine($"Seed: {calculatedSeed}    {SetRandom.ToString()}   {SetRandom.Next()}  {SetRandom.Next()}   {SetRandom.Next()}");
         }
 
         public void GenerateStarterTeam()
         {
-            AvailablePlayers = [.. AvailablePlayers.OrderBy(x => SetRandom.Next())];
             string teamName = InputReader.ReadText("Enter Team Name: ");
             CurrentSport = PickSport();
             PlayerTeam = new Team(teamName, "_", true);
@@ -303,6 +304,10 @@ namespace sports_game.src.Handlers
             {
                 player.Status = "Injured";
                 Console.WriteLine($"{player.Name} is Injured!");
+                if (PlayerTeam.Players.Contains(player))
+                {
+                    PlanningHandlerLocal.injuredPlayers.Add(player);
+                }
             }
 
             if (player.Status == "Injured")
