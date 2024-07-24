@@ -1,6 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using PlayerCreator;
 
+Console.Clear();
+
 while (true)
 {
     Console.WriteLine("Enter 'q' to quit or 'c' to create another player or 's' to create another staff:");
