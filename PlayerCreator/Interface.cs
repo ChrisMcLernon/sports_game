@@ -73,6 +73,8 @@
             for (int i = 0; i < effectCount; i++)
             {
                 Console.WriteLine("Enter the effect name:");
+                Console.WriteLine("Options: Increase Value, Decrease Value, Increase Cost, Decrease Cost, Multiply Position\n"     
+                                            + "         Multiply Position by Size, Add Value by Size");
                 string effectName = Console.ReadLine();
                 Console.WriteLine("Enter the effect description:");
                 string effectDescription = Console.ReadLine();
@@ -90,7 +92,7 @@
                     }
                     else
                     {
-                        Console.WriteLine("Invalid position ID. Please enter a valid position ID (PP-000001, PP-000002, PP-000003, PP-000004, PP-000005, PP-000006, PP-000007, PP-000008, PP-000009, PP-000010):");
+                        Console.WriteLine("Invalid position ID. Please enter a valid position ID \n(PP-000001, PP-000002, PP-000003, PP-000004, PP-000005, PP-000006, PP-000007, PP-000008, PP-000009, PP-000010, SP-000001, SP-000002, SP-000003, SP-000004, SP-000005, SP-000006, SP-000007 ):");
                     }
                 }
                 effects.Add(new Effect(effectName, effectDescription, effectValue, effectTarget));
@@ -162,6 +164,8 @@
             for (int i = 0; i < effectCount; i++)
             {
                 Console.WriteLine("Enter the effect name:");
+                Console.WriteLine("Options: Increase Value, Decrease Value, Increase Cost, Decrease Cost, Multiply Position\n"     
+                                            + "         Multiply Position by Size, Add Value by Size");
                 string effectName = Console.ReadLine();
                 Console.WriteLine("Enter the effect description:");
                 string effectDescription = Console.ReadLine();
@@ -179,7 +183,7 @@
                     }
                     else
                     {
-                        Console.WriteLine("Invalid position ID. Please enter a valid position ID \n(PP-000001, PP-000002, PP-000003, PP-000004, PP-000005, PP-000006, PP-000007, PP-000008, PP-000009, PP-000010SP-000001, SP-000002, SP-000003, SP-000004, SP-000005, SP-000006, SP-000007):");
+                        Console.WriteLine("Invalid position ID. Please enter a valid position ID \n(PP-000001, PP-000002, PP-000003, PP-000004, PP-000005, PP-000006, PP-000007, PP-000008, PP-000009, PP-000010, SP-000001, SP-000002, SP-000003, SP-000004, SP-000005, SP-000006, SP-000007):");
                     }
                 }
                 effects.Add(new Effect(effectName, effectDescription, effectValue, effectTarget));

@@ -30,9 +30,9 @@ namespace sports_game.src.Handlers
             int totalEffect = person.Value;
             foreach (var effect in Effects[person.ID])
             {
-                switch (effect.Name)
+                switch (effect.Name.ToLower())
                 {
-                    case "Increase Value":
+                    case "increase value":
                         person.Value += effect.Value;
                         if (TeamLocal.IsPlayer)
                         {
@@ -41,7 +41,7 @@ namespace sports_game.src.Handlers
                         }
                         break;
                     
-                    case "Decrease Value":
+                    case "decrease value":
                         if (person.Value < 0)
                         {
                             person.Value = 0;
@@ -56,7 +56,7 @@ namespace sports_game.src.Handlers
                         }
                         break;
 
-                    case "Increase Cost":
+                    case "increase cost":
                         person.Cost += effect.Value;
                         if (TeamLocal.IsPlayer)
                         {
@@ -64,7 +64,7 @@ namespace sports_game.src.Handlers
                         }
                         break;
                     
-                    case "Decrease Cost":
+                    case "decrease cost":
                         if (person.Cost < 0)
                         {
                             person.Cost = 0;
@@ -88,9 +88,9 @@ namespace sports_game.src.Handlers
             {
                 foreach (var e in effect.Value)
                 {
-                    switch (e.Name)
+                    switch (e.Name.ToLower())
                     {
-                        case "Multiply Position":
+                        case "multiply position":
                             if (e.Target == person.CurrentPositionID)
                             {
                                 totalEffect *= e.Value;
@@ -101,7 +101,7 @@ namespace sports_game.src.Handlers
                             }
                             break;
                         
-                        case "Multiply Position by Size":
+                        case "multiply position by size":
                             int posSize = 0;
                             foreach (var p in TeamLocal.Players)
                             {
@@ -120,7 +120,7 @@ namespace sports_game.src.Handlers
                             }
                             break;
 
-                        case "Add Value by Size":
+                        case "add value by size":
                             int size = 0;
                             foreach (var p in TeamLocal.Players)
                             {
