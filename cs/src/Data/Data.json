@@ -407,6 +407,7 @@
       "ID": "SF-000001",
       "Value": 120,
       "CurrentPositionID": "SP-000001",
+      "CurrentPosition": null,
       "Cost": 120,
       "Effects": [
         {
@@ -430,12 +431,14 @@
       "ID": "SF-000002",
       "Value": 100,
       "CurrentPositionID": "SP-000002",
+      "CurrentPosition": null,
       "Cost": 110,
       "Effects": [
         {
           "Name": "Player Value \u002B 10",
           "Description": "Increase Value",
-          "Value": 10
+          "Value": 10,
+          "Target": ""
         }
       ],
       "Status": "active"
@@ -446,12 +449,14 @@
       "ID": "SF-000003",
       "Value": 80,
       "CurrentPositionID": "SP-000003",
+      "CurrentPosition": null,
       "Cost": 90,
       "Effects": [
         {
           "Name": "Player Value \u002B 8",
           "Description": "Increase Value",
-          "Value": 8
+          "Value": 8,
+          "Target": ""
         }
       ],
       "Status": "active"
@@ -462,12 +467,14 @@
       "ID": "SF-000004",
       "Value": 60,
       "CurrentPositionID": "SP-000004",
+      "CurrentPosition": null,
       "Cost": 70,
       "Effects": [
         {
           "Name": "Player Value \u002B 6",
           "Description": "Increase Value",
-          "Value": 6
+          "Value": 6,
+          "Target": ""
         }
       ],
       "Status": "active"
@@ -478,12 +485,14 @@
       "ID": "SF-000005",
       "Value": 60,
       "CurrentPositionID": "SP-000005",
+      "CurrentPosition": null,
       "Cost": 70,
       "Effects": [
         {
           "Name": "Player Value \u002B 6",
           "Description": "Increase Value",
-          "Value": 6
+          "Value": 6,
+          "Target": ""
         }
       ],
       "Status": "active"
@@ -494,12 +503,14 @@
       "ID": "SF-000006",
       "Value": 60,
       "CurrentPositionID": "SP-000006",
+      "CurrentPosition": null,
       "Cost": 70,
       "Effects": [
         {
           "Name": "Player Value \u002B 6",
           "Description": "Increase Value",
-          "Value": 6
+          "Value": 6,
+          "Target": ""
         }
       ],
       "Status": "active"
@@ -510,12 +521,14 @@
       "ID": "SF-000007",
       "Value": 60,
       "CurrentPositionID": "SP-000007",
+      "CurrentPosition": null,
       "Cost": 70,
       "Effects": [
         {
           "Name": "Player Value \u002B 6",
           "Description": "Increase Value",
-          "Value": 6
+          "Value": 6,
+          "Target": ""
         }
       ],
       "Status": "active"
@@ -526,12 +539,14 @@
       "ID": "SF-000008",
       "Value": 60,
       "CurrentPositionID": "SP-000001",
+      "CurrentPosition": null,
       "Cost": 70,
       "Effects": [
         {
           "Name": "Player Value \u002B 6",
           "Description": "Increase Value",
-          "Value": 6
+          "Value": 6,
+          "Target": ""
         }
       ],
       "Status": "active"
@@ -542,12 +557,14 @@
       "ID": "SF-000009",
       "Value": 60,
       "CurrentPositionID": "SP-000002",
+      "CurrentPosition": null,
       "Cost": 70,
       "Effects": [
         {
           "Name": "Player Value \u002B 6",
           "Description": "Increase Value",
-          "Value": 6
+          "Value": 6,
+          "Target": ""
         }
       ],
       "Status": "active"
@@ -558,12 +575,14 @@
       "ID": "SF-000010",
       "Value": 60,
       "CurrentPositionID": "SP-000003",
+      "CurrentPosition": null,
       "Cost": 70,
       "Effects": [
         {
           "Name": "Player Value \u002B 6",
           "Description": "Increase Value",
-          "Value": 6
+          "Value": 6,
+          "Target": ""
         }
       ],
       "Status": "active"
@@ -574,12 +593,14 @@
       "ID": "SF-000011",
       "Value": 60,
       "CurrentPositionID": "SP-000004",
+      "CurrentPosition": null,
       "Cost": 70,
       "Effects": [
         {
           "Name": "Player Value \u002B 6",
           "Description": "Increase Value",
-          "Value": 6
+          "Value": 6,
+          "Target": ""
         }
       ],
       "Status": "active"
@@ -590,12 +611,14 @@
       "ID": "SF-000012",
       "Value": 60,
       "CurrentPositionID": "SP-000005",
+      "CurrentPosition": null,
       "Cost": 70,
       "Effects": [
         {
           "Name": "Player Value \u002B 6",
           "Description": "Increase Value",
-          "Value": 6
+          "Value": 6,
+          "Target": ""
         }
       ],
       "Status": "active"
@@ -606,12 +629,14 @@
       "ID": "SF-000013",
       "Value": 60,
       "CurrentPositionID": "SP-000006",
+      "CurrentPosition": null,
       "Cost": 70,
       "Effects": [
         {
           "Name": "Player Value \u002B 6",
           "Description": "Increase Value",
-          "Value": 6
+          "Value": 6,
+          "Target": ""
         }
       ],
       "Status": "active"
