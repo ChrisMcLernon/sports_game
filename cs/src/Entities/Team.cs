@@ -4,7 +4,7 @@ using sports_game.src.Services;
 
 namespace sports_game.src.Entities
 {    
-    public class Team(string name, string icon = "_", bool isPlayer = false)
+    public class Team(GameHandler gh, string name, string icon = "_", bool isPlayer = false)
     {
         public string Name { get; set; } = name;
         public List<Person> Staff { get; set; } = [];
@@ -17,6 +17,7 @@ namespace sports_game.src.Entities
         static public int Interest { get; set; } = 10;
         public bool IsPlayer { get; set; } = isPlayer;
         public EffectHandler EffectHandlerTeam { get; set; }
+        public GameHandler GameHandlerLocal { get; set; } = gh;
 
         public void TeamDataInitialize()
         {

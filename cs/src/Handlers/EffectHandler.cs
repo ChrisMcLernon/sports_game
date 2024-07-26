@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using sports_game.src.Entities;
 using sports_game.src.Models;
 
@@ -78,6 +79,51 @@ namespace sports_game.src.Handlers
                             Console.WriteLine($"Subtracted {effect.Value} from Cost of {person.Name}");
                         }
                         break;
+
+                    case "higher chance injury":
+                        if (person.Status != "Injured" && effect.Value >= TeamLocal.GameHandlerLocal.SetRandom.Next(0, 100))
+                        {
+                            person.Status = "Injured";
+                            person.Value /= 2;
+                            person.Cost /= 2;
+                            if (TeamLocal.IsPlayer)
+                            {
+                                Console.WriteLine($"{person.Name} is now Injured");
+                            }
+                        }
+                        break;
+
+                    case "multiply value by value":
+                        totalEffect *= effect.Value;
+                        if (TeamLocal.IsPlayer)
+                        {
+                            Console.WriteLine($"Multiplied {totalEffect / effect.Value} by {effect.Value} | Total Effect: {totalEffect}");
+                        }
+                        break;
+
+                    case "increase budget":
+                        TeamLocal.Budget += effect.Value;
+                        if (TeamLocal.IsPlayer)
+                        {
+                            Console.WriteLine($"Added {effect.Value} to Budget | Total Budget: {TeamLocal.Budget}");
+                        }
+                        break;
+                    
+                    case "decrease budget":
+                        if (TeamLocal.Budget < 0)
+                        {
+                            TeamLocal.Budget = 0;
+                            Console.WriteLine("Budget is 0");
+                        }
+                        else
+                        {
+                            TeamLocal.Budget -= effect.Value;
+                            if (TeamLocal.IsPlayer)
+                            {
+                                Console.WriteLine($"Subtracted {effect.Value} from Budget | Total Budget: {TeamLocal.Budget}");
+                            }
+                        }
+                        break;
                     
                     default:
                         break;
@@ -129,7 +175,7 @@ namespace sports_game.src.Handlers
                                     size++;
                                 }
                             }
-                            if (size > 0 && e.Target == person.CurrentPositionID)
+                            if (size > 0)
                             {
                                 totalEffect += size * e.Value;
                                 if (TeamLocal.IsPlayer)
@@ -138,7 +184,19 @@ namespace sports_game.src.Handlers
                                 }
                             }
                             break;
-                            
+                        
+                        case "higher chance of injury to position":
+                            if (person.Status != "Injured" && e.Target == person.CurrentPositionID && e.Value >= TeamLocal.GameHandlerLocal.SetRandom.Next(0, 100))
+                            {
+                                person.Status = "Injured";
+                                person.Value /= 2;
+                                person.Cost /= 2;
+                                if (TeamLocal.IsPlayer)
+                                {
+                                    Console.WriteLine($"{person.Name} is now Injured");
+                                }
+                            }
+                            break;
                     }
                 }
             }

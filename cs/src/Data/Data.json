@@ -3,219 +3,12 @@
     "Name": "Football",
     "Description": "Football is a family of team sports that involve, to varying degrees, kicking a ball to score a goal. Unqualified, the word football normally means the form of football that is the most popular where the word is used. Sports commonly called football include association football (known as soccer in some countries); gridiron football (specifically American football or Canadian football); Australian rules football; rugby football (either rugby league or rugby union); and Gaelic football. These various forms of football share to varying extent common origins and are known as football codes.",
     "Image": "_",
-    "TeamSize": 5,
-    "StaffSize": 2,
+    "TeamSize": 1,
+    "StaffSize": 1,
     "Positions": [],
     "PossiblePlayerPositions": [],
     "PossibleStaffPositions": []
   },
-  "Football_Player_Positions": [
-    {
-      "Name": "QUARTERBACK",
-      "Modifier": 2.0,
-      "ID": "PP-000001"
-    },
-    {
-      "Name": "RUNNING_BACK",
-      "Modifier": 1.8,
-      "ID": "PP-000002"
-    },
-    {
-      "Name": "WIDE_RECEIVER",
-      "Modifier": 1.7,
-      "ID": "PP-000003"
-    },
-    {
-      "Name": "TIGHT_END",
-      "Modifier": 1.6,
-      "ID": "PP-000004"
-    },
-    {
-      "Name": "OFFENSIVE_LINE",
-      "Modifier": 1.2,
-      "ID": "PP-000005"
-    },
-    {
-      "Name": "DEFENSIVE_LINE",
-      "Modifier": 1.2,
-      "ID": "PP-000006"
-    },
-    {
-      "Name": "LINEBACKER",
-      "Modifier": 1.4,
-      "ID": "PP-000007"
-    },
-    {
-      "Name": "DEFENSIVE_BACK",
-      "Modifier": 1.6,
-      "ID": "PP-000008"
-    },
-    {
-      "Name": "KICKER",
-      "Modifier": 1.1,
-      "ID": "PP-000009"
-    },
-    {
-      "Name": "ALL_ROUNDER",
-      "Modifier": 2.2,
-      "ID": "PP-000010"
-    }
-  ],
-  "Football_Staff_Positions": [
-    {
-      "Name": "HEAD_COACH",
-      "Modifier": 2.0,
-      "ID": "SP-000001"
-    },
-    {
-      "Name": "OFFENSIVE_COORDINATOR",
-      "Modifier": 1.8,
-      "ID": "SP-000002"
-    },
-    {
-      "Name": "DEFENSIVE_COORDINATOR",
-      "Modifier": 1.8,
-      "ID": "SP-000003"
-    },
-    {
-      "Name": "SPECIAL_TEAMS_COACH",
-      "Modifier": 1.6,
-      "ID": "SP-000004"
-    },
-    {
-      "Name": "TRAINER",
-      "Modifier": 1.4,
-      "ID": "SP-000005"
-    },
-    {
-      "Name": "EQUIPMENT_MANAGER",
-      "Modifier": 1.2,
-      "ID": "SP-000006"
-    },
-    {
-      "Name": "MASTERMIND",
-      "Modifier": 2.2,
-      "ID": "SP-000007"
-    }
-  ],
-  "Football_Player_Stats": [
-    {
-      "Name": "Jimmy \u0027U-Cant\u0027 Hitme",
-      "Rarity": "LEGENDARY",
-      "ID": "PL-000001",
-      "Value": 120,
-      "CurrentPositionID": "PP-000001",
-      "CurrentPosition": null,
-      "Cost": 110,
-      "Effects": [
-        {
-          "Name": "Multiply Position",
-          "Description": "Multiply Defensive Back Position by 2",
-          "Value": 2,
-          "Target": "PP-000008"
-        },
-        {
-          "Name": "Decrease Cost",
-          "Description": "Decrease Cost by 50",
-          "Value": 50,
-          "Target": "PP-000001"
-        }
-      ],
-      "Status": "active"
-    },
-    {
-      "Name": "Jeremy \u0027Two\u0027 Shoos",
-      "Rarity": "COMMON",
-      "ID": "PL-000002",
-      "Value": 45,
-      "CurrentPositionID": "PP-000003",
-      "CurrentPosition": null,
-      "Cost": 60,
-      "Effects": [
-        {
-          "Name": "Increase Value",
-          "Description": "Increase Value by 60",
-          "Value": 60,
-          "Target": "PP-000001"
-        }
-      ],
-      "Status": "ACTIVE"
-    },
-    {
-      "Name": "Opal Jean",
-      "Rarity": "LEGENDARY",
-      "ID": "PL-000003",
-      "Value": 200,
-      "CurrentPositionID": "PP-000009",
-      "CurrentPosition": null,
-      "Cost": 400,
-      "Effects": [
-        {
-          "Name": "Multiply Position",
-          "Description": "Multiply Kickers by 5",
-          "Value": 5,
-          "Target": "PP-000009"
-        },
-        {
-          "Name": "Decrease Value",
-          "Description": "Decrease Value by 25",
-          "Value": 25,
-          "Target": "PP-000001"
-        }
-      ],
-      "Status": "ACTIVE"
-    },
-    {
-      "Name": "Jenny Kelly",
-      "Rarity": "EPIC",
-      "ID": "PL-000004",
-      "Value": 20,
-      "CurrentPositionID": "PP-000002",
-      "CurrentPosition": null,
-      "Cost": 120,
-      "Effects": [
-        {
-          "Name": "Multiply Position by size",
-          "Description": "Multiply Offensive Linemen by number of Offensive Linemen",
-          "Value": 0,
-          "Target": "PP-000005"
-        },
-        {
-          "Name": "Add Value by size",
-          "Description": "Add 100 to Defensive Linemen for number of Defensive Linemen",
-          "Value": 100,
-          "Target": "PP-000006"
-        }
-      ],
-      "Status": "ACTIVE"
-    }
-  ],
-  "Football_Staff_Stats": [
-    {
-      "Name": "Lisa Schwartz",
-      "Rarity": "LEGENDARY",
-      "ID": "SF-000001",
-      "Value": 120,
-      "CurrentPositionID": "SP-000001",
-      "CurrentPosition": null,
-      "Cost": 120,
-      "Effects": [
-        {
-          "Name": "Multiply Position by Size",
-          "Description": "Multiply Quarterback by number of Quarterbacks",
-          "Value": 0,
-          "Target": "PP-000001"
-        },
-        {
-          "Name": "Add Value by Size",
-          "Description": "Add 100 multiplied by number of Wide Receivers",
-          "Value": 100,
-          "Target": "PP-000003"
-        }
-      ],
-      "Status": "active"
-    }
-  ],
   "Team_Names": [
     "Aces",
     "Acorns",
@@ -314,5 +107,98 @@
     "Water Rats",
     "Water Warriors",
     "Wave"
+  ],
+  "Football_Player_Positions": [
+    {
+      "Name": "QUARTERBACK",
+      "Modifier": 2.0,
+      "ID": "PP-000001"
+    },
+    {
+      "Name": "RUNNING_BACK",
+      "Modifier": 1.8,
+      "ID": "PP-000002"
+    },
+    {
+      "Name": "WIDE_RECEIVER",
+      "Modifier": 1.7,
+      "ID": "PP-000003"
+    },
+    {
+      "Name": "TIGHT_END",
+      "Modifier": 1.6,
+      "ID": "PP-000004"
+    },
+    {
+      "Name": "OFFENSIVE_LINE",
+      "Modifier": 1.2,
+      "ID": "PP-000005"
+    },
+    {
+      "Name": "DEFENSIVE_LINE",
+      "Modifier": 1.2,
+      "ID": "PP-000006"
+    },
+    {
+      "Name": "LINEBACKER",
+      "Modifier": 1.4,
+      "ID": "PP-000007"
+    },
+    {
+      "Name": "DEFENSIVE_BACK",
+      "Modifier": 1.6,
+      "ID": "PP-000008"
+    },
+    {
+      "Name": "KICKER",
+      "Modifier": 1.1,
+      "ID": "PP-000009"
+    },
+    {
+      "Name": "ALL_ROUNDER",
+      "Modifier": 2.2,
+      "ID": "PP-000010"
+    }
+  ],
+  "Football_Staff_Positions": [
+    {
+      "Name": "HEAD_COACH",
+      "Modifier": 2.0,
+      "ID": "SP-000001"
+    },
+    {
+      "Name": "OFFENSIVE_COORDINATOR",
+      "Modifier": 1.8,
+      "ID": "SP-000002"
+    },
+    {
+      "Name": "DEFENSIVE_COORDINATOR",
+      "Modifier": 1.8,
+      "ID": "SP-000003"
+    },
+    {
+      "Name": "SPECIAL_TEAMS_COACH",
+      "Modifier": 1.6,
+      "ID": "SP-000004"
+    },
+    {
+      "Name": "TRAINER",
+      "Modifier": 1.4,
+      "ID": "SP-000005"
+    },
+    {
+      "Name": "EQUIPMENT_MANAGER",
+      "Modifier": 1.2,
+      "ID": "SP-000006"
+    },
+    {
+      "Name": "MASTERMIND",
+      "Modifier": 2.2,
+      "ID": "SP-000007"
+    }
+  ],
+  "Football_Player_Stats": [
+  ],
+  "Football_Staff_Stats": [
   ]
 }

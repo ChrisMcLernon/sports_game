@@ -17,7 +17,7 @@ namespace sports_game.src.Handlers
                 Console.WriteLine($"\nRound {gameHandler.Round}");
                 Console.WriteLine($"Opponent: {gameHandler.OpponentTeam.Name}");
                 Console.WriteLine($"Potential Score: {gameHandler.CalculateScore(true)[1]} (+/-)");
-                Console.WriteLine("1. Choose Lineup and Start");
+                Console.WriteLine("1. Choose Lineup Order and Start");
                 if (injuredPlayers.Count != 0)
                 {
                     Console.WriteLine("2. Medical Attention");
@@ -106,12 +106,23 @@ namespace sports_game.src.Handlers
             lineupList.AddRange(gameHandler.PlayerTeam.Staff);
             Stack<Person> lineup = new();
 
-            if (PrevLineup is not null && PrevLineup.Count != 0)
+            if (PrevLineup is not null && PrevLineup.Count != 0 )
             {
-                Console.WriteLine("Keep Lineup?");
-                if (InputReader.ReadText("Y/N: ").ToLower() == "y")
+                bool valid = true;
+                foreach (Person player in PrevLineup)
                 {
-                    return PrevLineup;
+                    if (!lineupList.Contains(player))
+                    {
+                        valid = false;
+                    }
+                }
+                if (valid)
+                {
+                    Console.WriteLine("Keep Lineup Order?");
+                    if (InputReader.ReadText("Y: ").Equals("y", StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        return PrevLineup;
+                    }
                 }
             }
 

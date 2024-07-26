@@ -145,7 +145,7 @@ namespace sports_game.src.Handlers
         {
             string teamName = InputReader.ReadText("Enter Team Name: ");
             CurrentSport = PickSport();
-            PlayerTeam = new Team(teamName, "_", true);
+            PlayerTeam = new Team(this, teamName, "_", true);
             CurrentSport.GeneratePositions();
             PlayerTeam.TeamDataInitialize();
 
@@ -334,7 +334,7 @@ namespace sports_game.src.Handlers
         public void GenerateOpponentTeam()
         {
 
-            OpponentTeam = new Team(TeamNames[SetRandom.Next(TeamNames.Count)]);
+            OpponentTeam = new Team(this, TeamNames[SetRandom.Next(TeamNames.Count)]);
             CurrentSport.GeneratePositions();
             OpponentTeam.TeamDataInitialize();
 
