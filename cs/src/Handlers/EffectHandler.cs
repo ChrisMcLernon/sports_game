@@ -156,6 +156,13 @@ namespace sports_game.src.Handlers
                                     posSize++;
                                 }
                             }
+                            foreach (var p in TeamLocal.Staff)
+                            {
+                                if (p.CurrentPositionID == e.Target)
+                                {
+                                    posSize++;
+                                }
+                            }
                             if (posSize > 0 && e.Target == person.CurrentPositionID)
                             {
                                 totalEffect *= posSize;
@@ -169,6 +176,13 @@ namespace sports_game.src.Handlers
                         case "add value by size":
                             int size = 0;
                             foreach (var p in TeamLocal.Players)
+                            {
+                                if (p.CurrentPositionID == e.Target)
+                                {
+                                    size++;
+                                }
+                            }
+                            foreach (var p in TeamLocal.Staff)
                             {
                                 if (p.CurrentPositionID == e.Target)
                                 {
