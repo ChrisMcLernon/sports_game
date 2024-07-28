@@ -739,6 +739,66 @@
         }
       ],
       "Status": "ACTIVE"
+    },
+    {
+      "Name": "Curt Bushell",
+      "Rarity": "LEGENDARY",
+      "ID": "SF-000002",
+      "Value": 300,
+      "CurrentPositionID": "SP-000001",
+      "CurrentPosition": null,
+      "Cost": 350,
+      "Effects": [
+        {
+          "Name": "Multiply Position by Size",
+          "Description": "Multiply Head Coach by number of Head Coaches",
+          "Value": 0,
+          "Target": "SP-000001"
+        },
+        {
+          "Name": "Add Value by Size",
+          "Description": "Add 75 for Each Defensive Coordinator",
+          "Value": 75,
+          "Target": "SP-000003"
+        },
+        {
+          "Name": "Decrease Budget",
+          "Description": "Decrease Budget by 50",
+          "Value": 50,
+          "Target": "PP-000001"
+        }
+      ],
+      "Status": "ACTIVE"
+    },
+    {
+      "Name": "Harold \u0027The Hair\u0027 Bufont",
+      "Rarity": "LEGENDARY",
+      "ID": "SF-000003",
+      "Value": 25,
+      "CurrentPositionID": "SP-000001",
+      "CurrentPosition": null,
+      "Cost": 400,
+      "Effects": [
+        {
+          "Name": "Multiply Position by Size",
+          "Description": "Multiply Quarterback\u0027s by number of Quarterbacks",
+          "Value": 0,
+          "Target": "PP-000001"
+        },
+        {
+          "Name": "Add Value by Size",
+          "Description": "Add 80 foreach Quarterback",
+          "Value": 80,
+          "Target": "PP-000001"
+        },
+        {
+          "Name": "Majority Position",
+          "Description": "If Majority Position are Quarterbacks multiply by 100 else divide by 100",
+          "Value": 100,
+          "Target": "PP-000001"
+        }
+      ],
+      "Status": "ACTIVE"
     }
   ]
 }
