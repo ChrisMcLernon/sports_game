@@ -211,6 +211,40 @@ namespace sports_game.src.Handlers
                                 }
                             }
                             break;
+
+                        case "majority position":
+                            int pos = 0;
+                            foreach (var p in TeamLocal.Players)
+                            {
+                                if (p.CurrentPositionID == e.Target)
+                                {
+                                    pos++;
+                                }
+                            }
+                            foreach (var p in TeamLocal.Staff)
+                            {
+                                if (p.CurrentPositionID == e.Target)
+                                {
+                                    pos++;
+                                }
+                            }
+                            if (pos > (TeamLocal.Players.Count + TeamLocal.Staff.Count) / 2)
+                            {
+                                totalEffect *= e.Value;
+                                if (TeamLocal.IsPlayer)
+                                {
+                                    Console.WriteLine($"Multiplied {totalEffect / e.Value} by {e.Value} | Total Effect: {totalEffect}");
+                                }
+                            }
+                            else
+                            {
+                                Math.Round((decimal)(totalEffect /= e.Value));
+                                if (TeamLocal.IsPlayer)
+                                {
+                                    Console.WriteLine($"Divided {totalEffect * e.Value} by {e.Value} | Total Effect: {totalEffect}");
+                                }
+                            }
+                            break;
                     }
                 }
             }
