@@ -125,6 +125,49 @@ namespace sports_game.src.Handlers
                         }
                         break;
                     
+                    case "majority position":
+                            int playerPos = 0;
+                            int staffPos = 0;
+                            foreach (var p in TeamLocal.Players)
+                            {
+                                if (p.CurrentPositionID == effect.Target)
+                                {
+                                    playerPos++;
+                                }
+                            }
+                            foreach (var p in TeamLocal.Staff)
+                            {
+                                if (p.CurrentPositionID == effect.Target)
+                                {
+                                    staffPos++;
+                                }
+                            }
+                            if (playerPos > TeamLocal.Players.Count / 2)
+                            {
+                                totalEffect *= effect.Value;
+                                if (TeamLocal.IsPlayer)
+                                {
+                                    Console.WriteLine($"Multiplied {totalEffect / effect.Value} by {effect.Value} | Total Effect: {totalEffect}");
+                                }
+                            }
+                            else if (staffPos > TeamLocal.Staff.Count / 2)
+                            {
+                                totalEffect *= effect.Value;
+                                if (TeamLocal.IsPlayer)
+                                {
+                                    Console.WriteLine($"Multiplied {totalEffect / effect.Value} by {effect.Value} | Total Effect: {totalEffect}");
+                                }
+                            }
+                            else
+                            {
+                                Math.Round((decimal)(totalEffect /= effect.Value));
+                                if (TeamLocal.IsPlayer)
+                                {
+                                    Console.WriteLine($"Divided {totalEffect * effect.Value} by {effect.Value} | Total Effect: {totalEffect}");
+                                }
+                            }
+                            break;
+                    
                     default:
                         break;
                 }
@@ -208,49 +251,6 @@ namespace sports_game.src.Handlers
                                 if (TeamLocal.IsPlayer)
                                 {
                                     Console.WriteLine($"{person.Name} is now Injured");
-                                }
-                            }
-                            break;
-
-                        case "majority position":
-                            int playerPos = 0;
-                            int staffPos = 0;
-                            foreach (var p in TeamLocal.Players)
-                            {
-                                if (p.CurrentPositionID == e.Target)
-                                {
-                                    playerPos++;
-                                }
-                            }
-                            foreach (var p in TeamLocal.Staff)
-                            {
-                                if (p.CurrentPositionID == e.Target)
-                                {
-                                    staffPos++;
-                                }
-                            }
-                            if (playerPos > TeamLocal.Players.Count / 2)
-                            {
-                                totalEffect *= e.Value;
-                                if (TeamLocal.IsPlayer)
-                                {
-                                    Console.WriteLine($"Multiplied {totalEffect / e.Value} by {e.Value} | Total Effect: {totalEffect}");
-                                }
-                            }
-                            else if (staffPos > TeamLocal.Staff.Count / 2)
-                            {
-                                totalEffect *= e.Value;
-                                if (TeamLocal.IsPlayer)
-                                {
-                                    Console.WriteLine($"Multiplied {totalEffect / e.Value} by {e.Value} | Total Effect: {totalEffect}");
-                                }
-                            }
-                            else
-                            {
-                                Math.Round((decimal)(totalEffect /= e.Value));
-                                if (TeamLocal.IsPlayer)
-                                {
-                                    Console.WriteLine($"Divided {totalEffect * e.Value} by {e.Value} | Total Effect: {totalEffect}");
                                 }
                             }
                             break;
