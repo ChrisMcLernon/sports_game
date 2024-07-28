@@ -203,7 +203,7 @@
       "Rarity": "Legendary",
       "ID": "PL-000001",
       "Value": 300,
-      "CurrentPositionID": null,
+      "CurrentPositionID": "PP-000001",
       "CurrentPosition": null,
       "Cost": 500,
       "Effects": [
@@ -368,6 +368,342 @@
           "Description": "Higher Chance of Injury by 35",
           "Value": 35,
           "Target": "PP-000001"
+        }
+      ],
+      "Status": "ACTIVE"
+    },
+    {
+      "Name": "Devin McLemon",
+      "Rarity": "LEGENDARY",
+      "ID": "PL-000007",
+      "Value": 500,
+      "CurrentPositionID": "PP-000002",
+      "CurrentPosition": null,
+      "Cost": 475,
+      "Effects": [
+        {
+          "Name": "Multiply Value by Value",
+          "Description": "Multiply Value by 3",
+          "Value": 3,
+          "Target": "PP-000001"
+        },
+        {
+          "Name": "Increase Cost",
+          "Description": "Increase Cost by 100",
+          "Value": 100,
+          "Target": "PP-000001"
+        },
+        {
+          "Name": "Decrease Budget",
+          "Description": "Decrease Budget by 50",
+          "Value": 50,
+          "Target": "PP-000001"
+        }
+      ],
+      "Status": "ACTIVE"
+    },
+    {
+      "Name": "Maffew Housen",
+      "Rarity": "EPIC",
+      "ID": "PL-000008",
+      "Value": 200,
+      "CurrentPositionID": "PP-000004",
+      "CurrentPosition": null,
+      "Cost": 200,
+      "Effects": [
+        {
+          "Name": "Multiply Position by Size",
+          "Description": "Multiply Position by number of Tight Ends",
+          "Value": 0,
+          "Target": "PP-000004"
+        },
+        {
+          "Name": "Decrease Value",
+          "Description": "Decrease Value by 50",
+          "Value": 50,
+          "Target": "PP-000001"
+        }
+      ],
+      "Status": "ACTIVE"
+    },
+    {
+      "Name": "Bart Thall Amew",
+      "Rarity": "EPIC",
+      "ID": "PL-000009",
+      "Value": 225,
+      "CurrentPositionID": "PP-000004",
+      "CurrentPosition": null,
+      "Cost": 225,
+      "Effects": [
+        {
+          "Name": "Increase Value",
+          "Description": "Increase Value by 75",
+          "Value": 75,
+          "Target": "PP-000001"
+        },
+        {
+          "Name": "Multiply Value by Value",
+          "Description": "Multiply Value by 6",
+          "Value": 6,
+          "Target": "PP-000001"
+        },
+        {
+          "Name": "Decrease Budget",
+          "Description": "Decrease Budget by 200",
+          "Value": 200,
+          "Target": "PP-000001"
+        }
+      ],
+      "Status": "ACTIVE"
+    },
+    {
+      "Name": "Tyrone Dabone",
+      "Rarity": "EPIC",
+      "ID": "PL-0000010",
+      "Value": 300,
+      "CurrentPositionID": "PP-000010",
+      "CurrentPosition": null,
+      "Cost": 275,
+      "Effects": [
+        {
+          "Name": "Increase Value",
+          "Description": "Increase Value by 450",
+          "Value": 450,
+          "Target": "PP-000001"
+        }
+      ],
+      "Status": "ACTIVE"
+    },
+    {
+      "Name": "Mike Ochk",
+      "Rarity": "EPIC",
+      "ID": "PL-0000011",
+      "Value": 300,
+      "CurrentPositionID": "PP-000001",
+      "CurrentPosition": null,
+      "Cost": 350,
+      "Effects": [
+        {
+          "Name": "Multiply Position by Size",
+          "Description": "Multiply Position by Number of Linebackers",
+          "Value": 0,
+          "Target": "PP-000007"
+        },
+        {
+          "Name": "Add Value by Size",
+          "Description": "Add Value by 75 of Defensive Backs",
+          "Value": 75,
+          "Target": "PP-000008"
+        },
+        {
+          "Name": "Higher Chance of Injury",
+          "Description": "Higher Chance of Injury by 50",
+          "Value": 50,
+          "Target": "PP-000001"
+        }
+      ],
+      "Status": "ACTIVE"
+    },
+    {
+      "Name": "Mydee Throbbins",
+      "Rarity": "RARE",
+      "ID": "PL-0000012",
+      "Value": 150,
+      "CurrentPositionID": "PP-000005",
+      "CurrentPosition": null,
+      "Cost": 175,
+      "Effects": [
+        {
+          "Name": "Add Value by Size",
+          "Description": "Add 25 by number of Defensive Line",
+          "Value": 25,
+          "Target": "PP-000006"
+        }
+      ],
+      "Status": "ACTIVE"
+    },
+    {
+      "Name": "Richard Long",
+      "Rarity": "RARE",
+      "ID": "PL-0000013",
+      "Value": 75,
+      "CurrentPositionID": "PP-000007",
+      "CurrentPosition": null,
+      "Cost": 135,
+      "Effects": [
+        {
+          "Name": "Increase Cost",
+          "Description": "Increase Cost by 25",
+          "Value": 25,
+          "Target": "PP-000001"
+        },
+        {
+          "Name": "Increase Budget",
+          "Description": "Increase Budget by 35",
+          "Value": 35,
+          "Target": "PP-000001"
+        },
+        {
+          "Name": "Decrease Value",
+          "Description": "Derease Value by 75",
+          "Value": 75,
+          "Target": "PP-000001"
+        }
+      ],
+      "Status": "ACTIVE"
+    },
+    {
+      "Name": "Axel \u0027Ally\u0027 King",
+      "Rarity": "RARE",
+      "ID": "PL-0000014",
+      "Value": 150,
+      "CurrentPositionID": "PP-000010",
+      "CurrentPosition": null,
+      "Cost": 130,
+      "Effects": [
+        {
+          "Name": "Multiply Value by Value",
+          "Description": "Multiply Value by 2",
+          "Value": 2,
+          "Target": "PP-000001"
+        },
+        {
+          "Name": "Increase Budget",
+          "Description": "Increase Budget by 45",
+          "Value": 45,
+          "Target": "PP-000001"
+        },
+        {
+          "Name": "Higher Chance of Injury to Position",
+          "Description": "Higher Chance of injury to All Rounders",
+          "Value": 35,
+          "Target": "PP-000010"
+        }
+      ],
+      "Status": "ACTIVE"
+    },
+    {
+      "Name": "Hansel Haun",
+      "Rarity": "UNCOMMON",
+      "ID": "PL-0000015",
+      "Value": 100,
+      "CurrentPositionID": "PP-000008",
+      "CurrentPosition": null,
+      "Cost": 80,
+      "Effects": [
+        {
+          "Name": "Increase Value",
+          "Description": "Increase Value by 75",
+          "Value": 75,
+          "Target": "PP-000001"
+        },
+        {
+          "Name": "Decrease Cost",
+          "Description": "Decrease Cost by 80",
+          "Value": 80,
+          "Target": "PP-000001"
+        }
+      ],
+      "Status": "ACTIVE"
+    },
+    {
+      "Name": "Lyle \u0027The Driver\u0027 Plyes",
+      "Rarity": "UNCOMMON",
+      "ID": "PL-0000016",
+      "Value": 100,
+      "CurrentPositionID": "PP-000010",
+      "CurrentPosition": null,
+      "Cost": 100,
+      "Effects": [
+        {
+          "Name": "Multiply Value by Value",
+          "Description": "Multiply Value by 2",
+          "Value": 2,
+          "Target": "PP-000001"
+        },
+        {
+          "Name": "Decrease Budget",
+          "Description": "Decrease Budget by 45",
+          "Value": 45,
+          "Target": "PP-000001"
+        }
+      ],
+      "Status": "ACTIVE"
+    },
+    {
+      "Name": "Seth \u0027Sally Mae\u0027 McGraw",
+      "Rarity": "UNCOMMON",
+      "ID": "PL-0000017",
+      "Value": 75,
+      "CurrentPositionID": "PP-000002",
+      "CurrentPosition": null,
+      "Cost": 80,
+      "Effects": [
+        {
+          "Name": "Increase Cost",
+          "Description": "Increase Cost by 40",
+          "Value": 40,
+          "Target": "PP-000001"
+        }
+      ],
+      "Status": "ACTIVE"
+    },
+    {
+      "Name": "Peter \u0027Piper\u0027 Macron",
+      "Rarity": "LEGENDARY",
+      "ID": "PL-0000018",
+      "Value": 350,
+      "CurrentPositionID": "PP-000007",
+      "CurrentPosition": null,
+      "Cost": 400,
+      "Effects": [
+        {
+          "Name": "Multiply Position by Size",
+          "Description": "Multiply Position by Defensive COordinator",
+          "Value": 0,
+          "Target": "SP-000003"
+        },
+        {
+          "Name": "Add Value by Size",
+          "Description": "Add 100 by Size",
+          "Value": 100,
+          "Target": "SP-000005"
+        },
+        {
+          "Name": "Decrease Budget",
+          "Description": "Decrease Budget by 50",
+          "Value": 50,
+          "Target": "PP-000001"
+        }
+      ],
+      "Status": "ACTIVE"
+    },
+    {
+      "Name": "Bronson \u0027Broken Knee\u0027 McGee",
+      "Rarity": "LEGENDARY",
+      "ID": "PL-0000019",
+      "Value": 500,
+      "CurrentPositionID": "PP-000010",
+      "CurrentPosition": null,
+      "Cost": 400,
+      "Effects": [
+        {
+          "Name": "Increase Value",
+          "Description": "Increase Value by 500",
+          "Value": 500,
+          "Target": "PP-000001"
+        },
+        {
+          "Name": "Multiply Position",
+          "Description": "Multiply Position by 5",
+          "Value": 5,
+          "Target": "SP-000001"
+        },
+        {
+          "Name": "Higher Chance of Injury to Position",
+          "Description": "50% Chance of Injuy for each All Rounder",
+          "Value": 50,
+          "Target": "PP-000010"
         }
       ],
       "Status": "ACTIVE"
