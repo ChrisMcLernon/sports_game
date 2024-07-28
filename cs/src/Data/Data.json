@@ -1,7 +1,7 @@
 {
   "Football_Sport_Info": {
     "Name": "Football",
-    "Description": "Football is a family of team sports that involve, to varying degrees, kicking a ball to score a goal. Unqualified, the word football normally means the form of football that is the most popular where the word is used. Sports commonly called football include association football (known as soccer in some countries); gridiron football (specifically American football or Canadian football); Australian rules football; rugby football (either rugby league or rugby union); and Gaelic football. These various forms of football share to varying extent common origins and are known as football codes.",
+    "Description": "American Football is a family of team sports that involve, to varying degrees, kicking a ball to score a goal. Unqualified, the word football normally means the form of football that is the most popular where the word is used. Sports commonly called football include association football (known as soccer in some countries); gridiron football (specifically American football or Canadian football); Australian rules football; rugby football (either rugby league or rugby union); and Gaelic football. These various forms of football share to varying extent common origins and are known as football codes.",
     "Image": "_",
     "TeamSize": 1,
     "StaffSize": 1,
@@ -198,7 +198,180 @@
     }
   ],
   "Football_Player_Stats": [
+    {
+      "Name": "Jimmy \u0027U-Can\u0027t\u0027 Hittmee",
+      "Rarity": "Legendary",
+      "ID": "PL-000001",
+      "Value": 300,
+      "CurrentPositionID": null,
+      "CurrentPosition": null,
+      "Cost": 500,
+      "Effects": [
+        {
+          "Name": "Multiply Position by Size",
+          "Description": "The player\u0027s position is multiplied by the Position size",
+          "Value": 0,
+          "Target": "PP-000001"
+        },
+        {
+          "Name": "Add Value by Size",
+          "Description": "The player\u0027s value is added by the Position size",
+          "Value": 100,
+          "Target": "PP-000001"
+        },
+        {
+          "Name": "Higher Chance of Injury",
+          "Description": "The player has a higher chance of getting injured",
+          "Value": 35,
+          "Target": "PP-000001"
+        }
+      ],
+      "Status": "ACTIVE"
+    },
+    {
+      "Name": "Jeremy \u0027Star\u0027 Fatu",
+      "Rarity": "LEGENDARY",
+      "ID": "PL-000002",
+      "Value": 300,
+      "CurrentPositionID": "PP-000001",
+      "CurrentPosition": null,
+      "Cost": 400,
+      "Effects": [
+        {
+          "Name": "Increase Value",
+          "Description": "Increase Value by 50",
+          "Value": 500,
+          "Target": "PP-000001"
+        },
+        {
+          "Name": "Multiply Value by Value",
+          "Description": "Multiply Value by 20",
+          "Value": 20,
+          "Target": "PP-000001"
+        },
+        {
+          "Name": "Decrease Budget",
+          "Description": "Decrease Budget by 50",
+          "Value": 50,
+          "Target": "PP-000001"
+        }
+      ],
+      "Status": "ACTIVE"
+    },
+    {
+      "Name": "Jacob \u0027Ziggy\u0027 Calzigna",
+      "Rarity": "RARE",
+      "ID": "PL-000003",
+      "Value": 100,
+      "CurrentPositionID": "PP-000002",
+      "CurrentPosition": null,
+      "Cost": 200,
+      "Effects": [
+        {
+          "Name": "Increase Budget",
+          "Description": "Increase Budget by 50",
+          "Value": 50,
+          "Target": "PP-000001"
+        },
+        {
+          "Name": "decrease Value",
+          "Description": "Decreaase Value by 25",
+          "Value": 25,
+          "Target": "PP-000001"
+        },
+        {
+          "Name": "Decrease Cost",
+          "Description": "Decrease Cost by 50",
+          "Value": 50,
+          "Target": "PP-000001"
+        }
+      ],
+      "Status": "ACTIVE"
+    },
+    {
+      "Name": "Jack Stockton",
+      "Rarity": "EPIC",
+      "ID": "PL-000004",
+      "Value": 100,
+      "CurrentPositionID": "PP-000001",
+      "CurrentPosition": null,
+      "Cost": 225,
+      "Effects": [
+        {
+          "Name": "Add Value by Size",
+          "Description": "Add Value by QBs",
+          "Value": 50,
+          "Target": "PP-000001"
+        },
+        {
+          "Name": "Increase Budget",
+          "Description": "ncrease Budget by 75",
+          "Value": 75,
+          "Target": "PP-000001"
+        }
+      ],
+      "Status": "ACTIVE"
+    },
+    {
+      "Name": "Canton \u0027Catch\u0027 Abreaque",
+      "Rarity": "LEGENDARY",
+      "ID": "PL-000005",
+      "Value": 300,
+      "CurrentPositionID": "PP-000009",
+      "CurrentPosition": null,
+      "Cost": 250,
+      "Effects": [
+        {
+          "Name": "Multiply Position",
+          "Description": "Multiply Position by 15",
+          "Value": 15,
+          "Target": "PP-000009"
+        },
+        {
+          "Name": "Add Value by size",
+          "Description": "Add Value by number of Kicker",
+          "Value": 50,
+          "Target": "PP-000009"
+        },
+        {
+          "Name": "Higher Chance of Injury",
+          "Description": "Higher Chance of Injury by 60",
+          "Value": 60,
+          "Target": "PP-000009"
+        }
+      ],
+      "Status": "INJURED"
+    },
+    {
+      "Name": "Mack \u0027Me\u0027 Hardher",
+      "Rarity": "LEGENDARY",
+      "ID": "PL-000006",
+      "Value": 400,
+      "CurrentPositionID": "PP-000007",
+      "CurrentPosition": null,
+      "Cost": 425,
+      "Effects": [
+        {
+          "Name": "Increase Budget",
+          "Description": "Increase Budget by 100",
+          "Value": 100,
+          "Target": "PP-000001"
+        },
+        {
+          "Name": "Increase Value",
+          "Description": "Increase Value by 200",
+          "Value": 200,
+          "Target": "PP-000001"
+        },
+        {
+          "Name": "Higher Chance of Injury",
+          "Description": "Higher Chance of Injury by 35",
+          "Value": 35,
+          "Target": "PP-000001"
+        }
+      ],
+      "Status": "ACTIVE"
+    }
   ],
-  "Football_Staff_Stats": [
-  ]
+  "Football_Staff_Stats": []
 }

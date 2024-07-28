@@ -80,7 +80,7 @@ namespace sports_game.src.Handlers
                         }
                         break;
 
-                    case "higher chance injury":
+                    case "higher chance of injury":
                         if (person.Status != "Injured" && effect.Value >= TeamLocal.GameHandlerLocal.SetRandom.Next(0, 100))
                         {
                             person.Status = "Injured";
