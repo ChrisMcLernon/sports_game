@@ -213,22 +213,31 @@ namespace sports_game.src.Handlers
                             break;
 
                         case "majority position":
-                            int pos = 0;
+                            int playerPos = 0;
+                            int staffPos = 0;
                             foreach (var p in TeamLocal.Players)
                             {
                                 if (p.CurrentPositionID == e.Target)
                                 {
-                                    pos++;
+                                    playerPos++;
                                 }
                             }
                             foreach (var p in TeamLocal.Staff)
                             {
                                 if (p.CurrentPositionID == e.Target)
                                 {
-                                    pos++;
+                                    staffPos++;
                                 }
                             }
-                            if (pos > (TeamLocal.Players.Count + TeamLocal.Staff.Count) / 2)
+                            if (playerPos > TeamLocal.Players.Count / 2)
+                            {
+                                totalEffect *= e.Value;
+                                if (TeamLocal.IsPlayer)
+                                {
+                                    Console.WriteLine($"Multiplied {totalEffect / e.Value} by {e.Value} | Total Effect: {totalEffect}");
+                                }
+                            }
+                            else if (staffPos > TeamLocal.Staff.Count / 2)
                             {
                                 totalEffect *= e.Value;
                                 if (TeamLocal.IsPlayer)

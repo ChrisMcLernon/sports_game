@@ -709,5 +709,36 @@
       "Status": "ACTIVE"
     }
   ],
-  "Football_Staff_Stats": []
+  "Football_Staff_Stats": [
+    {
+      "Name": "Jim McDougan",
+      "Rarity": "LEGENDARY",
+      "ID": "SF-000001",
+      "Value": 200,
+      "CurrentPositionID": "SP-000007",
+      "CurrentPosition": null,
+      "Cost": 500,
+      "Effects": [
+        {
+          "Name": "Majority Position",
+          "Description": "If Majority of Staff are Head Coaches multiply Value by 50 else Divide by 50",
+          "Value": 50,
+          "Target": "SP-000001"
+        },
+        {
+          "Name": "Multiply Position",
+          "Description": "Multiply Offensive Coordinator by 6",
+          "Value": 6,
+          "Target": "SP-000002"
+        },
+        {
+          "Name": "Multiply Position",
+          "Description": "Multiply Defensive Coordinator by 6",
+          "Value": 6,
+          "Target": "SP-000003"
+        }
+      ],
+      "Status": "ACTIVE"
+    }
+  ]
 }
