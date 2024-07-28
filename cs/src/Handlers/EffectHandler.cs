@@ -43,7 +43,7 @@ namespace sports_game.src.Handlers
                         break;
                     
                     case "decrease value":
-                        if (person.Value < 0)
+                        if (person.Cost < effect.Value)
                         {
                             person.Value = 0;
                         }
@@ -66,7 +66,7 @@ namespace sports_game.src.Handlers
                         break;
                     
                     case "decrease cost":
-                        if (person.Cost < 0)
+                        if (person.Cost < effect.Value)
                         {
                             person.Cost = 0;
                         }
@@ -110,7 +110,7 @@ namespace sports_game.src.Handlers
                         break;
                     
                     case "decrease budget":
-                        if (TeamLocal.Budget < 0)
+                        if (person.Cost < effect.Value)
                         {
                             TeamLocal.Budget = 0;
                             Console.WriteLine("Budget is 0");
