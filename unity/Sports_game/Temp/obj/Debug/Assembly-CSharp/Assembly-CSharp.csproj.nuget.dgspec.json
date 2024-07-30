@@ -1,26 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "/Users/chrismclernon/CodingDir/sports_game/unity/Sports_game/Assembly-CSharp.csproj": {}
+    "C:\\CodingDir\\sports_game\\unity\\Sports_game\\Assembly-CSharp.csproj": {}
   },
   "projects": {
-    "/Users/chrismclernon/CodingDir/sports_game/unity/Sports_game/Assembly-CSharp.csproj": {
+    "C:\\CodingDir\\sports_game\\unity\\Sports_game\\Assembly-CSharp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/chrismclernon/CodingDir/sports_game/unity/Sports_game/Assembly-CSharp.csproj",
+        "projectUniqueName": "C:\\CodingDir\\sports_game\\unity\\Sports_game\\Assembly-CSharp.csproj",
         "projectName": "Assembly-CSharp",
-        "projectPath": "/Users/chrismclernon/CodingDir/sports_game/unity/Sports_game/Assembly-CSharp.csproj",
-        "packagesPath": "/Users/chrismclernon/.nuget/packages/",
-        "outputPath": "/Users/chrismclernon/CodingDir/sports_game/unity/Sports_game/Temp/obj/Debug/Assembly-CSharp/",
+        "projectPath": "C:\\CodingDir\\sports_game\\unity\\Sports_game\\Assembly-CSharp.csproj",
+        "packagesPath": "C:\\Users\\Chris McLernon\\.nuget\\packages\\",
+        "outputPath": "C:\\CodingDir\\sports_game\\unity\\Sports_game\\Temp\\obj\\Debug\\Assembly-CSharp\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/chrismclernon/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Chris McLernon\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.1"
         ],
         "sources": {
-          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -54,7 +53,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
         }
       }
     }
